@@ -16,7 +16,7 @@ import static net.mcreator.concoction.init.ConcoctionModDataComponents.FOOD_EFFE
 
 public class TomatoSoupItem extends Item {
 	public TomatoSoupItem() {
-		super(new Item.Properties().stacksTo(16).component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.WARM, 1, 60, true)).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(6).saturationModifier(0.8f).build()));
+		super(new Item.Properties().stacksTo(16).component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.WARM, 1, 90, true)).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(6).saturationModifier(0.8f).build()));
 	}
 
 	@Override

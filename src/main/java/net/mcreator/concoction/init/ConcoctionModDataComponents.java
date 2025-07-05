@@ -70,50 +70,50 @@ public class ConcoctionModDataComponents {
     @SubscribeEvent
     public static void modifyComponents(ModifyDefaultComponentsEvent event) {
         event.modify(Items.CHORUS_FRUIT, builder ->
-                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(INSTABILITY, 1, 8, false))
+                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(INSTABILITY, 1, 10, false))
         );
         event.modify(Items.GLOW_BERRIES, builder ->
-                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(GLOW, 1, 6, true))
+                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(GLOW, 1, 3, true))
         );
 
         event.modify(Items.MELON_SLICE, builder ->
-                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(SWEET, 1, 12, true))
+                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(SWEET, 1, 30, true))
         );
         event.modify(Items.SWEET_BERRIES, builder ->
-                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(SWEET, 1, 6, true))
+                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(SWEET, 1, 15, true))
         );
         event.modify(Items.PUMPKIN_PIE, builder ->
-                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(SWEET, 2, 12, true))
+                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(SWEET, 2, 30, true))
         );
         event.modify(Items.COOKIE, builder ->
-                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(SWEET, 1, 6, true))
+                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(SWEET, 1, 15, true))
         );
         event.modify(Items.HONEY_BOTTLE, builder ->
                 builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(SWEET, 2, 30, true))
         );
         event.modify(Items.APPLE, builder ->
-                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(SWEET, 1, 8, true))
+                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(SWEET, 1, 15, true))
         );
         event.modify(Items.GOLDEN_APPLE, builder ->
-                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(SWEET, 2, 20, true))
+                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(SWEET, 2, 15, true))
         );
         event.modify(Items.ENCHANTED_GOLDEN_APPLE, builder ->
-                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(SWEET, 5, 30, true))
+                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(SWEET, 5, 15, true))
         );
         event.modify(Items.PUFFERFISH, builder ->
-                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(BITTER, 2, 18, true))
+                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(BITTER, 2, 90, true))
         );
         event.modify(Items.DRIED_KELP, builder ->
                 builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(SALTY, 1, 30, true))
         );
         event.modify(Items.POTATO, builder ->
-                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(BITTER, 1, 30, true))
+                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(BITTER, 1, 90, true))
         );
         event.modify(Items.POISONOUS_POTATO, builder ->
-                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(BITTER, 2, 30, true))
+                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(BITTER, 2, 180, true))
         );
         event.modify(Items.SUSPICIOUS_STEW, builder ->
-                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(BITTER, 1, 45, true))
+                builder.set(FOOD_EFFECT.value(), new FoodEffectComponent(BITTER, 1, 180, true))
         );
     }
 }

@@ -13,7 +13,7 @@ import static net.mcreator.concoction.init.ConcoctionModDataComponents.*;
 public class SpicyPepperItem extends Item {
 	public SpicyPepperItem() {
 		super(new Item.Properties().stacksTo(64).
-				component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.SPICY, 1, 12, true)).
+				component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.SPICY, 1, 15, true)).
 //				component(FOOD_EFFECT_2.value(), new FoodEffectComponent(FoodEffectType.SWEET, 2, 30, true)).
 //				component(FOOD_EFFECT_3.value(), new FoodEffectComponent(FoodEffectType.MINTY, 1, 16, true)).
 				rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(3).saturationModifier(0.3f).build()));

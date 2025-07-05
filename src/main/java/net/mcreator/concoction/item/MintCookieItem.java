@@ -15,7 +15,7 @@ import static net.mcreator.concoction.init.ConcoctionModDataComponents.FOOD_EFFE
 
 public class MintCookieItem extends Item {
 	public MintCookieItem() {
-		super(new Item.Properties().stacksTo(64).component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.MINTY, 1, 16, true)).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(2).saturationModifier(0.2f).build()));
+		super(new Item.Properties().stacksTo(64).component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.MINTY, 1, 30, true)).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(2).saturationModifier(0.2f).build()));
 	}
 
 	@Override

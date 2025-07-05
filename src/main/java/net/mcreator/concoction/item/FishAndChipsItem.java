@@ -21,7 +21,7 @@ import static net.mcreator.concoction.init.ConcoctionModDataComponents.*;
 public class FishAndChipsItem extends Item {
 	public FishAndChipsItem() {
 		super(new Item.Properties().stacksTo(16).
-				component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.SALTY, 1, 16, true)).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(6).saturationModifier(0.8f).build()));
+				component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.SALTY, 1, 90, true)).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(6).saturationModifier(0.8f).build()));
 	}
 
 	@Override

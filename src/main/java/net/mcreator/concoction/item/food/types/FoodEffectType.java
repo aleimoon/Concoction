@@ -56,7 +56,7 @@ public enum FoodEffectType implements StringRepresentable {
             case SALTY -> new MobEffectInstance(ConcoctionModMobEffects.SALTNESS, duration*20, level-1, false, !isHidden, true, null);
             case FLAMING -> new MobEffectInstance(ConcoctionModMobEffects.FIERY_TOUCH, duration*20, level*0, false, !isHidden, true, null);
             case WARM -> new MobEffectInstance(ConcoctionModMobEffects.WARMING, duration*20, level-1, false, !isHidden, true, null);
-            case BITTER -> new MobEffectInstance(ConcoctionModMobEffects.BITTERNESS, duration*20, level*0, false, !isHidden, true, null);
+            case BITTER -> new MobEffectInstance(ConcoctionModMobEffects.BITTERNESS, duration*20, level-1, false, !isHidden, true, null);
 
         };
     }

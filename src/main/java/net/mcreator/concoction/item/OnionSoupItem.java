@@ -17,7 +17,7 @@ import static net.mcreator.concoction.init.ConcoctionModDataComponents.FOOD_EFFE
 
 public class OnionSoupItem extends Item {
 	public OnionSoupItem() {
-		super(new Item.Properties().stacksTo(16).component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.WARM, 1, 60, true)).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(7).saturationModifier(0.8f).build()));
+		super(new Item.Properties().stacksTo(16).component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.WARM, 1, 90, true)).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(7).saturationModifier(0.8f).build()));
 	}
 
 	@Override

@@ -25,7 +25,7 @@ import static net.mcreator.concoction.init.ConcoctionModDataComponents.FOOD_EFFE
 @EventBusSubscriber
 public class CherryItem extends Item {
 	public CherryItem() {
-		super(new Item.Properties().stacksTo(64).component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.SWEET, 1, 6, true)).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(2).saturationModifier(0.3f).build()));
+		super(new Item.Properties().stacksTo(64).component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.SWEET, 1, 30, true)).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(2).saturationModifier(0.3f).build()));
 	}
 	@SubscribeEvent
 	public static void itemEntityDespawn(ItemExpireEvent event) {

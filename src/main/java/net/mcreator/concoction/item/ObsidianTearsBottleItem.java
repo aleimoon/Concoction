@@ -23,7 +23,7 @@ import static net.mcreator.concoction.init.ConcoctionModDataComponents.FOOD_EFFE
 
 public class ObsidianTearsBottleItem extends Item {
 	public ObsidianTearsBottleItem() {
-		super(new Item.Properties().stacksTo(16).component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.INSTABILITY, 1, 12, true)).rarity(Rarity.UNCOMMON).food((new FoodProperties.Builder()).nutrition(0).saturationModifier(0f).alwaysEdible().build()));
+		super(new Item.Properties().stacksTo(16).component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.INSTABILITY, 1, 30, true)).rarity(Rarity.UNCOMMON).food((new FoodProperties.Builder()).nutrition(0).saturationModifier(0f).alwaysEdible().build()));
 	}
 	
 	@Override

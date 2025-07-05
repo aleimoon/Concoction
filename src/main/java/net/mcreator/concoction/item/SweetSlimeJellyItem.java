@@ -12,6 +12,6 @@ import static net.mcreator.concoction.init.ConcoctionModDataComponents.FOOD_EFFE
 
 public class SweetSlimeJellyItem extends Item {
 	public SweetSlimeJellyItem() {
-		super(new Item.Properties().stacksTo(64).component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.SWEET, 1, 12, true)).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(3).saturationModifier(0.6f).build()));
+		super(new Item.Properties().stacksTo(64).component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.SWEET, 1, 30, true)).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(3).saturationModifier(0.6f).build()));
 	}
 }

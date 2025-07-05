@@ -25,7 +25,7 @@ public class MintBrewItem extends Item {
 						.saturationModifier(0.3f)
 						.alwaysEdible()
 						.build())
-				.component(ConcoctionModDataComponents.FOOD_EFFECT.get(), new FoodEffectComponent(FoodEffectType.MINTY, 1, 12, true))
+				.component(ConcoctionModDataComponents.FOOD_EFFECT.get(), new FoodEffectComponent(FoodEffectType.MINTY, 1, 90, true))
 				.component(ConcoctionModDataComponents.FOOD_EFFECT_2.get(), new FoodEffectComponent(FoodEffectType.WARM, 1, 120, true))
 		);
 	}

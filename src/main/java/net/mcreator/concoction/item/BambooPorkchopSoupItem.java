@@ -19,8 +19,8 @@ import java.util.List;
 public class BambooPorkchopSoupItem extends Item {
 	public BambooPorkchopSoupItem() {
 		super(new Item.Properties().stacksTo(16)
-				.component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.SPICY, 1, 6, true))
-				.component(FOOD_EFFECT_2.value(), new FoodEffectComponent(FoodEffectType.WARM, 2, 180, true))
+				.component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.SPICY, 1, 10, true))
+				.component(FOOD_EFFECT_2.value(), new FoodEffectComponent(FoodEffectType.WARM, 2, 360, true))
 				.rarity(Rarity.COMMON)
 				.food((new FoodProperties.Builder()).nutrition(6).saturationModifier(1.2f).build()));
 	}
