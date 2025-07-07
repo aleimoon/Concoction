@@ -3,10 +3,13 @@
   "package": "net.mcreator.concoction.mixins",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "AnvilMenuMixin",
     "BeeMixin",
     "BlocksMixin",
     "CakeBlockMixin",
     "CowMixin",
+    "EnchantmentMenuMixin",
+    "EntityMixin",
     "GoatAiMixin",
     "HoneyBootleMixin",
     "HorseMixin",
@@ -16,7 +19,8 @@
     "LightningBoltMixin",
     "LivingEntityMixin",
     "PlayerMixin",
-    "ZombieMixin"
+    "ZombieMixin",
+    "EntityAccessor"
   ],
   "client": [
     "GuiMixin"

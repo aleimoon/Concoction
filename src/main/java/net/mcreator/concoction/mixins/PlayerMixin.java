@@ -56,28 +56,26 @@ public abstract class PlayerMixin implements IPlayerUnsuccessfulAttempts {
 
 
     @Inject(method = "eat", at = @At("RETURN"))
-private void concoction$applySaltnessFoodBoost(Level pLevel, ItemStack pFood, FoodProperties pFoodProperties, CallbackInfoReturnable<ItemStack> cir) {
-    Player player = (Player) (Object) this;
-    MobEffectInstance saltnessEffect = player.getEffect(ConcoctionModMobEffects.SALTNESS);
+    private void concoction$applySaltnessFoodBoost(Level pLevel, ItemStack pFood, FoodProperties pFoodProperties, CallbackInfoReturnable<ItemStack> cir) {
+        Player player = (Player) (Object) this;
+        MobEffectInstance saltnessEffect = player.getEffect(ConcoctionModMobEffects.SALTNESS);
 
-    if (saltnessEffect != null) {
-        TagKey<Item> drinkTag = TagKey.create(Registries.ITEM, ResourceLocation.parse("c:foods/drink"));
+        if (saltnessEffect != null) {
+            TagKey<Item> drinkTag = TagKey.create(Registries.ITEM, ResourceLocation.parse("c:foods/drink"));
 
-        if (pFood.is(drinkTag)) {
-            int amplifier = saltnessEffect.getAmplifier();
-            int hungerBonus = 2;
-            float saturationBonus = 3.0F + (amplifier * 1.5F); // Scale saturation
+            if (pFood.is(drinkTag)) {
+                int amplifier = saltnessEffect.getAmplifier();
+                int hungerBonus = 2;
+                float saturationBonus = 3.0F + (amplifier * 1.5F);
 
-            // Increase hunger
-            player.getFoodData().eat(hungerBonus, 0); // 0 = no saturation added via this method
+                player.getFoodData().eat(hungerBonus, 0);
 
-            // Add scaled saturation manually
-            float currentSaturation = player.getFoodData().getSaturationLevel();
-            float newSaturation = Math.min(currentSaturation + saturationBonus, 20.0F);
-            player.getFoodData().setSaturation(newSaturation);
+                float currentSaturation = player.getFoodData().getSaturationLevel();
+                float newSaturation = Math.min(currentSaturation + saturationBonus, 20.0F);
+                player.getFoodData().setSaturation(newSaturation);
+            }
         }
     }
-}
 
 
     @Redirect(method = "eat", at = @At(value = "INVOKE",
@@ -103,7 +101,27 @@ private void concoction$applySaltnessFoodBoost(Level pLevel, ItemStack pFood, Fo
                 int effectLevel = Objects.requireNonNull(player.getEffect(ConcoctionModMobEffects.PHOTOSYNTHESIS)).getAmplifier();
                 player.getFoodData().addExhaustion(Math.max(exhaustionValue - (exhaustionValue * (0.3f + (effectLevel * 0.2f))), 0));
                 ci.cancel();
+                return;
+            }
+        }
+        if (player.hasEffect(ConcoctionModMobEffects.BITTERNESS)) {
+            int effectLevel = player.getEffect(ConcoctionModMobEffects.BITTERNESS).getAmplifier();
+            float multiplier = 1.2f + 0.1f * effectLevel;
+            player.getFoodData().addExhaustion(exhaustionValue * multiplier);
+            ci.cancel();
+            return;
+        }
+    }
+
+    @Inject(method = "canWalkOnPowderSnow", at = @At("HEAD"), cancellable = true)
+    private void concoction$warmingPowderSnowImmunity(CallbackInfoReturnable<Boolean> cir) {
+        Player self = (Player)(Object)this;
+        if (self.hasEffect(ConcoctionModMobEffects.WARMING)) {
+            int amplifier = self.getEffect(ConcoctionModMobEffects.WARMING).getAmplifier();
+            if (amplifier >= 2) { // 3 уровень и выше
+                cir.setReturnValue(true);
             }
         }
     }
+
 }

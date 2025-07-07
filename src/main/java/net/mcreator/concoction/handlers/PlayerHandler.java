@@ -21,6 +21,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -39,7 +40,9 @@ import net.neoforged.neoforge.event.entity.player.PlayerContainerEvent;
 import net.minecraft.resources.ResourceLocation;
 
 import net.minecraft.core.registries.Registries;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
@@ -172,6 +175,19 @@ public class PlayerHandler {
             player.getPersistentData().putBoolean("spicy_hat_visible", oldHatVisible);
         }
     }
+
+    @SubscribeEvent
+    public static void onGiveExperience(PlayerXpEvent.PickupXp event) {
+        Player player = event.getEntity();
+        if (player.hasEffect(ConcoctionModMobEffects.BITTERNESS)) {
+
+            MobEffectInstance bitternessEffect = player.getEffect(ConcoctionModMobEffects.BITTERNESS);
+            int experience = event.getOrb().getValue();
+            event.getOrb().value = (int) ( experience * (1 + (0.5 * (bitternessEffect.getAmplifier() + 1))) );
+
+        }
+    }
+
 
     @SubscribeEvent
     public static void onRenderPlayer(RenderPlayerEvent.Post event) {

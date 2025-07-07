@@ -17,10 +17,10 @@ public class SaltnessMobEffect extends MobEffect {
 				AttributeModifier.Operation.ADD_MULTIPLIED_BASE
 		);
 		this.addAttributeModifier(
-				NeoForgeMod.SWIM_SPEED,
+				Attributes.BLOCK_INTERACTION_RANGE,
 				ResourceLocation.parse("f9d21cb5-b0e5-4e1e-9993-b1d4a25287b3"),
-				0.1F,
-				AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+				1.0F,
+				AttributeModifier.Operation.ADD_VALUE
 		);
 	}
 }
