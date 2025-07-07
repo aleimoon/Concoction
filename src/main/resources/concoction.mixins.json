@@ -21,7 +21,8 @@
     "PlayerMixin",
     "ZombieMixin",
     "EntityAccessor",
-    "PowderSnowBlockMixin"
+    "PowderSnowBlockMixin",
+    "SnowballMixin"
   ],
   "client": [
     "GuiMixin"
