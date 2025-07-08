@@ -13,7 +13,7 @@ public class SaltnessMobEffect extends MobEffect {
 		this.addAttributeModifier(
 				Attributes.BLOCK_BREAK_SPEED,
 				ResourceLocation.parse("f9d21cb5-b0e5-4e1e-9993-b1d4a24285b2"),
-				0.25F,
+				0.15F,
 				AttributeModifier.Operation.ADD_MULTIPLIED_BASE
 		);
 		this.addAttributeModifier(
