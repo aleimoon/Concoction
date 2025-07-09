@@ -216,6 +216,9 @@
 	    },
 	    "concoction:acacia_kitchen_cabinet": {
 	        "burn_time": 300
+	    },
+	    "concoction:jungle_kitchen_cabinet": {
+	        "burn_time": 300
 	    }
         
     }

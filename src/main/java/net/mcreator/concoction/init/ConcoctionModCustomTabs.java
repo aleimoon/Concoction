@@ -155,6 +155,7 @@ public class ConcoctionModCustomTabs {
 				tabData.accept(ConcoctionModItems.OAK_KITCHEN_CABINET.get());
 				tabData.accept(ConcoctionModItems.SPRUCE_KITCHEN_CABINET.get());
 				tabData.accept(ConcoctionModItems.BIRCH_KITCHEN_CABINET.get());
+				tabData.accept(ConcoctionModItems.JUNGLE_KITCHEN_CABINET.get());
 				tabData.accept(ConcoctionModItems.ACACIA_KITCHEN_CABINET.get());
 				tabData.accept(ConcoctionModItems.OVEN.get());
 				tabData.accept(ConcoctionModItems.BUTTER_CHURN.get());

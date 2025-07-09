@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "jungle_kitchen_cabinet",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "b b",
+    "bbb"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:jungle_slab"
+    },
+    "b": {
+      "item": "minecraft:jungle_planks"
+    }
+  },
+  "result": {
+    "id": "concoction:jungle_kitchen_cabinet",
+    "count": 1
+  }
+}

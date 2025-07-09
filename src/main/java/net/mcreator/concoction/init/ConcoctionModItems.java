@@ -240,6 +240,7 @@ public class ConcoctionModItems {
 	public static final DeferredItem<Item> SPRUCE_KITCHEN_CABINET = block(ConcoctionModBlocks.SPRUCE_KITCHEN_CABINET);
 	public static final DeferredItem<Item> BIRCH_KITCHEN_CABINET = block(ConcoctionModBlocks.BIRCH_KITCHEN_CABINET);
 	public static final DeferredItem<Item> ACACIA_KITCHEN_CABINET = block(ConcoctionModBlocks.ACACIA_KITCHEN_CABINET);
+	public static final DeferredItem<Item> JUNGLE_KITCHEN_CABINET = block(ConcoctionModBlocks.JUNGLE_KITCHEN_CABINET);
 	// Start of user code block custom items
 	public static final DeferredItem<Item> CHERRY_CAKE = block(ConcoctionModBlocks.CHERRY_CAKE, 1);
 	public static final DeferredItem<Item> GLOWBERRY_CAKE = block(ConcoctionModBlocks.GLOWBERRY_CAKE, 1);

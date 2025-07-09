@@ -1,0 +1,48 @@
+{
+  "_fv": 73,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "jungle_kitchen_cabinet",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "Blocks.WOODEN_SLAB#3"
+      },
+      {
+        "value": "Blocks.WOODEN_SLAB#3"
+      },
+      {
+        "value": "Blocks.WOODEN_SLAB#3"
+      },
+      {
+        "value": "Blocks.PLANKS#3"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "Blocks.PLANKS#3"
+      },
+      {
+        "value": "Blocks.PLANKS#3"
+      },
+      {
+        "value": "Blocks.PLANKS#3"
+      },
+      {
+        "value": "Blocks.PLANKS#3"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:JungleKitchenCabinet"
+    },
+    "name": "jungle_kitchen_cabinet_craft",
+    "namespace": "mod"
+  }
+}
