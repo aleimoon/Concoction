@@ -7,6 +7,6 @@ import net.minecraft.world.food.FoodProperties;
 
 public class CookedCornItem extends Item {
 	public CookedCornItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(5).saturationModifier(0.6f).build()));
+		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(5).saturationModifier(0.8f).build()));
 	}
 }

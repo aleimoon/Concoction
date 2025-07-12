@@ -6679,6 +6679,87 @@
         ]
       },
       "path": "~/kitchen_cabinets"
+    },
+    {
+      "name": "CookedPuffball",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cooked_puffball",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/concoction/item/CookedPuffballItem.java",
+          "src/main/resources/assets/concoction/models/item/cooked_puffball.json"
+        ]
+      },
+      "path": "~/puffball"
+    },
+    {
+      "name": "CookedPuffballFurnace",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cooked_puffball_furnace",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/concoction/recipe/cooked_puffball_furnace.json"
+        ]
+      },
+      "path": "~/puffball"
+    },
+    {
+      "name": "CookedPuffballSmoker",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cooked_puffball_smoker",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/concoction/recipe/cooked_puffball_smoker.json"
+        ]
+      },
+      "path": "~/puffball"
+    },
+    {
+      "name": "CookedPuffballCampfire",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cooked_puffball_campfire",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/concoction/recipe/cooked_puffball_campfire.json"
+        ]
+      },
+      "path": "~/puffball"
+    },
+    {
+      "name": "FriedPuffballs",
+      "type": "item",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "fried_puffballs",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/concoction/item/FriedPuffballsItem.java",
+          "src/main/resources/assets/concoction/models/item/fried_puffballs.json"
+        ]
+      },
+      "path": "~/puffball"
+    },
+    {
+      "name": "PuffballSoup",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "puffball_soup",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/concoction/item/PuffballSoupItem.java",
+          "src/main/resources/assets/concoction/models/item/puffball_soup.json"
+        ]
+      },
+      "path": "~/general"
     }
   ],
   "variable_elements": [],
@@ -6768,10 +6849,6 @@
       "~CUSTOM:CropPuffball",
       "~CUSTOM:WeightedSouls"
     ],
-    "BLOCKS:minecraft:tall_flowers": [
-      "CUSTOM:Mint",
-      "CUSTOM:Sunflower"
-    ],
     "BLOCKS:minecraft:mineable/hoe": [
       "~CUSTOM:ReapepperBlock",
       "~CUSTOM:SweetBerriesBlock",
@@ -6791,6 +6868,10 @@
       "~CUSTOM:CabbageBlock",
       "CUSTOM:SpicyPepperBlock",
       "CUSTOM:CornBlock"
+    ],
+    "BLOCKS:minecraft:tall_flowers": [
+      "CUSTOM:Mint",
+      "CUSTOM:Sunflower"
     ],
     "ITEMS:minecraft:flowers": [
       "CUSTOM:Mint",
@@ -7074,17 +7155,17 @@
       "block.concoction.lime_pillow_block": "Лаймовая подушка",
       "block.concoction.beetroot_block": "Блок свеклы",
       "block.concoction.light_gray_woven_carpet": "Светло-серый тканый ковёр",
-      "block.concoction.mint": "Мята",
-      "death.attack.spicy_damage": "%1$s больсе не смозет выговаливать букву \"Р\"",
       "subtitles.butter_thickens": "Масло загустело",
+      "death.attack.spicy_damage": "%1$s больсе не смозет выговаливать букву \"Р\"",
+      "block.concoction.mint": "Мята",
       "item.concoction.pinecone": "Шишка",
       "item.concoction.corn_oil": "Кукурузное масло",
       "advancements.special_carpet.title": "Красивая цена",
       "item.minecraft.tipped_arrow.effect.flame_extended": "Стрела жжения",
       "advancements.sunstruck_transformed.title": "Зомби против растений",
       "item.concoction.chocolate_cake_slice": "Кусочек шоколадного торта",
-      "advancements.spicy_on_fire.title": "Ты просто огонь!",
       "advancements.make_soul_soul.title": "Адские сверхурочные",
+      "advancements.spicy_on_fire.title": "Ты просто огонь!",
       "block.concoction.wild_potato": "Дикий картофель",
       "item.concoction.hashbrowns": "Хрустящие оладушки",
       "item.concoction.cooked_corn": "Жареная кукуруза",
@@ -7229,6 +7310,7 @@
       "advancements.spicy_remove_many_debuffs.descr": "Сними пять негативных эффектов с помощью острой еды одновременно",
       "item.concoction.cotton_oil": "Хлопковое масло",
       "subtitles.cauldron_cooking": "Котёл мощно кипит",
+      "item.concoction.puffball_soup": "Суп из гриба дождевика",
       "block.concoction.lime_woven_carpet": "Лаймовый тканый ковёр",
       "block.concoction.wild_cabbage": "Дикая капуста",
       "item.minecraft.potion.effect.snowflake_extended": "Зелье мороза",
@@ -7240,6 +7322,7 @@
       "block.concoction.crop_rice": "Рис",
       "advancements.brain_freeze_obtain_achievement.title": "Замораживающее дыхание",
       "block.concoction.yellow_woven_carpet": "Жёлтый тканый ковёр",
+      "item.concoction.cooked_puffball": "Жареный гриб дождевик",
       "item.concoction.hot_sauce_bottle": "Бутылочка острого соуса",
       "block.concoction.cabbagehead": "Капуста",
       "block.concoction.pinecone_block": "Блок шишки",
@@ -7265,6 +7348,7 @@
       "item.concoction.spicy_pepper": "Жгучий перец",
       "advancements.nether_mutation.title": "Тепло, но не очень",
       "block.concoction.rock_salt_block": "Блок каменной соли",
+      "item.concoction.fried_puffballs": "Гриб дождевик во фритюре",
       "gui.butter_churn.chance": "20%",
       "block.concoction.magenta_woven_carpet": "Пурпурный тканый ковёр",
       "item.concoction.bamboo_porkchop_soup": "Свиной суп с бамбуком",
@@ -7391,9 +7475,9 @@
       "block.concoction.lime_pillow_block": "Lime Pillow",
       "block.concoction.beetroot_block": "Beetroot Block",
       "block.concoction.light_gray_woven_carpet": "Light Gray Woven Carpet",
-      "block.concoction.mint": "Mint",
-      "death.attack.spicy_damage": "%1$s thought they could handle the spice",
       "subtitles.butter_thickens": "Butter thickens",
+      "death.attack.spicy_damage": "%1$s thought they could handle the spice",
+      "block.concoction.mint": "Mint",
       "item.concoction.pinecone": "Pinecone",
       "item.concoction.corn_oil": "Corn Oil",
       "advancements.special_carpet.title": "Pretty (but) Pricy",
@@ -7403,15 +7487,15 @@
       "advancements.spicy_on_fire.title": "It Burns, Burns, Burns",
       "advancements.make_soul_soul.title": "Crop \u0027Til You Drop",
       "block.concoction.wild_potato": "Wild Potato",
-      "item.concoction.cooked_corn": "Cooked Corn",
       "item.concoction.hashbrowns": "Hashbrowns",
+      "item.concoction.cooked_corn": "Cooked Corn",
       "item.concoction.cream_bottle": "Cream Bottle",
       "item.concoction.cabbage_seeds": "Cabbage Seeds",
       "item.concoction.tomato": "Tomato",
       "advancements.new_crops.title": "That\u0027s Wild",
       "item.minecraft.tipped_arrow.effect.snowflake_extended": "Arrow of Snowflake",
-      "block.concoction.chorus_block": "Chorus Block",
       "item.concoction.mint_cookie": "Mint Cookie",
+      "block.concoction.chorus_block": "Chorus Block",
       "block.concoction.crop_onion": "Crop Onion",
       "block.concoction.small_blue_pillow_block": "Small Blue Pillow",
       "effect.concoction.fiery_touch": "Fiery Touch",
@@ -7546,6 +7630,7 @@
       "advancements.spicy_remove_many_debuffs.descr": "Cleanse five negative statuses at once with spicy food",
       "item.concoction.cotton_oil": "Cotton Oil",
       "subtitles.cauldron_cooking": "Cauldron is bubbling",
+      "item.concoction.puffball_soup": "Puffball Soup",
       "block.concoction.lime_woven_carpet": "Lime Woven Carpet",
       "block.concoction.wild_cabbage": "Wild Cabbage",
       "item.minecraft.potion.effect.snowflake_extended": "Potion of Snowflake",
@@ -7557,6 +7642,7 @@
       "block.concoction.crop_rice": "Crop Rice",
       "advancements.brain_freeze_obtain_achievement.title": "Chill Out",
       "block.concoction.yellow_woven_carpet": "Yellow Woven Carpet",
+      "item.concoction.cooked_puffball": "Cooked Puffball",
       "item.concoction.hot_sauce_bottle": "Hot Sauce Bottle",
       "block.concoction.cabbagehead": "Cabbage",
       "block.concoction.pinecone_block": "Pinecone Block",
@@ -7582,6 +7668,7 @@
       "item.concoction.spicy_pepper": "Spicy Pepper",
       "advancements.nether_mutation.title": "Bloom to Doom",
       "block.concoction.rock_salt_block": "Rock Salt Block",
+      "item.concoction.fried_puffballs": "Fried Puffballs",
       "gui.butter_churn.chance": "20%",
       "block.concoction.magenta_woven_carpet": "Magenta Woven Carpet",
       "item.concoction.bamboo_porkchop_soup": "Bamboo Porkchop Soup",

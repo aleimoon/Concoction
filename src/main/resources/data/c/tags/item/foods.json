@@ -58,7 +58,10 @@
     "concoction:boiled_egg",
     "concoction:milk_bottle",
     "concoction:cream_bottle",
-    "concoction:puffball"
+    "concoction:puffball",
+    "concoction:puffball_soup",
+    "concoction:cooked_puffball",
+    "concoction:fried_puffballs"
     
     
     

@@ -3,11 +3,11 @@
   "_type": "item",
   "definition": {
     "renderType": 0,
-    "texture": "fried_corn",
+    "texture": "fried_puffballs",
     "customModelName": "Normal",
     "customProperties": {},
     "states": [],
-    "name": "Cooked Corn",
+    "name": "Fried Puffballs",
     "rarity": "COMMON",
     "creativeTabs": [],
     "stackSize": 64,
@@ -40,8 +40,8 @@
     },
     "projectileDisableAmmoCheck": false,
     "isFood": true,
-    "nutritionalValue": 5,
-    "saturation": 0.8,
+    "nutritionalValue": 6,
+    "saturation": 1.2,
     "eatResultItem": {
       "value": ""
     },
@@ -53,7 +53,7 @@
       "value": ""
     },
     "musicDiscDescription": "",
-    "musicDiscLengthInTicks": 0,
+    "musicDiscLengthInTicks": 100,
     "musicDiscAnalogOutput": 0
   }
 }

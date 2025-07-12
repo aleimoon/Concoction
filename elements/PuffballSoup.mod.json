@@ -3,14 +3,14 @@
   "_type": "item",
   "definition": {
     "renderType": 0,
-    "texture": "fried_corn",
+    "texture": "puffball_soup",
     "customModelName": "Normal",
     "customProperties": {},
     "states": [],
-    "name": "Cooked Corn",
+    "name": "Puffball Soup",
     "rarity": "COMMON",
     "creativeTabs": [],
-    "stackSize": 64,
+    "stackSize": 16,
     "enchantability": 0,
     "useDuration": 32,
     "toolType": 1.0,
@@ -40,10 +40,10 @@
     },
     "projectileDisableAmmoCheck": false,
     "isFood": true,
-    "nutritionalValue": 5,
-    "saturation": 0.8,
+    "nutritionalValue": 6,
+    "saturation": 1.2000000000000002,
     "eatResultItem": {
-      "value": ""
+      "value": "Items.BOWL"
     },
     "isMeat": false,
     "isAlwaysEdible": false,
@@ -53,7 +53,7 @@
       "value": ""
     },
     "musicDiscDescription": "",
-    "musicDiscLengthInTicks": 0,
+    "musicDiscLengthInTicks": 100,
     "musicDiscAnalogOutput": 0
   }
 }

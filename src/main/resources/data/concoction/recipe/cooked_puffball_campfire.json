@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "group": "cooked_puffball",
+  "category": "misc",
+  "experience": 0.5,
+  "cookingtime": 600,
+  "ingredient": {
+    "item": "concoction:puffball"
+  },
+  "result": {
+    "id": "concoction:cooked_puffball"
+  }
+}

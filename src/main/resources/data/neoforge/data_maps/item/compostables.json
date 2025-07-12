@@ -245,7 +245,12 @@
     },
     "concoction:puffball": {
       "chance": 0.5
-    }
+    },
+    "concoction:cooked_puffball": {
+      "chance": 0.5
+    },
+    "concoction:fried_puffballs": {
+      "chance": 0.65
 
   }
 }

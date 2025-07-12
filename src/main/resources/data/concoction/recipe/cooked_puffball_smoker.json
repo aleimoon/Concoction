@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smoking",
+  "group": "cooked_puffball",
+  "category": "misc",
+  "experience": 0.5,
+  "cookingtime": 100,
+  "ingredient": {
+    "item": "concoction:puffball"
+  },
+  "result": {
+    "id": "concoction:cooked_puffball"
+  }
+}

@@ -52,6 +52,7 @@ public class ConcoctionModCustomTabs {
 				tabData.accept(ConcoctionModItems.REAPPER.get());
 				tabData.accept(ConcoctionModItems.REAPPER_SEEDS.get());
 				tabData.accept(ConcoctionModItems.PUFFBALL.get());
+				tabData.accept(ConcoctionModItems.COOKED_PUFFBALL.get());
 				tabData.accept(ConcoctionModItems.PUFFBALL_SPORES.get());
 
 				
@@ -74,6 +75,7 @@ public class ConcoctionModCustomTabs {
 
 //Сложная еда
 				tabData.accept(ConcoctionModItems.HASHBROWNS.get());
+				tabData.accept(ConcoctionModItems.FRIED_PUFFBALLS.get());
 				tabData.accept(ConcoctionModItems.BOILED_EGG.get());
 				tabData.accept(ConcoctionModItems.FRIED_EGG.get());
 				tabData.accept(ConcoctionModItems.BUTTER_SANDWICH.get());
@@ -113,6 +115,7 @@ public class ConcoctionModCustomTabs {
 				tabData.accept(ConcoctionModItems.COOKED_RICE.get());
 				tabData.accept(ConcoctionModItems.CHICKEN_CONFIT.get());
 				tabData.accept(ConcoctionModItems.MUSHROOM_CREAM_SOUP.get());
+				tabData.accept(ConcoctionModItems.PUFFBALL_SOUP.get());
 				tabData.accept(ConcoctionModItems.OMURICE.get());
 				tabData.accept(ConcoctionModItems.MINT_BREW.get());
 

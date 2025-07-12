@@ -1,0 +1,22 @@
+{
+  "_fv": 73,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Campfire cooking",
+    "recipeRetstackSize": 1,
+    "group": "cooked_puffball",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.5,
+    "cookingTime": 600,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "campfireCookingInputStack": {
+      "value": "CUSTOM:Puffball"
+    },
+    "campfireCookingReturnStack": {
+      "value": "CUSTOM:CookedPuffball"
+    },
+    "name": "cooked_puffball_campfire",
+    "namespace": "mod"
+  }
+}
