@@ -113,10 +113,12 @@ public class ConcoctionModCustomTabs {
 				tabData.accept(ConcoctionModItems.FISH_AND_CHIPS.get());
 				tabData.accept(ConcoctionModItems.MASHED_POTATOES.get());
 				tabData.accept(ConcoctionModItems.COOKED_RICE.get());
+				tabData.accept(ConcoctionModItems.BOILED_NOODLES.get());
 				tabData.accept(ConcoctionModItems.CHICKEN_CONFIT.get());
 				tabData.accept(ConcoctionModItems.MUSHROOM_CREAM_SOUP.get());
 				tabData.accept(ConcoctionModItems.PUFFBALL_SOUP.get());
 				tabData.accept(ConcoctionModItems.OMURICE.get());
+				tabData.accept(ConcoctionModItems.NOODLES_WITH_MEATBALLS.get());
 				tabData.accept(ConcoctionModItems.MINT_BREW.get());
 
 //Другое

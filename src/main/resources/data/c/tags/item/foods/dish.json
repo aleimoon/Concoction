@@ -6,6 +6,8 @@
     "concoction:cooked_rice",
     "concoction:meat_goulash",
     "concoction:chicken_confit",
-    "concoction:omurice"
+    "concoction:omurice",
+    "concoction:noodles_with_meatballs",
+    "concoction:boiled_noodles"
   ]
 }

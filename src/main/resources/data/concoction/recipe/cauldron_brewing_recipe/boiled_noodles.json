@@ -1,0 +1,33 @@
+{
+  "type": "concoction:cauldron_brewing",
+  "group": "food",
+  "category": "misc",
+
+  "state" : {
+    "Name": "minecraft:water_cauldron",
+    "Properties": {
+      "level": "3"
+    }
+  },
+
+  "ingredients": [
+    {
+      "item": "concoction:raw_noodles"
+    },
+    {
+      "item": "concoction:raw_noodles"
+    },
+    {
+      "item": "concoction:raw_noodles"
+    },
+    {
+      "item": "concoction:raw_noodles"
+    }
+  ],
+
+  "result": {
+    "id": "concoction:boiled_noodles",
+    "interactionType": "bowl",
+    "count": "1"
+  }
+}
