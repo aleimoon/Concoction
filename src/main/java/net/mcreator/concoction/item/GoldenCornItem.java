@@ -12,7 +12,7 @@ import net.mcreator.concoction.procedures.GoldenCornPlayerFinishesUsingItemProce
 
 public class GoldenCornItem extends Item {
 	public GoldenCornItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(6).saturationModifier(0.6f).alwaysEdible().build()));
+		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(6).saturationModifier(0.8f).alwaysEdible().build()));
 	}
 
 	@Override
