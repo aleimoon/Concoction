@@ -1,0 +1,48 @@
+{
+  "_fv": 73,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "dark_oak_kitchen_cabinet",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "Blocks.WOODEN_SLAB#5"
+      },
+      {
+        "value": "Blocks.WOODEN_SLAB#5"
+      },
+      {
+        "value": "Blocks.WOODEN_SLAB#5"
+      },
+      {
+        "value": "Blocks.PLANKS#5"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "Blocks.PLANKS#5"
+      },
+      {
+        "value": "Blocks.PLANKS#5"
+      },
+      {
+        "value": "Blocks.PLANKS#5"
+      },
+      {
+        "value": "Blocks.PLANKS#5"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:DarkOakKitchenCabinet"
+    },
+    "name": "dark_oak_kitchen_cabinet_craft",
+    "namespace": "mod"
+  }
+}

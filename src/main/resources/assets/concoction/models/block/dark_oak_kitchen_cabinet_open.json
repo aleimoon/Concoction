@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "concoction:block/dark_oak_kitchen_cabinet_bottom",
+    "up": "concoction:block/dark_oak_kitchen_cabinet_top",
+    "north": "concoction:block/dark_oak_kitchen_cabinet_open",
+    "east": "concoction:block/dark_oak_kitchen_cabinet_side",
+    "south": "concoction:block/dark_oak_kitchen_cabinet_side",
+    "west": "concoction:block/dark_oak_kitchen_cabinet_side",
+    "particle": "concoction:block/dark_oak_kitchen_cabinet_bottom"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "concoction:blocks/dark_oak_kitchen_cabinet",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "concoction:dark_oak_kitchen_cabinet"
+        }
+      ]
+    }
+  ]
+}

@@ -6788,6 +6788,37 @@
         ]
       },
       "path": "~/general"
+    },
+    {
+      "name": "DarkOakKitchenCabinet",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "dark_oak_kitchen_cabinet",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/concoction/loot_table/blocks/dark_oak_kitchen_cabinet.json",
+          "src/main/java/net/mcreator/concoction/block/entity/DarkOakKitchenCabinetBlockEntity.java",
+          "src/main/resources/assets/concoction/models/item/dark_oak_kitchen_cabinet.json",
+          "src/main/resources/assets/concoction/models/block/dark_oak_kitchen_cabinet.json",
+          "src/main/resources/assets/concoction/blockstates/dark_oak_kitchen_cabinet.json",
+          "src/main/java/net/mcreator/concoction/block/DarkOakKitchenCabinetBlock.java"
+        ]
+      },
+      "path": "~/kitchen_cabinets"
+    },
+    {
+      "name": "DarkOakKitchenCabinetCraft",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dark_oak_kitchen_cabinet_craft",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/concoction/recipe/dark_oak_kitchen_cabinet_craft.json"
+        ]
+      },
+      "path": "~/kitchen_cabinets"
     }
   ],
   "variable_elements": [],
@@ -6877,6 +6908,10 @@
       "~CUSTOM:CropPuffball",
       "~CUSTOM:WeightedSouls"
     ],
+    "BLOCKS:minecraft:tall_flowers": [
+      "CUSTOM:Mint",
+      "CUSTOM:Sunflower"
+    ],
     "BLOCKS:minecraft:mineable/hoe": [
       "~CUSTOM:ReapepperBlock",
       "~CUSTOM:SweetBerriesBlock",
@@ -6896,10 +6931,6 @@
       "~CUSTOM:CabbageBlock",
       "CUSTOM:SpicyPepperBlock",
       "CUSTOM:CornBlock"
-    ],
-    "BLOCKS:minecraft:tall_flowers": [
-      "CUSTOM:Mint",
-      "CUSTOM:Sunflower"
     ],
     "ITEMS:minecraft:flowers": [
       "CUSTOM:Mint",
@@ -7109,6 +7140,7 @@
       "TAG:concoction:butters"
     ],
     "BLOCKS:minecraft:mineable/axe": [
+      "~CUSTOM:DarkOakKitchenCabinet",
       "~CUSTOM:JungleKitchenCabinet",
       "~CUSTOM:AcaciaKitchenCabinet",
       "~CUSTOM:BirchKitchenCabinet",
@@ -7192,18 +7224,18 @@
       "item.minecraft.tipped_arrow.effect.flame_extended": "Стрела жжения",
       "advancements.sunstruck_transformed.title": "Зомби против растений",
       "item.concoction.chocolate_cake_slice": "Кусочек шоколадного торта",
-      "advancements.spicy_on_fire.title": "Ты просто огонь!",
       "advancements.make_soul_soul.title": "Адские сверхурочные",
+      "advancements.spicy_on_fire.title": "Ты просто огонь!",
       "block.concoction.wild_potato": "Дикий картофель",
-      "item.concoction.cooked_corn": "Жареная кукуруза",
       "item.concoction.hashbrowns": "Хрустящие оладушки",
+      "item.concoction.cooked_corn": "Жареная кукуруза",
       "item.concoction.cream_bottle": "Бутылочка сливок",
       "item.concoction.cabbage_seeds": "Семена капусты",
       "item.concoction.tomato": "Томат",
       "advancements.new_crops.title": "Дикая находка",
       "item.minecraft.tipped_arrow.effect.snowflake_extended": "Стрела мороза",
-      "item.concoction.mint_cookie": "Мятное печенье",
       "block.concoction.chorus_block": "Блок хоруса",
+      "item.concoction.mint_cookie": "Мятное печенье",
       "block.concoction.crop_onion": "Лук",
       "block.concoction.small_blue_pillow_block": "Маленькая синяя подушка",
       "effect.concoction.fiery_touch": "Испепеляющее касание",
@@ -7435,6 +7467,7 @@
       "item.concoction.mint_brew": "Мятный отвар",
       "item.concoction.corn_seeds": "Семена кукурузы",
       "item.concoction.tropical_sushi": "Суши из тропической рыбы",
+      "block.concoction.dark_oak_kitchen_cabinet": "Кухонный шкафчик из тёмного дуба",
       "item.concoction.boiled_noodles": "Варёная лапша",
       "item.concoction.tomato_seeds": "Семена томата",
       "block.concoction.green_onion_block": "Блок зеленого лука",
@@ -7455,7 +7488,7 @@
       "block.concoction.rice_block": "Блок риса",
       "item.concoction.grilled_fish": "Рыба на гриле",
       "item.minecraft.potion.effect.blooming": "Зелье цветения",
-      "block.concoction.jungle_kitchen_cabinet": "Джунглевый кухонный шкаф",
+      "block.concoction.jungle_kitchen_cabinet": "Кухонный шкаф из тропического дерева",
       "item.concoction.overgrown_hoe": "Цветущая мотыга",
       "block.concoction.glow_berries_block": "Блок светящихся ягод",
       "item.concoction.onion_soup": "Луковый суп",
@@ -7757,6 +7790,7 @@
       "item.concoction.mint_brew": "Mint Brew",
       "item.concoction.corn_seeds": "Corn Seeds",
       "item.concoction.tropical_sushi": "Tropical Sushi",
+      "block.concoction.dark_oak_kitchen_cabinet": "Dark Oak Kitchen Cabinet",
       "item.concoction.boiled_noodles": "Boiled Noodles",
       "item.concoction.tomato_seeds": "Tomato Seeds",
       "block.concoction.green_onion_block": "Green Onion Block",

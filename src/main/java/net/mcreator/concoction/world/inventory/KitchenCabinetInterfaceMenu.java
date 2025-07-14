@@ -15,16 +15,8 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 
 import net.mcreator.concoction.init.ConcoctionModMenus;
-import net.mcreator.concoction.block.entity.OakKitchenCabinetBlockEntity;
-import net.mcreator.concoction.block.entity.SpruceKitchenCabinetBlockEntity;
-import net.mcreator.concoction.block.entity.BirchKitchenCabinetBlockEntity;
-import net.mcreator.concoction.block.entity.AcaciaKitchenCabinetBlockEntity;
-import net.mcreator.concoction.block.entity.JungleKitchenCabinetBlockEntity;
-import net.mcreator.concoction.block.OakKitchenCabinetBlock;
-import net.mcreator.concoction.block.SpruceKitchenCabinetBlock;
-import net.mcreator.concoction.block.BirchKitchenCabinetBlock;
-import net.mcreator.concoction.block.AcaciaKitchenCabinetBlock;
-import net.mcreator.concoction.block.JungleKitchenCabinetBlock;
+import net.mcreator.concoction.block.entity.*;
+import net.mcreator.concoction.block.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -90,6 +82,13 @@ public class KitchenCabinetInterfaceMenu extends AbstractContainerMenu implement
                     world.setBlock(cabinetPos, state.setValue(JungleKitchenCabinetBlock.OPEN, true), 3);
                     world.playSound(null, cabinetPos, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundSource.BLOCKS, 1.0f, 1.0f);
                 }
+            } else if (world.getBlockEntity(cabinetPos) instanceof DarkOakKitchenCabinetBlockEntity be) {
+                this.blockEntity = be;
+                this.bound = true;
+                if (state.hasProperty(DarkOakKitchenCabinetBlock.OPEN)) {
+                    world.setBlock(cabinetPos, state.setValue(DarkOakKitchenCabinetBlock.OPEN, true), 3);
+                    world.playSound(null, cabinetPos, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundSource.BLOCKS, 1.0f, 1.0f);
+                }
             } else {
                 this.blockEntity = null;
             }
@@ -101,7 +100,8 @@ public class KitchenCabinetInterfaceMenu extends AbstractContainerMenu implement
                 || this.blockEntity instanceof SpruceKitchenCabinetBlockEntity
                 || this.blockEntity instanceof BirchKitchenCabinetBlockEntity
                 || this.blockEntity instanceof AcaciaKitchenCabinetBlockEntity
-                || this.blockEntity instanceof JungleKitchenCabinetBlockEntity) {
+                || this.blockEntity instanceof JungleKitchenCabinetBlockEntity
+                || this.blockEntity instanceof DarkOakKitchenCabinetBlockEntity) {
             int slotSize = 18;
             int startX = 8;
             int startY = 17;
@@ -181,19 +181,13 @@ public class KitchenCabinetInterfaceMenu extends AbstractContainerMenu implement
         if (cabinetPos != null && world instanceof ServerLevel serverLevel) {
             BlockState state = world.getBlockState(cabinetPos);
 
-            if (state.hasProperty(OakKitchenCabinetBlock.OPEN)) {
-                world.playSound(null, cabinetPos, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundSource.BLOCKS, 1.0f, 1.0f);
-                serverLevel.scheduleTick(cabinetPos, state.getBlock(), 1);
-            } else if (state.hasProperty(SpruceKitchenCabinetBlock.OPEN)) {
-                world.playSound(null, cabinetPos, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundSource.BLOCKS, 1.0f, 1.0f);
-                serverLevel.scheduleTick(cabinetPos, state.getBlock(), 1);
-            } else if (state.hasProperty(BirchKitchenCabinetBlock.OPEN)) {
-                world.playSound(null, cabinetPos, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundSource.BLOCKS, 1.0f, 1.0f);
-                serverLevel.scheduleTick(cabinetPos, state.getBlock(), 1);
-            } else if (state.hasProperty(AcaciaKitchenCabinetBlock.OPEN)) {
-                world.playSound(null, cabinetPos, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundSource.BLOCKS, 1.0f, 1.0f);
-                serverLevel.scheduleTick(cabinetPos, state.getBlock(), 1);
-            } else if (state.hasProperty(JungleKitchenCabinetBlock.OPEN)) {
+            if (state.hasProperty(OakKitchenCabinetBlock.OPEN)
+                || state.hasProperty(SpruceKitchenCabinetBlock.OPEN)
+                || state.hasProperty(BirchKitchenCabinetBlock.OPEN)
+                || state.hasProperty(AcaciaKitchenCabinetBlock.OPEN)
+                || state.hasProperty(JungleKitchenCabinetBlock.OPEN)
+                || state.hasProperty(DarkOakKitchenCabinetBlock.OPEN)) {
+
                 world.playSound(null, cabinetPos, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundSource.BLOCKS, 1.0f, 1.0f);
                 serverLevel.scheduleTick(cabinetPos, state.getBlock(), 1);
             }

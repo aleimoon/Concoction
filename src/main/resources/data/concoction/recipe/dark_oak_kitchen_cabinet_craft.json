@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "dark_oak_kitchen_cabinet",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "b b",
+    "bbb"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:dark_oak_slab"
+    },
+    "b": {
+      "item": "minecraft:dark_oak_planks"
+    }
+  },
+  "result": {
+    "id": "concoction:dark_oak_kitchen_cabinet",
+    "count": 1
+  }
+}
