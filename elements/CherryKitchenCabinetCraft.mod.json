@@ -1,0 +1,48 @@
+{
+  "_fv": 73,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "cherry_kitchen_cabinet",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "Blocks.CHERRY_SLAB"
+      },
+      {
+        "value": "Blocks.CHERRY_SLAB"
+      },
+      {
+        "value": "Blocks.CHERRY_SLAB"
+      },
+      {
+        "value": "Blocks.CHERRY_PLANKS"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "Blocks.CHERRY_PLANKS"
+      },
+      {
+        "value": "Blocks.CHERRY_PLANKS"
+      },
+      {
+        "value": "Blocks.CHERRY_PLANKS"
+      },
+      {
+        "value": "Blocks.CHERRY_PLANKS"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:CherryKitchenCabinet"
+    },
+    "name": "cherry_kitchen_cabinet_craft",
+    "namespace": "mod"
+  }
+}

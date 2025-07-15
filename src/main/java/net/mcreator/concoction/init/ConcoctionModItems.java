@@ -252,6 +252,11 @@ public class ConcoctionModItems {
 	public static final DeferredItem<Item> BOILED_NOODLES = REGISTRY.register("boiled_noodles", BoiledNoodlesItem::new);
 	public static final DeferredItem<Item> NOODLES_WITH_MEATBALLS = REGISTRY.register("noodles_with_meatballs", NoodlesWithMeatballsItem::new);
 	public static final DeferredItem<Item> DARK_OAK_KITCHEN_CABINET = block(ConcoctionModBlocks.DARK_OAK_KITCHEN_CABINET);
+	public static final DeferredItem<Item> MANGROVE_KITCHEN_CABINET = block(ConcoctionModBlocks.MANGROVE_KITCHEN_CABINET);
+	public static final DeferredItem<Item> CHERRY_KITCHEN_CABINET = block(ConcoctionModBlocks.CHERRY_KITCHEN_CABINET);
+	public static final DeferredItem<Item> BAMBOO_KITCHEN_CABINET = block(ConcoctionModBlocks.BAMBOO_KITCHEN_CABINET);
+	public static final DeferredItem<Item> CRIMSON_KITCHEN_CABINET = block(ConcoctionModBlocks.CRIMSON_KITCHEN_CABINET);
+	public static final DeferredItem<Item> WARPED_KITCHEN_CABINET = block(ConcoctionModBlocks.WARPED_KITCHEN_CABINET);
 	// Start of user code block custom items
 	public static final DeferredItem<Item> CHERRY_CAKE = block(ConcoctionModBlocks.CHERRY_CAKE, 1);
 	public static final DeferredItem<Item> GLOWBERRY_CAKE = block(ConcoctionModBlocks.GLOWBERRY_CAKE, 1);

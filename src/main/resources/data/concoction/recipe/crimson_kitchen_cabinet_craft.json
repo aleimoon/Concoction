@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "crimson_kitchen_cabinet",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "b b",
+    "bbb"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:crimson_slab"
+    },
+    "b": {
+      "item": "minecraft:crimson_planks"
+    }
+  },
+  "result": {
+    "id": "concoction:crimson_kitchen_cabinet",
+    "count": 1
+  }
+}

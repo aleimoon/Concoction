@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "concoction:block/crimson_kitchen_cabinet_bottom",
+    "up": "concoction:block/crimson_kitchen_cabinet_top",
+    "north": "concoction:block/crimson_kitchen_cabinet_front",
+    "east": "concoction:block/crimson_kitchen_cabinet_side",
+    "south": "concoction:block/crimson_kitchen_cabinet_side",
+    "west": "concoction:block/crimson_kitchen_cabinet_side",
+    "particle": "concoction:block/crimson_kitchen_cabinet_bottom"
+  },
+  "render_type": "solid"
+}

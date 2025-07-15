@@ -89,6 +89,41 @@ public class KitchenCabinetInterfaceMenu extends AbstractContainerMenu implement
                     world.setBlock(cabinetPos, state.setValue(DarkOakKitchenCabinetBlock.OPEN, true), 3);
                     world.playSound(null, cabinetPos, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundSource.BLOCKS, 1.0f, 1.0f);
                 }
+            } else if (world.getBlockEntity(cabinetPos) instanceof MangroveKitchenCabinetBlockEntity be) {
+                this.blockEntity = be;
+                this.bound = true;
+                if (state.hasProperty(MangroveKitchenCabinetBlock.OPEN)) {
+                    world.setBlock(cabinetPos, state.setValue(MangroveKitchenCabinetBlock.OPEN, true), 3);
+                    world.playSound(null, cabinetPos, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundSource.BLOCKS, 1.0f, 1.0f);
+                }
+            } else if (world.getBlockEntity(cabinetPos) instanceof CherryKitchenCabinetBlockEntity be) {
+                this.blockEntity = be;
+                this.bound = true;
+                if (state.hasProperty(CherryKitchenCabinetBlock.OPEN)) {
+                    world.setBlock(cabinetPos, state.setValue(CherryKitchenCabinetBlock.OPEN, true), 3);
+                    world.playSound(null, cabinetPos, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundSource.BLOCKS, 1.0f, 1.0f);
+                }
+            } else if (world.getBlockEntity(cabinetPos) instanceof BambooKitchenCabinetBlockEntity be) {
+                this.blockEntity = be;
+                this.bound = true;
+                if (state.hasProperty(BambooKitchenCabinetBlock.OPEN)) {
+                    world.setBlock(cabinetPos, state.setValue(BambooKitchenCabinetBlock.OPEN, true), 3);
+                    world.playSound(null, cabinetPos, SoundEvents.BAMBOO_WOOD_TRAPDOOR_OPEN, SoundSource.BLOCKS, 1.0f, 1.0f);
+                }
+            } else if (world.getBlockEntity(cabinetPos) instanceof CrimsonKitchenCabinetBlockEntity be) {
+                this.blockEntity = be;
+                this.bound = true;
+                if (state.hasProperty(CrimsonKitchenCabinetBlock.OPEN)) {
+                    world.setBlock(cabinetPos, state.setValue(CrimsonKitchenCabinetBlock.OPEN, true), 3);
+                    world.playSound(null, cabinetPos, SoundEvents.NETHER_WOOD_TRAPDOOR_OPEN, SoundSource.BLOCKS, 1.0f, 1.0f);
+                }
+            } else if (world.getBlockEntity(cabinetPos) instanceof WarpedKitchenCabinetBlockEntity be) {
+                this.blockEntity = be;
+                this.bound = true;
+                if (state.hasProperty(WarpedKitchenCabinetBlock.OPEN)) {
+                    world.setBlock(cabinetPos, state.setValue(WarpedKitchenCabinetBlock.OPEN, true), 3);
+                    world.playSound(null, cabinetPos, SoundEvents.NETHER_WOOD_TRAPDOOR_OPEN, SoundSource.BLOCKS, 1.0f, 1.0f);
+                }
             } else {
                 this.blockEntity = null;
             }
@@ -96,19 +131,14 @@ public class KitchenCabinetInterfaceMenu extends AbstractContainerMenu implement
             this.blockEntity = null;
         }
 
-        if (this.blockEntity instanceof OakKitchenCabinetBlockEntity
-                || this.blockEntity instanceof SpruceKitchenCabinetBlockEntity
-                || this.blockEntity instanceof BirchKitchenCabinetBlockEntity
-                || this.blockEntity instanceof AcaciaKitchenCabinetBlockEntity
-                || this.blockEntity instanceof JungleKitchenCabinetBlockEntity
-                || this.blockEntity instanceof DarkOakKitchenCabinetBlockEntity) {
+        if (blockEntity instanceof net.minecraft.world.Container container) {
             int slotSize = 18;
             int startX = 8;
             int startY = 17;
             for (int row = 0; row < 3; ++row) {
                 for (int col = 0; col < 9; ++col) {
                     int slotIndex = col + row * 9;
-                    Slot slot = this.addSlot(new Slot((net.minecraft.world.Container) blockEntity, slotIndex, startX + col * slotSize, startY + row * slotSize));
+                    Slot slot = this.addSlot(new Slot(container, slotIndex, startX + col * slotSize, startY + row * slotSize));
                     customSlots.put(slotIndex, slot);
                 }
             }
@@ -186,9 +216,22 @@ public class KitchenCabinetInterfaceMenu extends AbstractContainerMenu implement
                 || state.hasProperty(BirchKitchenCabinetBlock.OPEN)
                 || state.hasProperty(AcaciaKitchenCabinetBlock.OPEN)
                 || state.hasProperty(JungleKitchenCabinetBlock.OPEN)
-                || state.hasProperty(DarkOakKitchenCabinetBlock.OPEN)) {
+                || state.hasProperty(DarkOakKitchenCabinetBlock.OPEN)
+                || state.hasProperty(MangroveKitchenCabinetBlock.OPEN)
+                || state.hasProperty(CherryKitchenCabinetBlock.OPEN)
+                || state.hasProperty(BambooKitchenCabinetBlock.OPEN)
+                || state.hasProperty(CrimsonKitchenCabinetBlock.OPEN)
+                || state.hasProperty(WarpedKitchenCabinetBlock.OPEN)) {
 
-                world.playSound(null, cabinetPos, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                SoundSource source = SoundSource.BLOCKS;
+                if (state.getBlock() instanceof BambooKitchenCabinetBlock) {
+                    world.playSound(null, cabinetPos, SoundEvents.BAMBOO_WOOD_TRAPDOOR_CLOSE, source, 1.0f, 1.0f);
+                } else if (state.getBlock() instanceof CrimsonKitchenCabinetBlock || state.getBlock() instanceof WarpedKitchenCabinetBlock) {
+                    world.playSound(null, cabinetPos, SoundEvents.NETHER_WOOD_TRAPDOOR_CLOSE, source, 1.0f, 1.0f);
+                } else {
+                    world.playSound(null, cabinetPos, SoundEvents.WOODEN_TRAPDOOR_CLOSE, source, 1.0f, 1.0f);
+                }
+
                 serverLevel.scheduleTick(cabinetPos, state.getBlock(), 1);
             }
         }

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "cherry_kitchen_cabinet",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "b b",
+    "bbb"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:cherry_slab"
+    },
+    "b": {
+      "item": "minecraft:cherry_planks"
+    }
+  },
+  "result": {
+    "id": "concoction:cherry_kitchen_cabinet",
+    "count": 1
+  }
+}

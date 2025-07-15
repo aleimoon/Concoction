@@ -6819,6 +6819,161 @@
         ]
       },
       "path": "~/kitchen_cabinets"
+    },
+    {
+      "name": "MangroveKitchenCabinet",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "mangrove_kitchen_cabinet",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/concoction/block/entity/MangroveKitchenCabinetBlockEntity.java",
+          "src/main/resources/assets/concoction/models/block/mangrove_kitchen_cabinet.json",
+          "src/main/java/net/mcreator/concoction/block/MangroveKitchenCabinetBlock.java",
+          "src/main/resources/assets/concoction/models/item/mangrove_kitchen_cabinet.json",
+          "src/main/resources/data/concoction/loot_table/blocks/mangrove_kitchen_cabinet.json",
+          "src/main/resources/assets/concoction/blockstates/mangrove_kitchen_cabinet.json"
+        ]
+      },
+      "path": "~/kitchen_cabinets"
+    },
+    {
+      "name": "MangroveKitchenCabinetCraft",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mangrove_kitchen_cabinet_craft",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/concoction/recipe/mangrove_kitchen_cabinet_craft.json"
+        ]
+      },
+      "path": "~/kitchen_cabinets"
+    },
+    {
+      "name": "CherryKitchenCabinet",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cherry_kitchen_cabinet",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/concoction/models/block/cherry_kitchen_cabinet.json",
+          "src/main/java/net/mcreator/concoction/block/CherryKitchenCabinetBlock.java",
+          "src/main/java/net/mcreator/concoction/block/entity/CherryKitchenCabinetBlockEntity.java",
+          "src/main/resources/assets/concoction/blockstates/cherry_kitchen_cabinet.json",
+          "src/main/resources/data/concoction/loot_table/blocks/cherry_kitchen_cabinet.json",
+          "src/main/resources/assets/concoction/models/item/cherry_kitchen_cabinet.json"
+        ]
+      },
+      "path": "~/kitchen_cabinets"
+    },
+    {
+      "name": "CherryKitchenCabinetCraft",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cherry_kitchen_cabinet_craft",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/concoction/recipe/cherry_kitchen_cabinet_craft.json"
+        ]
+      },
+      "path": "~/kitchen_cabinets"
+    },
+    {
+      "name": "BambooKitchenCabinet",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "bamboo_kitchen_cabinet",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/concoction/models/item/bamboo_kitchen_cabinet.json",
+          "src/main/resources/assets/concoction/models/block/bamboo_kitchen_cabinet.json",
+          "src/main/resources/assets/concoction/blockstates/bamboo_kitchen_cabinet.json",
+          "src/main/java/net/mcreator/concoction/block/BambooKitchenCabinetBlock.java",
+          "src/main/resources/data/concoction/loot_table/blocks/bamboo_kitchen_cabinet.json",
+          "src/main/java/net/mcreator/concoction/block/entity/BambooKitchenCabinetBlockEntity.java"
+        ]
+      },
+      "path": "~/kitchen_cabinets"
+    },
+    {
+      "name": "BambooKitchenCabinetCraft",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bamboo_kitchen_cabinet_craft",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/concoction/recipe/bamboo_kitchen_cabinet_craft.json"
+        ]
+      },
+      "path": "~/kitchen_cabinets"
+    },
+    {
+      "name": "CrimsonKitchenCabinet",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "crimson_kitchen_cabinet",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/concoction/models/item/crimson_kitchen_cabinet.json",
+          "src/main/resources/data/concoction/loot_table/blocks/crimson_kitchen_cabinet.json",
+          "src/main/java/net/mcreator/concoction/block/entity/CrimsonKitchenCabinetBlockEntity.java",
+          "src/main/java/net/mcreator/concoction/block/CrimsonKitchenCabinetBlock.java",
+          "src/main/resources/assets/concoction/blockstates/crimson_kitchen_cabinet.json",
+          "src/main/resources/assets/concoction/models/block/crimson_kitchen_cabinet.json"
+        ]
+      },
+      "path": "~/kitchen_cabinets"
+    },
+    {
+      "name": "CrimsonKitchenCabinetCraft",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "crimson_kitchen_cabinet_craft",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/concoction/recipe/crimson_kitchen_cabinet_craft.json"
+        ]
+      },
+      "path": "~/kitchen_cabinets"
+    },
+    {
+      "name": "WarpedKitchenCabinet",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "warped_kitchen_cabinet",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/concoction/block/entity/WarpedKitchenCabinetBlockEntity.java",
+          "src/main/resources/data/concoction/loot_table/blocks/warped_kitchen_cabinet.json",
+          "src/main/resources/assets/concoction/models/item/warped_kitchen_cabinet.json",
+          "src/main/resources/assets/concoction/blockstates/warped_kitchen_cabinet.json",
+          "src/main/java/net/mcreator/concoction/block/WarpedKitchenCabinetBlock.java",
+          "src/main/resources/assets/concoction/models/block/warped_kitchen_cabinet.json"
+        ]
+      },
+      "path": "~/kitchen_cabinets"
+    },
+    {
+      "name": "WarpedKitchenCabinetCraft",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "warped_kitchen_cabinet_craft",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/concoction/recipe/warped_kitchen_cabinet_craft.json"
+        ]
+      },
+      "path": "~/kitchen_cabinets"
     }
   ],
   "variable_elements": [],
@@ -6908,10 +7063,6 @@
       "~CUSTOM:CropPuffball",
       "~CUSTOM:WeightedSouls"
     ],
-    "BLOCKS:minecraft:tall_flowers": [
-      "CUSTOM:Mint",
-      "CUSTOM:Sunflower"
-    ],
     "BLOCKS:minecraft:mineable/hoe": [
       "~CUSTOM:ReapepperBlock",
       "~CUSTOM:SweetBerriesBlock",
@@ -6931,6 +7082,10 @@
       "~CUSTOM:CabbageBlock",
       "CUSTOM:SpicyPepperBlock",
       "CUSTOM:CornBlock"
+    ],
+    "BLOCKS:minecraft:tall_flowers": [
+      "CUSTOM:Mint",
+      "CUSTOM:Sunflower"
     ],
     "ITEMS:minecraft:flowers": [
       "CUSTOM:Mint",
@@ -7140,6 +7295,11 @@
       "TAG:concoction:butters"
     ],
     "BLOCKS:minecraft:mineable/axe": [
+      "~CUSTOM:WarpedKitchenCabinet",
+      "~CUSTOM:CrimsonKitchenCabinet",
+      "~CUSTOM:BambooKitchenCabinet",
+      "~CUSTOM:CherryKitchenCabinet",
+      "~CUSTOM:MangroveKitchenCabinet",
       "~CUSTOM:DarkOakKitchenCabinet",
       "~CUSTOM:JungleKitchenCabinet",
       "~CUSTOM:AcaciaKitchenCabinet",
@@ -7234,6 +7394,7 @@
       "item.concoction.tomato": "Томат",
       "advancements.new_crops.title": "Дикая находка",
       "item.minecraft.tipped_arrow.effect.snowflake_extended": "Стрела мороза",
+      "block.concoction.crimson_kitchen_cabinet": "Багровый кухонный шкаф",
       "block.concoction.chorus_block": "Блок хоруса",
       "item.concoction.mint_cookie": "Мятное печенье",
       "block.concoction.crop_onion": "Лук",
@@ -7394,6 +7555,7 @@
       "item.concoction.mushroom_skewer": "Грибной шашлычок",
       "block.concoction.glowberry_cake": "Светящийся торт-желе",
       "item.concoction.animal_fat": "Животный жир",
+      "block.concoction.mangrove_kitchen_cabinet": "Мангровый кухонный шкаф",
       "item.concoction.sunflower_seeds": "Семена подсолнуха",
       "advancements.core.descr": "Нельзя путешествовать на пустой желудок!",
       "item.minecraft.lingering_potion.effect.flame_extended": "Оседающее зелье жжения",
@@ -7405,6 +7567,7 @@
       "item.concoction.meat_goulash": "Мясной гуляш",
       "block.concoction.light_blue_pillow_block": "Голубая подушка",
       "block.concoction.brown_woven_carpet": "Коричневый тканый ковёр",
+      "block.concoction.bamboo_kitchen_cabinet": "Бамбуковый кухонный шкаф",
       "block.concoction.black_pillow_block": "Чёрная подушка",
       "item.concoction.spicy_pepper": "Жгучий перец",
       "advancements.nether_mutation.title": "Тепло, но не очень",
@@ -7414,6 +7577,7 @@
       "block.concoction.magenta_woven_carpet": "Пурпурный тканый ковёр",
       "item.concoction.bamboo_porkchop_soup": "Свиной суп с бамбуком",
       "effect.concoction.photosynthesis": "Фотосинтез",
+      "block.concoction.cherry_kitchen_cabinet": "Вишнёвый кухонный шкаф",
       "item.concoction.mashed_potatoes": "Картофельное пюре",
       "item.minecraft.potion.effect.flame": "Зелье жжения",
       "block.concoction.cyan_woven_carpet": "Бирюзовый тканый ковёр",
@@ -7451,6 +7615,7 @@
       "item.minecraft.potion.effect.flame_extended": "Зелье жжения",
       "item.concoction.mushroom_cream_soup": "Грибной крем-суп",
       "item.concoction.corn": "Кукуруза",
+      "block.concoction.warped_kitchen_cabinet": "Искаженный кухонный шкаф",
       "subtitles.barrel_overfilled": "Переполнен",
       "advancements.you_spin_me_round.descr": "Выкрутите масло в маслобойке",
       "item.minecraft.splash_potion.effect.blooming": "Взрывное зелье цветения",
@@ -7557,6 +7722,7 @@
       "item.concoction.tomato": "Tomato",
       "advancements.new_crops.title": "That\u0027s Wild",
       "item.minecraft.tipped_arrow.effect.snowflake_extended": "Arrow of Snowflake",
+      "block.concoction.crimson_kitchen_cabinet": "Crimson Kitchen Cabinet",
       "item.concoction.mint_cookie": "Mint Cookie",
       "block.concoction.chorus_block": "Chorus Block",
       "block.concoction.crop_onion": "Crop Onion",
@@ -7717,6 +7883,7 @@
       "item.concoction.mushroom_skewer": "Mushroom Skewer",
       "block.concoction.glowberry_cake": "Glowberry Jelly Cake",
       "item.concoction.animal_fat": "Animal Fat",
+      "block.concoction.mangrove_kitchen_cabinet": "Mangrove Kitchen Cabinet",
       "item.concoction.sunflower_seeds": "Sunflower Seeds",
       "advancements.core.descr": "Can\u0027t travel on empty stomach!",
       "item.minecraft.lingering_potion.effect.flame_extended": "Lingering Potion of Flame",
@@ -7728,6 +7895,7 @@
       "item.concoction.meat_goulash": "Braised Meat",
       "block.concoction.light_blue_pillow_block": "Light Blue Pillow",
       "block.concoction.brown_woven_carpet": "Brown Woven Carpet",
+      "block.concoction.bamboo_kitchen_cabinet": "Bamboo Kitchen Cabinet",
       "block.concoction.black_pillow_block": "Black Pillow",
       "item.concoction.spicy_pepper": "Spicy Pepper",
       "advancements.nether_mutation.title": "Bloom to Doom",
@@ -7737,6 +7905,7 @@
       "block.concoction.magenta_woven_carpet": "Magenta Woven Carpet",
       "item.concoction.bamboo_porkchop_soup": "Bamboo Porkchop Soup",
       "effect.concoction.photosynthesis": "Photosynthesis",
+      "block.concoction.cherry_kitchen_cabinet": "Cherry Kitchen Cabinet",
       "item.concoction.mashed_potatoes": "Mashed Potatoes",
       "item.minecraft.potion.effect.flame": "Potion of Flame",
       "block.concoction.cyan_woven_carpet": "Cyan Woven Carpet",
@@ -7774,6 +7943,7 @@
       "item.minecraft.potion.effect.flame_extended": "Potion of Flame",
       "item.concoction.mushroom_cream_soup": "Mushroom Cream Soup",
       "item.concoction.corn": "Corn",
+      "block.concoction.warped_kitchen_cabinet": "Warped Kitchen Cabinet",
       "subtitles.barrel_overfilled": "Overfilled",
       "advancements.you_spin_me_round.descr": "Use butter churn to make butter or oil",
       "item.minecraft.splash_potion.effect.blooming": "Splash Potion of Blooming",

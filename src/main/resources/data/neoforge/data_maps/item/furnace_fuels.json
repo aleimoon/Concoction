@@ -222,6 +222,21 @@
 	    },
 	    "concoction:dark_oak_kitchen_cabinet": {
 	        "burn_time": 300
-	    }     
+	    }
+	    "concoction:mangrove_kitchen_cabinet": {
+	        "burn_time": 300
+	    },
+	    "concoction:cherry_kitchen_cabinet": {
+	        "burn_time": 300
+	    },
+	    "concoction:bamboo_kitchen_cabinet": {
+	        "burn_time": 300
+	    },
+	    "concoction:crimson_kitchen_cabinet": {
+	        "burn_time": 300
+	    },
+	    "concoction:warped_kitchen_cabinet": {
+	        "burn_time": 300
+	    }          
     }
 }

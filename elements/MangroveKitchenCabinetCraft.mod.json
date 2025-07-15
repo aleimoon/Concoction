@@ -1,0 +1,48 @@
+{
+  "_fv": 73,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "mangrove_kitchen_cabinet",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "Blocks.MANGROVE_SLAB"
+      },
+      {
+        "value": "Blocks.MANGROVE_SLAB"
+      },
+      {
+        "value": "Blocks.MANGROVE_SLAB"
+      },
+      {
+        "value": "Blocks.MANGROVE_PLANKS"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "Blocks.MANGROVE_PLANKS"
+      },
+      {
+        "value": "Blocks.MANGROVE_PLANKS"
+      },
+      {
+        "value": "Blocks.MANGROVE_PLANKS"
+      },
+      {
+        "value": "Blocks.MANGROVE_PLANKS"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:MangroveKitchenCabinet"
+    },
+    "name": "mangrove_kitchen_cabinet_craft",
+    "namespace": "mod"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "concoction:block/warped_kitchen_cabinet_bottom",
+    "up": "concoction:block/warped_kitchen_cabinet_top",
+    "north": "concoction:block/warped_kitchen_cabinet_front",
+    "east": "concoction:block/warped_kitchen_cabinet_side",
+    "south": "concoction:block/warped_kitchen_cabinet_side",
+    "west": "concoction:block/warped_kitchen_cabinet_side",
+    "particle": "concoction:block/warped_kitchen_cabinet_bottom"
+  },
+  "render_type": "solid"
+}

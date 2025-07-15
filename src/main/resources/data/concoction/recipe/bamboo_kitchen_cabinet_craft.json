@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bamboo_kitchen_cabinet",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "b b",
+    "bbb"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:bamboo_slab"
+    },
+    "b": {
+      "item": "minecraft:bamboo_planks"
+    }
+  },
+  "result": {
+    "id": "concoction:bamboo_kitchen_cabinet",
+    "count": 1
+  }
+}

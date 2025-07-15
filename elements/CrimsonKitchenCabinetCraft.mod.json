@@ -1,0 +1,48 @@
+{
+  "_fv": 73,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "crimson_kitchen_cabinet",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "Blocks.CRIMSON_SLAB"
+      },
+      {
+        "value": "Blocks.CRIMSON_SLAB"
+      },
+      {
+        "value": "Blocks.CRIMSON_SLAB"
+      },
+      {
+        "value": "Blocks.CRIMSON_PLANKS"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "Blocks.CRIMSON_PLANKS"
+      },
+      {
+        "value": "Blocks.CRIMSON_PLANKS"
+      },
+      {
+        "value": "Blocks.CRIMSON_PLANKS"
+      },
+      {
+        "value": "Blocks.CRIMSON_PLANKS"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:CrimsonKitchenCabinet"
+    },
+    "name": "crimson_kitchen_cabinet_craft",
+    "namespace": "mod"
+  }
+}

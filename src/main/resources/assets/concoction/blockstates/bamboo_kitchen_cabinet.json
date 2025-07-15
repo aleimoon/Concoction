@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,open=false": {
+      "model": "concoction:block/bamboo_kitchen_cabinet"
+    },
+    "facing=east,open=false": {
+      "model": "concoction:block/bamboo_kitchen_cabinet",
+      "y": 90
+    },
+    "facing=south,open=false": {
+      "model": "concoction:block/bamboo_kitchen_cabinet",
+      "y": 180
+    },
+    "facing=west,open=false": {
+      "model": "concoction:block/bamboo_kitchen_cabinet",
+      "y": 270
+    },
+    "facing=north,open=true": {
+      "model": "concoction:block/bamboo_kitchen_cabinet_open"
+    },
+    "facing=east,open=true": {
+      "model": "concoction:block/bamboo_kitchen_cabinet_open",
+      "y": 90
+    },
+    "facing=south,open=true": {
+      "model": "concoction:block/bamboo_kitchen_cabinet_open",
+      "y": 180
+    },
+    "facing=west,open=true": {
+      "model": "concoction:block/bamboo_kitchen_cabinet_open",
+      "y": 270
+    }
+  }
+}
