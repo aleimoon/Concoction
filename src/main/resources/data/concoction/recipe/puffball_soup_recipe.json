@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "puffball_soup",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "concoction:puffball"
+    },
+    {
+      "item": "concoction:puffball"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "id": "concoction:puffball_soup",
+    "count": 1
+  }
+}

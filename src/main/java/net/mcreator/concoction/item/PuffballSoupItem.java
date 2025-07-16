@@ -12,7 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class PuffballSoupItem extends Item {
 	public PuffballSoupItem() {
-		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(6).saturationModifier(1.2f).build()));
+		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(6).saturationModifier(0.6f).build()));
 	}
 
 	@Override
