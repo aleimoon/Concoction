@@ -1,0 +1,24 @@
+{
+  "type": "concoction:cauldron_brewing",
+  "group": "food",
+  "category": "misc",
+
+  "state" : {
+    "Name": "minecraft:water_cauldron",
+    "Properties": {
+      "level": "3"
+    }
+  },
+
+  "ingredients": [
+    {
+      "item": "minecraft:turtle_egg"
+    }
+  ],
+
+  "result": {
+    "id": "concoction:boiled_egg",
+    "interactionType": "hand",
+    "count": "1"
+  }
+}
