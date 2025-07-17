@@ -12,7 +12,7 @@ import net.minecraft.core.BlockPos;
 
 public class CherryBlockBlock extends Block {
 	public CherryBlockBlock() {
-		super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_MAGENTA).sound(SoundType.WET_GRASS).strength(0.2f));
+		super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_MAGENTA).sound(SoundType.GRASS).strength(0.2f));
 	}
 
 	@Override

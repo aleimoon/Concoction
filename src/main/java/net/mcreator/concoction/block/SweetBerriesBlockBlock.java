@@ -11,7 +11,7 @@ import net.minecraft.core.BlockPos;
 
 public class SweetBerriesBlockBlock extends Block {
 	public SweetBerriesBlockBlock() {
-		super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).sound(SoundType.WET_GRASS).strength(0.2f));
+		super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).sound(SoundType.GRASS).strength(0.2f));
 	}
 
 	@Override

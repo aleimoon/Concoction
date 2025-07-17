@@ -13,7 +13,7 @@ import net.minecraft.core.BlockPos;
 
 public class GlowBerriesBlockBlock extends Block {
 	public GlowBerriesBlockBlock() {
-		super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).sound(SoundType.WET_GRASS).strength(0.2f).lightLevel(s -> 3).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true));
+		super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).sound(SoundType.GRASS).strength(0.2f).lightLevel(s -> 3).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true));
 	}
 
 	@Override

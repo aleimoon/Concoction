@@ -4,7 +4,7 @@
   "definition": {
     "type": "Number",
     "displayName": "Milking Interval for Mobs",
-    "description": "Ticks that has to pass to milk full bucket of milk.",
+    "description": "Ticks that have to pass to milk full bucket of milk.",
     "category": "MOBS",
     "defaultValueLogic": false,
     "defaultValueNumber": 7200
