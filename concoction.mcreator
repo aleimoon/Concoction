@@ -6999,6 +6999,20 @@
         ]
       },
       "path": "~/puffball"
+    },
+    {
+      "name": "OvenGUI",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "oven_gui",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/concoction/client/gui/OvenGUIScreen.java",
+          "src/main/java/net/mcreator/concoction/world/inventory/OvenGUIMenu.java"
+        ]
+      },
+      "path": "~/oven"
     }
   ],
   "variable_elements": [],
