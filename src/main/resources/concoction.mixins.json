@@ -9,20 +9,21 @@
     "CakeBlockMixin",
     "CowMixin",
     "EnchantmentMenuMixin",
+    "EntityAccessor",
     "EntityMixin",
     "GoatAiMixin",
     "HoneyBootleMixin",
     "HorseMixin",
+    "ItemEntityMixin",
     "ItemMixin",
     "ItemsMixin",
     "LevelMixin",
     "LightningBoltMixin",
     "LivingEntityMixin",
     "PlayerMixin",
-    "ZombieMixin",
-    "EntityAccessor",
     "PowderSnowBlockMixin",
-    "SnowballMixin"
+    "SnowballMixin",
+    "ZombieMixin"
   ],
   "client": [
     "GuiMixin"

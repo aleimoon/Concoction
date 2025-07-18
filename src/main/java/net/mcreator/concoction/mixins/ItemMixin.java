@@ -50,4 +50,5 @@ public class ItemMixin {
     private void addFoodEffectTooltip(ItemStack p_41421_, Item.TooltipContext p_339594_, List<Component> p_41423_, TooltipFlag p_41424_, CallbackInfo ci) {
         FoodTooltipHelper.addFoodEffectTooltip(p_41421_, p_41423_);
     }
+
 }

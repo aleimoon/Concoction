@@ -18,6 +18,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.mcreator.concoction.init.ConcoctionModGameRules;
+import net.minecraft.server.level.ServerLevel;
 
 @Mixin(Cow.class)
 public class CowMixin implements ICowMilkLevel {
@@ -45,56 +47,65 @@ public class CowMixin implements ICowMilkLevel {
 	    Level level = cow.level();
 	    long now = level.getGameTime();
 
-	    if (cow.isBaby()) {
-	        cir.setReturnValue(InteractionResult.FAIL);
-	        return;
-	    }
-	
-	    if (concoction$milkLevel < 3) {
-	        long minutesPassed = (now - concoction$lastMilkedTime) / 2400L;
-	        if (minutesPassed > 0) {
-	            concoction$setMilkLevel(Math.min(3, concoction$milkLevel + (int)minutesPassed));
-	            concoction$setLastMilkedTime(now - (now - concoction$lastMilkedTime) % 2400L);
-	        }
-	    }
-	
-	    ItemStack stack = player.getItemInHand(hand);
-	    if (stack.getItem() == Items.BUCKET) {
-	        if (concoction$milkLevel == 3) {
-	            concoction$setMilkLevel(0);
-	            concoction$setLastMilkedTime(now);
-	            if (!player.isCreative()) stack.shrink(1);
-	            player.addItem(new ItemStack(Items.MILK_BUCKET));
-	
-	            level.playSound(null, cow, SoundEvents.COW_MILK, SoundSource.PLAYERS, 1.0F, 1.0F + (level.random.nextFloat() - 0.5F) * 0.2F);
-	            level.playSound(null, cow, SoundEvents.BUCKET_FILL, SoundSource.PLAYERS, 1.0F, 1.0F + (level.random.nextFloat() - level.random.nextFloat()) * 0.2F);
-	
-	            cir.setReturnValue(InteractionResult.SUCCESS);
-	        } else {
-	            if (level.isClientSide) {
-	                player.displayClientMessage(Component.translatable("message.concoction.cow_not_ready_bucket"), true);
-	            }
-	            cir.setReturnValue(InteractionResult.FAIL);
-	        }
-	    } else if (stack.getItem() == Items.GLASS_BOTTLE) {
-	        if (concoction$milkLevel > 0) {
-	            concoction$decrementMilkLevel();
-	            concoction$setLastMilkedTime(now);
-	            if (!player.isCreative()) stack.shrink(1);
-	            player.addItem(new ItemStack(ConcoctionModItems.MILK_BOTTLE.asItem()));
-	
-	            level.playSound(null, cow, SoundEvents.COW_MILK, SoundSource.PLAYERS, 1.0F, 1.0F + (level.random.nextFloat() - 0.5F) * 0.2F);
-	            level.playSound(null, cow, SoundEvents.BOTTLE_FILL, SoundSource.PLAYERS, 1.0F, 1.0F + (level.random.nextFloat() - level.random.nextFloat()) * 0.2F);
-	
-	            cir.setReturnValue(InteractionResult.SUCCESS);
-	        } else {
-	            if (level.isClientSide) {
-	                player.displayClientMessage(Component.translatable("message.concoction.cow_not_ready_bottle"), true);
-	            }
-	            cir.setReturnValue(InteractionResult.FAIL);
-	        }
-	    }
-	}
+        if (!level.isClientSide) {
+            int milkingInterval = 2400;
+            if (level instanceof ServerLevel serverLevel) {
+                milkingInterval = serverLevel.getGameRules().getInt(ConcoctionModGameRules.MILKING_INTERVAL) == 0 ? 2400 : serverLevel.getGameRules().getInt(ConcoctionModGameRules.MILKING_INTERVAL);
+            }
 
+            if (cow.isBaby()) {
+                cir.setReturnValue(InteractionResult.FAIL);
+                return;
+            }
 
-} 
+            if (concoction$milkLevel < 3) {
+                long intervalsPassed = (now - concoction$lastMilkedTime) / milkingInterval;
+                if (intervalsPassed > 0) {
+                    concoction$setMilkLevel(Math.min(3, concoction$milkLevel + (int)intervalsPassed));
+                    concoction$setLastMilkedTime(now - (now - concoction$lastMilkedTime) % milkingInterval);
+                }
+            }
+
+            ItemStack stack = player.getItemInHand(hand);
+            String itemType = stack.getItem() == Items.BUCKET ? "BUCKET" : (stack.getItem() == Items.GLASS_BOTTLE ? "BOTTLE" : stack.getItem().toString());
+            long intervalsPassed = (now - concoction$lastMilkedTime) / milkingInterval;
+            if (stack.getItem() == Items.BUCKET) {
+                if (concoction$milkLevel == 3) {
+                    concoction$setMilkLevel(0);
+                    concoction$setLastMilkedTime(now);
+                    if (!player.isCreative()) stack.shrink(1);
+                    player.addItem(new ItemStack(Items.MILK_BUCKET));
+
+                    level.playSound(null, cow, SoundEvents.COW_MILK, SoundSource.PLAYERS, 1.0F, 1.0F + (level.random.nextFloat() - 0.5F) * 0.2F);
+                    level.playSound(null, cow, SoundEvents.BUCKET_FILL, SoundSource.PLAYERS, 1.0F, 1.0F + (level.random.nextFloat() - level.random.nextFloat()) * 0.2F);
+
+                    cir.setReturnValue(InteractionResult.SUCCESS);
+                    return;
+                } else {
+                    System.out.println("[CowMixin] Доение ведром: ОТКАЗ");
+                    player.displayClientMessage(Component.translatable("message.concoction.cow_not_ready_bucket"), true);
+                    cir.setReturnValue(InteractionResult.FAIL);
+                }
+            } else if (stack.getItem() == Items.GLASS_BOTTLE) {
+                if (concoction$milkLevel > 0) {
+                    System.out.println("[CowMixin] Доение бутылкой: УСПЕХ");
+                    concoction$decrementMilkLevel();
+                    concoction$setLastMilkedTime(now);
+                    if (!player.isCreative()) stack.shrink(1);
+                    player.addItem(new ItemStack(ConcoctionModItems.MILK_BOTTLE.asItem()));
+
+                    level.playSound(null, cow, SoundEvents.COW_MILK, SoundSource.PLAYERS, 1.0F, 1.0F + (level.random.nextFloat() - 0.5F) * 0.2F);
+                    level.playSound(null, cow, SoundEvents.BOTTLE_FILL, SoundSource.PLAYERS, 1.0F, 1.0F + (level.random.nextFloat() - level.random.nextFloat()) * 0.2F);
+
+                    cir.setReturnValue(InteractionResult.SUCCESS);
+                    return;
+                } else {
+                    System.out.println("[CowMixin] Доение бутылкой: ОТКАЗ");
+                    player.displayClientMessage(Component.translatable("message.concoction.cow_not_ready_bottle"), true);
+                    cir.setReturnValue(InteractionResult.FAIL);
+                    return;
+                }
+            }
+        }
+    }
+}
