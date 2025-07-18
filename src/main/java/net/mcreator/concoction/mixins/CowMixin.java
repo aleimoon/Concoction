@@ -80,15 +80,13 @@ public class CowMixin implements ICowMilkLevel {
                     level.playSound(null, cow, SoundEvents.BUCKET_FILL, SoundSource.PLAYERS, 1.0F, 1.0F + (level.random.nextFloat() - level.random.nextFloat()) * 0.2F);
 
                     cir.setReturnValue(InteractionResult.SUCCESS);
-                    return;
                 } else {
-                    System.out.println("[CowMixin] Доение ведром: ОТКАЗ");
                     player.displayClientMessage(Component.translatable("message.concoction.cow_not_ready_bucket"), true);
                     cir.setReturnValue(InteractionResult.FAIL);
                 }
+                return;
             } else if (stack.getItem() == Items.GLASS_BOTTLE) {
                 if (concoction$milkLevel > 0) {
-                    System.out.println("[CowMixin] Доение бутылкой: УСПЕХ");
                     concoction$decrementMilkLevel();
                     concoction$setLastMilkedTime(now);
                     if (!player.isCreative()) stack.shrink(1);
@@ -98,9 +96,7 @@ public class CowMixin implements ICowMilkLevel {
                     level.playSound(null, cow, SoundEvents.BOTTLE_FILL, SoundSource.PLAYERS, 1.0F, 1.0F + (level.random.nextFloat() - level.random.nextFloat()) * 0.2F);
 
                     cir.setReturnValue(InteractionResult.SUCCESS);
-                    return;
                 } else {
-                    System.out.println("[CowMixin] Доение бутылкой: ОТКАЗ");
                     player.displayClientMessage(Component.translatable("message.concoction.cow_not_ready_bottle"), true);
                     cir.setReturnValue(InteractionResult.FAIL);
                     return;
