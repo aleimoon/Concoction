@@ -11,7 +11,7 @@ import net.minecraft.core.BlockPos;
 
 public class TomatoBlockBlock extends Block {
 	public TomatoBlockBlock() {
-		super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).sound(SoundType.WET_GRASS).strength(0.2f, 10f));
+		super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).sound(SoundType.GRASS).strength(0.2f, 10f));
 	}
 
 	@Override
