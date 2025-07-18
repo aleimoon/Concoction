@@ -16,6 +16,6 @@ public class ConcoctionModGameRules {
 
 	@SubscribeEvent
 	public static void registerGameRules(FMLCommonSetupEvent event) {
-		MILKING_INTERVAL = GameRules.register("milkingInterval", GameRules.Category.MOBS, GameRules.IntegerValue.create(7200));
+		MILKING_INTERVAL = GameRules.register("milkingInterval", GameRules.Category.MOBS, GameRules.IntegerValue.create(3000));
 	}
 }

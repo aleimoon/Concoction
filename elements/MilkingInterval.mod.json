@@ -7,6 +7,6 @@
     "description": "Ticks that have to pass to milk full bucket of milk.",
     "category": "MOBS",
     "defaultValueLogic": false,
-    "defaultValueNumber": 7200
+    "defaultValueNumber": 3000
   }
 }
