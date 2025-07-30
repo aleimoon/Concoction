@@ -1,7 +1,9 @@
 package net.mcreator.concoction.world.inventory;
 
 import net.mcreator.concoction.utils.Utils;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.TagKey;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
@@ -142,10 +144,7 @@ public class BoilingCauldronInterfaceMenu extends AbstractContainerMenu implemen
 	
 	// Проверка, является ли предмет валидным для слота половника
 	private boolean isValidLadleItem(ItemStack stack) {
-		return stack.is(Items.STICK) || 
-			   stack.is(Items.BOWL) ||
-			   stack.is(Items.GLASS_BOTTLE) ||
-			   stack.is(Items.BUCKET);
+		return stack.is(ItemTags.create(ResourceLocation.parse("c:tableware")));
 	}
 	
 	// Метод для получения текущего прогресса готовки

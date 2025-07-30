@@ -29,23 +29,37 @@ public class OvenGUIScreen extends AbstractContainerScreen<OvenGUIMenu> {
 		this.entity = container.entity;
 		this.imageWidth = 176;
 		this.imageHeight = 166;
+		this.inventoryLabelY = 74;
 	}
 
-	private static final ResourceLocation texture = ResourceLocation.parse("concoction:textures/screens/oven_gui.png");
+	private static final ResourceLocation texture = ResourceLocation.parse("concoction:textures/gui/hud/oven_gui_playerside.png");
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-		this.renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
+		guiGraphics.fillGradient(0, 0, this.width, this.height, 0x33000000, 0x33000000);
 		super.render(guiGraphics, mouseX, mouseY, partialTicks);
 		this.renderTooltip(guiGraphics, mouseX, mouseY);
 	}
 
 	@Override
 	protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int gx, int gy) {
-		RenderSystem.setShaderColor(1, 1, 1, 1);
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
-		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+
+
+		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
+
+		if (menu.isCooking()) {
+			int progress = menu.getProgress();
+			int maxProgress = menu.getMaxProgress();
+			int progressSize = 44 * progress / maxProgress;
+			guiGraphics.blit(texture, this.leftPos + 102, this.topPos + 34, 176, 15, progressSize, 24, 256, 256);
+		}
+
+		if (!menu.isLit()) {
+			guiGraphics.blit(texture, this.leftPos + 61, this.topPos + 62, 176, 0, 14, 14, 256, 256);
+		}
+
 		RenderSystem.disableBlend();
 	}
 
@@ -60,6 +74,10 @@ public class OvenGUIScreen extends AbstractContainerScreen<OvenGUIMenu> {
 
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+		int titleWidth = this.font.width(this.title.getString());
+		int titleX = (this.imageWidth - titleWidth) / 3;
+		guiGraphics.drawString(this.font, this.title, titleX, 6, 4210752, false);
+		guiGraphics.drawString(this.font, Component.translatable("container.inventory"), 8, 72, 4210752, false);
 	}
 
 	@Override
