@@ -4,7 +4,6 @@
 */
 package net.mcreator.concoction.init;
 
-import net.mcreator.concoction.block.entity.*;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
@@ -17,6 +16,21 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.core.registries.BuiltInRegistries;
 
+import net.mcreator.concoction.block.entity.WarpedKitchenCabinetBlockEntity;
+import net.mcreator.concoction.block.entity.SpruceKitchenCabinetBlockEntity;
+import net.mcreator.concoction.block.entity.OvenBlockEntity;
+import net.mcreator.concoction.block.entity.OakKitchenCabinetBlockEntity;
+import net.mcreator.concoction.block.entity.MangroveKitchenCabinetBlockEntity;
+import net.mcreator.concoction.block.entity.JungleKitchenCabinetBlockEntity;
+import net.mcreator.concoction.block.entity.DarkOakKitchenCabinetBlockEntity;
+import net.mcreator.concoction.block.entity.CropMintBlockEntity;
+import net.mcreator.concoction.block.entity.CrimsonKitchenCabinetBlockEntity;
+import net.mcreator.concoction.block.entity.CookingCauldronEntity;
+import net.mcreator.concoction.block.entity.CherryKitchenCabinetBlockEntity;
+import net.mcreator.concoction.block.entity.ButterChurnEntity;
+import net.mcreator.concoction.block.entity.BirchKitchenCabinetBlockEntity;
+import net.mcreator.concoction.block.entity.BambooKitchenCabinetBlockEntity;
+import net.mcreator.concoction.block.entity.AcaciaKitchenCabinetBlockEntity;
 import net.mcreator.concoction.ConcoctionMod;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)

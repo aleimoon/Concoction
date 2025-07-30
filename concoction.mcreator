@@ -7102,10 +7102,6 @@
       "~CUSTOM:CropPuffball",
       "~CUSTOM:WeightedSouls"
     ],
-    "BLOCKS:minecraft:tall_flowers": [
-      "CUSTOM:Mint",
-      "CUSTOM:Sunflower"
-    ],
     "BLOCKS:minecraft:mineable/hoe": [
       "~CUSTOM:ReapepperBlock",
       "~CUSTOM:SweetBerriesBlock",
@@ -7125,6 +7121,10 @@
       "~CUSTOM:CabbageBlock",
       "CUSTOM:SpicyPepperBlock",
       "CUSTOM:CornBlock"
+    ],
+    "BLOCKS:minecraft:tall_flowers": [
+      "CUSTOM:Mint",
+      "CUSTOM:Sunflower"
     ],
     "ITEMS:minecraft:flowers": [
       "CUSTOM:Mint",
@@ -7461,6 +7461,7 @@
       "block.concoction.mint_bale": "Сноп мяты",
       "item.concoction.overgrown_shovel": "Цветущая лопата",
       "block.concoction.light_blue_woven_carpet": "Голубой тканый ковёр",
+      "container.oven": "Духовка",
       "item.concoction.mint_seeds": "Семена мяты",
       "item.concoction.spicy_pepper_seeds": "Семена жгучего перца",
       "block.concoction.soulland": "Пашня душ",
@@ -7791,6 +7792,7 @@
       "block.concoction.mint_bale": "Mint Bale",
       "item.concoction.overgrown_shovel": "Overgrown Shovel",
       "block.concoction.light_blue_woven_carpet": "Light Blue Woven Carpet",
+      "container.oven": "Oven",
       "item.concoction.mint_seeds": "Mint Seeds",
       "item.concoction.spicy_pepper_seeds": "Spicy Pepper Seeds",
       "block.concoction.soulland": "Soulland",
