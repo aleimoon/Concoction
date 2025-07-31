@@ -2,24 +2,30 @@ package net.mcreator.concoction.block.entity;
 
 import com.google.gson.Gson;
 import net.mcreator.concoction.block.OvenBlock;
+import net.mcreator.concoction.recipe.oven.OvenRecipe;
+import net.mcreator.concoction.recipe.oven.OvenRecipeInput;
 import net.mcreator.concoction.world.inventory.OvenGUIMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.MagmaBlock;
@@ -29,35 +35,26 @@ import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
 
-import net.mcreator.concoction.block.CookingCauldron;
 import net.mcreator.concoction.init.ConcoctionModBlockEntities;
 import net.mcreator.concoction.init.ConcoctionModMenus;
 import net.mcreator.concoction.init.ConcoctionModRecipes;
-import net.mcreator.concoction.recipe.cauldron.CauldronBrewingRecipe;
-import net.mcreator.concoction.recipe.cauldron.CauldronBrewingRecipeInput;
-import net.mcreator.concoction.world.inventory.BoilingCauldronInterfaceMenu;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.level.block.*;
 import org.jetbrains.annotations.Nullable;
 import io.netty.buffer.Unpooled;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.util.*;
 
 public class OvenBlockEntity extends RandomizableContainerBlockEntity {
-    // This can be any value of any type you want, so long as you can somehow serialize it to NBT.
-    // We will use an int for the sake of example.
-    // Container methods and fields
-    private final int ContainerSize = 6;
+    // Слоты: 0 бутылочка, 1-6 крафт, 7 миска, 8 результат
+    private final int ContainerSize = 9;
     private boolean isCooking = false;
-    private RecipeHolder<CauldronBrewingRecipe> recipe = null;
+    private RecipeHolder<OvenRecipe> recipe = null;
     private Map<String, String> craftResult = Map.ofEntries(
             Map.entry("id",""),
             Map.entry("count",""),
@@ -84,6 +81,7 @@ public class OvenBlockEntity extends RandomizableContainerBlockEntity {
         super.loadAdditional(tag, registries);
         this.progress = tag.getInt("cooking.progress");
         this.maxProgress = tag.getInt("cooking.max_progress");
+        this.isCooking = tag.getBoolean("cooking.is_cooking");
         this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         this.craftResult = (new Gson()).fromJson(tag.getString("cooking.craft_result"), HashMap.class);
         if (!this.tryLoadLootTable(tag)) {
@@ -97,6 +95,7 @@ public class OvenBlockEntity extends RandomizableContainerBlockEntity {
         super.saveAdditional(tag, registries);
         tag.putInt("cooking.progress", this.progress);
         tag.putInt("cooking.max_progress", this.maxProgress);
+        tag.putBoolean("cooking.is_cooking", this.isCooking);
         tag.putString("cooking.craft_result", (new Gson()).toJson(this.craftResult));
 
         if (!this.trySaveLootTable(tag)) {
@@ -105,6 +104,100 @@ public class OvenBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     public void tick(Level level, BlockPos pPos, BlockState pState) {
+        if (level.isClientSide) return;
+
+        boolean wasLit = pState.getValue(OvenBlock.LIT);
+        boolean shouldBeLit = isHeated(level, pPos);
+        
+        if (wasLit != shouldBeLit) {
+            level.setBlock(pPos, pState.setValue(OvenBlock.LIT, shouldBeLit), 3);
+        }
+
+        if (!shouldBeLit) {
+            if (isCooking) {
+                resetProgressOnly();
+            }
+            return;
+        }
+
+        Optional<RecipeHolder<OvenRecipe>> currentRecipe = getCurrentRecipe();
+        
+        if (currentRecipe.isPresent()) {
+            if (!isCooking) {
+                // Начинаем готовку
+                this.recipe = currentRecipe.get();
+                this.isCooking = true;
+                this.maxProgress = recipe.value().getCookingTime();
+                System.out.println("Oven: Starting cooking with recipe: " + recipe.id() + ", cooking time: " + maxProgress);
+                setChanged();
+            } else if (!currentRecipe.get().equals(this.recipe)) {
+                // Рецепт изменился - сбрасываем прогресс
+                System.out.println("Oven: Recipe changed, resetting progress");
+                resetProgress();
+                return;
+            }
+            
+            // Проверяем, можем ли добавить результат
+            if (canAddResult()) {
+                increaseCraftingProgress();
+                
+                if (progress % 20 == 0) { // Логируем каждую секунду
+                    System.out.println("Oven: Cooking progress: " + progress + "/" + maxProgress);
+                }
+                
+                if (hasCraftingFinished()) {
+                    System.out.println("Oven: Cooking finished! Crafting item.");
+                    craftItem();
+                    resetProgress();
+                }
+            } else {
+                System.out.println("Oven: Cannot add result, pausing cooking");
+            }
+        } else if (isCooking) {
+            // Рецепт больше не совпадает - сбрасываем
+            System.out.println("Oven: No matching recipe found, stopping cooking");
+            resetProgress();
+        }
+    }
+
+    private boolean isHeated(Level level, BlockPos pos) {
+        BlockPos below = pos.below();
+        BlockState belowState = level.getBlockState(below);
+        Block belowBlock = belowState.getBlock();
+        
+        // Проверяем источники тепла
+        if (belowBlock instanceof CampfireBlock) {
+            return belowState.getValue(CampfireBlock.LIT);
+        }
+        if (belowBlock instanceof FireBlock || belowBlock instanceof MagmaBlock) {
+            return true;
+        }
+        if (belowBlock == Blocks.LAVA) {
+            return true;
+        }
+        
+        return false;
+    }
+
+    private boolean canAddResult() {
+        if (recipe == null) return false;
+        
+        ItemStack resultSlot = items.get(8);
+        Map<String, String> recipeResult = recipe.value().getResult();
+        
+        if (resultSlot.isEmpty()) {
+            return true;
+        }
+        
+        // Проверяем, совпадает ли предмет в слоте результата с результатом рецепта
+        ResourceLocation resultId = ResourceLocation.parse(recipeResult.get("id"));
+        if (!BuiltInRegistries.ITEM.get(resultId).equals(resultSlot.getItem())) {
+            return false;
+        }
+        
+        // Проверяем, поместится ли результат
+        int resultCount = Integer.parseInt(recipeResult.get("count"));
+        return resultSlot.getCount() + resultCount <= resultSlot.getMaxStackSize();
     }
 
 
@@ -124,7 +217,91 @@ public class OvenBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     private void craftItem() {
+        if (recipe == null) return;
+        
+        Map<String, String> recipeResult = recipe.value().getResult();
+        ResourceLocation resultId = ResourceLocation.parse(recipeResult.get("id"));
+        int resultCount = Integer.parseInt(recipeResult.get("count"));
+        
+        // Создаем результат
+        ItemStack result = new ItemStack(BuiltInRegistries.ITEM.get(resultId), resultCount);
+        
+        // Добавляем в слот результата
+        ItemStack resultSlot = items.get(8);
+        if (resultSlot.isEmpty()) {
+            items.set(8, result);
+        } else {
+            resultSlot.grow(resultCount);
+        }
+        
+        // Тратим ингредиенты
+        consumeIngredients();
+        
+        setChanged();
+    }
 
+    private void consumeIngredients() {
+        if (recipe == null || level == null) return;
+        
+        List<ItemStack> bottlesAndBuckets = new ArrayList<>();
+        
+        // Тратим из слота бутылочки (0)
+        ItemStack bottleSlot = items.get(0);
+        if (!bottleSlot.isEmpty()) {
+            if (bottleSlot.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "bottles")))) {
+                bottlesAndBuckets.add(new ItemStack(Items.GLASS_BOTTLE));
+            } else if (bottleSlot.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "buckets")))) {
+                bottlesAndBuckets.add(new ItemStack(Items.BUCKET));
+            }
+            
+            bottleSlot.shrink(1);
+            if (bottleSlot.isEmpty()) {
+                items.set(0, ItemStack.EMPTY);
+            }
+        }
+        
+        // Тратим из слотов крафта (1-6)
+        for (int i = 1; i <= 6; i++) {
+            ItemStack stack = items.get(i);
+            if (!stack.isEmpty()) {
+                // Проверяем теги для выброса пустых контейнеров
+                if (stack.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "bottles")))) {
+                    bottlesAndBuckets.add(new ItemStack(Items.GLASS_BOTTLE));
+                } else if (stack.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "buckets")))) {
+                    bottlesAndBuckets.add(new ItemStack(Items.BUCKET));
+                }
+                
+                stack.shrink(1);
+                if (stack.isEmpty()) {
+                    items.set(i, ItemStack.EMPTY);
+                }
+            }
+        }
+        
+        // Тратим из слота миски (7)
+        ItemStack bowlSlot = items.get(7);
+        if (!bowlSlot.isEmpty()) {
+            if (bowlSlot.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "bottles")))) {
+                bottlesAndBuckets.add(new ItemStack(Items.GLASS_BOTTLE));
+            } else if (bowlSlot.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "buckets")))) {
+                bottlesAndBuckets.add(new ItemStack(Items.BUCKET));
+            }
+            
+            bowlSlot.shrink(1);
+            if (bowlSlot.isEmpty()) {
+                items.set(7, ItemStack.EMPTY);
+            }
+        }
+        
+        // Выбрасываем пустые контейнеры в мир
+        for (ItemStack container : bottlesAndBuckets) {
+            if (level != null && !level.isClientSide) {
+                ItemEntity itemEntity = new ItemEntity(level, worldPosition.getX() + 0.5,
+                    worldPosition.getY() + 1.0, worldPosition.getZ() + 0.5, container);
+                itemEntity.setDefaultPickUpDelay();
+                level.addFreshEntity(itemEntity);
+            }
+        }
     }
 
     private boolean hasCraftingFinished() {
@@ -150,14 +327,14 @@ public class OvenBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     private boolean hasRecipe() {
-        return false;
+        return getCurrentRecipe().isPresent();
     }
 
-    private Optional<RecipeHolder<CauldronBrewingRecipe>> getCurrentRecipe() {
-        if (isCooking) return Optional.empty();
+    private Optional<RecipeHolder<OvenRecipe>> getCurrentRecipe() {
+        if (level == null) return Optional.empty();
         return this.level.getRecipeManager()
-                .getRecipeFor(ConcoctionModRecipes.CAULDRON_BREWING_RECIPE_TYPE.get(),
-                        new CauldronBrewingRecipeInput(this.getBlockState(), this.getItems()), level);
+                .getRecipeFor(ConcoctionModRecipes.OVEN_RECIPE_TYPE.get(),
+                        new OvenRecipeInput(this.getItems()), level);
     }
 
     @Override
@@ -188,26 +365,14 @@ public class OvenBlockEntity extends RandomizableContainerBlockEntity {
         boolean isDifferentItem = !isSlotEmpty && !isStackEmpty &&
                 (!ItemStack.matches(previousStack, stack));
 
-        // Проверяем, является ли это слотом ингредиентов (0-3)
-        boolean isIngredientSlot = slot >= 0 && slot < 4;
-        boolean isLadleSlot = slot == 4;
+        // Проверяем, является ли это слотом ингредиентов (0-7)
+        boolean isIngredientSlot = slot >= 0 && slot < 8;
 
-        // Если меняется содержимое слота ингредиентов или слота половника,
-        // то это может повлиять на рецепт и процесс готовки
-        if ((isIngredientSlot || isLadleSlot) && (isDifferentItem || isSlotEmpty != isStackEmpty)) {
+        // Если меняется содержимое слота ингредиентов, это может повлиять на рецепт
+        if (isIngredientSlot && (isDifferentItem || isSlotEmpty != isStackEmpty)) {
             // Сбрасываем прогресс готовки при изменении ингредиентов
             if (this.isCooking) {
                 resetProgressOnly();
-
-                // Устанавливаем состояние блока как не готовящий
-                if (this.level != null) {
-                    BlockState state = this.level.getBlockState(this.worldPosition);
-                    if (state.hasProperty(CookingCauldron.COOKING)) {
-                        this.level.setBlock(this.worldPosition,
-                                state.setValue(CookingCauldron.COOKING, false),
-                                3);
-                    }
-                }
             }
         }
 

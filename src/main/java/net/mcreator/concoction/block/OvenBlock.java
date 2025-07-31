@@ -3,7 +3,7 @@ package net.mcreator.concoction.block;
 
 import io.netty.buffer.Unpooled;
 import net.mcreator.concoction.block.entity.OvenBlockEntity;
-import net.mcreator.concoction.world.inventory.BoilingCauldronInterfaceMenu;
+import net.mcreator.concoction.init.ConcoctionModBlockEntities;
 import net.mcreator.concoction.world.inventory.OvenGUIMenu;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -105,8 +105,16 @@ public class OvenBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level p_153212_, BlockState p_153213_, BlockEntityType<T> p_153214_) {
-		return EntityBlock.super.getTicker(p_153212_, p_153213_, p_153214_);
+	public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+		if (level.isClientSide()) {
+			return null;
+		}
+		return blockEntityType == ConcoctionModBlockEntities.OVEN_BLOCK.get() ?
+			(lvl, pos, blockState, t) -> {
+				if (t instanceof OvenBlockEntity entity) {
+					entity.tick(lvl, pos, blockState);
+				}
+			} : null;
 	}
 
 	@Override

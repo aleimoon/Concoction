@@ -1,0 +1,31 @@
+{
+  "type": "concoction:oven",
+  "group": "food",
+  "category": "misc",
+  "cooking_time": 300,
+  
+  "crafting_ingredients": [
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:egg"
+    }
+  ],
+  
+  "bottle_ingredient": {
+    "item": "minecraft:milk_bucket"
+  },
+  
+  "bowl_ingredient": {
+    "item": "minecraft:bowl"
+  },
+  
+  "result": {
+    "id": "minecraft:cake",
+    "count": "1"
+  }
+}

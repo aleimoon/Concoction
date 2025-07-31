@@ -1,0 +1,31 @@
+{
+  "type": "concoction:oven",
+  "group": "food",
+  "category": "misc",
+  "cooking_time": 250,
+  
+  "crafting_ingredients": [
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:beef"
+    }
+  ],
+  
+  "bottle_ingredient": {
+    "tag": "c:bottles"
+  },
+  
+  "bowl_ingredient": {
+    "item": "minecraft:bowl"
+  },
+  
+  "result": {
+    "id": "minecraft:suspicious_stew",
+    "count": "1"
+  }
+}

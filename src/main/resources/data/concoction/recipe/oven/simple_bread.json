@@ -1,0 +1,17 @@
+{
+  "type": "concoction:oven",
+  "group": "food",
+  "category": "misc",
+  "cooking_time": 100,
+  
+  "crafting_ingredients": [
+    {
+      "item": "minecraft:wheat"
+    }
+  ],
+  
+  "result": {
+    "id": "minecraft:bread",
+    "count": "1"
+  }
+}

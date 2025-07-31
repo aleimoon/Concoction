@@ -46,18 +46,30 @@ public class OvenGUIScreen extends AbstractContainerScreen<OvenGUIMenu> {
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
 
-
 		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, 256, 256);
 
+		// Прогресс-бар готовки
 		if (menu.isCooking()) {
 			int progress = menu.getProgress();
 			int maxProgress = menu.getMaxProgress();
 			int progressSize = 44 * progress / maxProgress;
-			guiGraphics.blit(texture, this.leftPos + 102, this.topPos + 34, 176, 15, progressSize, 24, 256, 256);
+			guiGraphics.blit(texture, this.leftPos + 103, this.topPos + 34, 176, 14, progressSize, 16, 256, 256);
 		}
 
-		if (!menu.isLit()) {
+		// Иконка огонька (горит когда печь нагрета)
+		if (menu.isLit()) {
 			guiGraphics.blit(texture, this.leftPos + 61, this.topPos + 62, 176, 0, 14, 14, 256, 256);
+		}
+
+		// Накладываем пустые текстуры на слоты бутылочки и миски если в них есть предметы
+		// Слот бутылочки (19, 33) - слот 36
+		if (!menu.getSlot(36).getItem().isEmpty()) {
+			guiGraphics.blit(texture, this.leftPos + 19, this.topPos + 33, 176, 54, 16, 16, 256, 256);
+		}
+		
+		// Слот миски (106, 13) - слот 43
+		if (!menu.getSlot(43).getItem().isEmpty()) {
+			guiGraphics.blit(texture, this.leftPos + 106, this.topPos + 13, 176, 54, 16, 16, 256, 256);
 		}
 
 		RenderSystem.disableBlend();
