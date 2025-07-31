@@ -117,7 +117,7 @@ public class OvenGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
 		this.customSlots.put(42, this.addSlot(new SlotItemHandler(internal, 6, 77, 42)));
 		
 		// Слот миски (7)
-		this.customSlots.put(43, this.addSlot(new OvenBowlSlot(internal, 7, 106, 13)));
+		this.customSlots.put(43, this.addSlot(new OvenBowlSlot(internal, 7, 104, 13)));
 		
 		// Слот результата (8)
 		this.customSlots.put(44, this.addSlot(new SlotItemHandler(internal, 8, 139, 34) {

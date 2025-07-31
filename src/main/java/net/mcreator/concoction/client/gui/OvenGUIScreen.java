@@ -58,7 +58,7 @@ public class OvenGUIScreen extends AbstractContainerScreen<OvenGUIMenu> {
 
 		// Иконка огонька (горит когда печь нагрета)
 		if (menu.isLit()) {
-			guiGraphics.blit(texture, this.leftPos + 61, this.topPos + 62, 176, 0, 14, 14, 256, 256);
+			guiGraphics.blit(texture, this.leftPos + 61, this.topPos + 60, 176, 0, 14, 14, 256, 256);
 		}
 
 		// Накладываем пустые текстуры на слоты бутылочки и миски если в них есть предметы
