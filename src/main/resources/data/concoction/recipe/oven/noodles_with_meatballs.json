@@ -1,0 +1,30 @@
+{
+  "type": "concoction:oven",
+  "group": "food",
+  "category": "misc",
+  "cooking_time": 200,
+  
+  "crafting_ingredients": [
+{
+      "item": "concoction:raw_noodles"
+    },
+{
+      "item": "concoction:raw_noodles"
+    },
+    {
+      "tag": "c:foods/raw_meat"
+    },
+    {
+      "item": "concoction:tomato"
+    }
+  ],
+  
+  "bowl_ingredient": {
+    "item": "minecraft:bowl"
+  },
+  
+  "result": {
+    "id": "concoction:noodles_with_meatballs",
+    "count": "1"
+  }
+}

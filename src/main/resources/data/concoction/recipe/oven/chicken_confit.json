@@ -1,0 +1,34 @@
+{
+  "type": "concoction:oven",
+  "group": "food",
+  "category": "misc",
+  "cooking_time": 200,
+  
+  "crafting_ingredients": [
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "item": "concoction:animal_fat"
+    },
+    {
+      "item": "concoction:tomato"
+    },
+    {
+      "item": "concoction:cabbage_leaf"
+    },
+    {
+      "item": "minecraft:potato"
+    }
+
+  ],
+  
+  "bowl_ingredient": {
+    "item": "minecraft:bowl"
+  },
+  
+  "result": {
+    "id": "concoction:chicken_confit",
+    "count": "1"
+  }
+}

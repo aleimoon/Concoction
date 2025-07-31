@@ -1,0 +1,33 @@
+{
+  "type": "concoction:oven",
+  "group": "food",
+  "category": "misc",
+  "cooking_time": 200,
+  
+  "crafting_ingredients": [
+    {
+      "item": "concoction:spicy_pepper"
+    },
+    {
+      "item": "minecraft:bamboo"
+    },
+    {
+      "item": "minecraft:porkchop"
+    },
+    {
+      "item": "concoction:green_onion"
+    }
+
+
+
+  ],
+  
+  "bowl_ingredient": {
+    "item": "minecraft:bowl"
+  },
+  
+  "result": {
+    "id": "concoction:bamboo_porkchop_soup",
+    "count": "1"
+  }
+}

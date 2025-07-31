@@ -2,30 +2,27 @@
   "type": "concoction:oven",
   "group": "food",
   "category": "misc",
-  "cooking_time": 300,
+  "cooking_time": 200,
   
   "crafting_ingredients": [
     {
-      "item": "minecraft:wheat"
+      "item": "minecraft:beetroot"
     },
     {
-      "item": "minecraft:sugar"
+      "item": "minecraft:beetroot"
     },
     {
-      "item": "minecraft:egg"
+      "item": "minecraft:beetroot"
     }
+
   ],
-  
-  "bottle_ingredient": {
-    "item": "minecraft:milk_bucket"
-  },
   
   "bowl_ingredient": {
     "item": "minecraft:bowl"
   },
   
   "result": {
-    "id": "minecraft:cake",
+    "id": "minecraft:beetroot_soup",
     "count": "1"
   }
 }

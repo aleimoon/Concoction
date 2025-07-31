@@ -2,30 +2,23 @@
   "type": "concoction:oven",
   "group": "food",
   "category": "misc",
-  "cooking_time": 250,
+  "cooking_time": 200,
   
   "crafting_ingredients": [
     {
-      "item": "minecraft:carrot"
+      "item": "concoction:pinecone"
     },
     {
       "item": "minecraft:potato"
-    },
-    {
-      "item": "minecraft:beef"
     }
   ],
   
   "bottle_ingredient": {
-    "tag": "c:bottles"
-  },
-  
-  "bowl_ingredient": {
-    "item": "minecraft:bowl"
+    "tag": "concoction:deepfrying_oil"
   },
   
   "result": {
-    "id": "minecraft:suspicious_stew",
+    "id": "concoction:hashbrowns",
     "count": "1"
   }
 }

@@ -1,0 +1,36 @@
+{
+  "type": "concoction:oven",
+  "group": "food",
+  "category": "misc",
+  "cooking_time": 200,
+  
+  "crafting_ingredients": [
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "concoction:green_onion"
+    }
+
+  ],
+
+ "bottle_ingredient": {
+    "item": "concoction:cream_bottle"
+  },
+
+  
+  "bowl_ingredient": {
+    "item": "minecraft:bowl"
+  },
+  
+  "result": {
+    "id": "concoction:mushroom_cream_soup",
+    "count": "1"
+  }
+}

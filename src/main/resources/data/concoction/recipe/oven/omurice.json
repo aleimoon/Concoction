@@ -1,0 +1,37 @@
+{
+  "type": "concoction:oven",
+  "group": "food",
+  "category": "misc",
+  "cooking_time": 200,
+  
+  "crafting_ingredients": [
+{
+      "item": "concoction:rice"
+    },
+{
+      "item": "concoction:rice"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "item": "concoction:tomato"
+    },
+    {
+      "item": "concoction:cabbage_leaf"
+    }
+
+  ],
+  
+  "bowl_ingredient": {
+    "item": "minecraft:bowl"
+  },
+  
+  "result": {
+    "id": "concoction:omurice",
+    "count": "1"
+  }
+}

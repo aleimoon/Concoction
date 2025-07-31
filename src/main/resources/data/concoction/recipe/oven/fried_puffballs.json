@@ -1,0 +1,24 @@
+{
+  "type": "concoction:oven",
+  "group": "food",
+  "category": "misc",
+  "cooking_time": 200,
+  
+  "crafting_ingredients": [
+    {
+      "item": "concoction:puffball"
+    },
+    {
+      "tag": "c:salts"
+    }
+  ],
+  
+  "bottle_ingredient": {
+    "tag": "concoction:deepfrying_oil"
+  },
+  
+  "result": {
+    "id": "concoction:fried_puffballs",
+    "count": "1"
+  }
+}

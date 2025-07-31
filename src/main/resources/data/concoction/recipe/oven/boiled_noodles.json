@@ -1,0 +1,31 @@
+{
+  "type": "concoction:oven",
+  "group": "food",
+  "category": "misc",
+  "cooking_time": 200,
+  
+  "crafting_ingredients": [
+    {
+      "item": "concoction:raw_noodles"
+    },
+    {
+      "item": "concoction:raw_noodles"
+    },
+    {
+      "item": "concoction:raw_noodles"
+    },
+    {
+      "item": "concoction:raw_noodles"
+    }
+
+  ],
+  
+  "bowl_ingredient": {
+    "item": "minecraft:bowl"
+  },
+  
+  "result": {
+    "id": "concoction:boiled_noodles",
+    "count": "1"
+  }
+}

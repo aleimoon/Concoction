@@ -1,0 +1,25 @@
+{
+  "type": "concoction:oven",
+  "group": "food",
+  "category": "misc",
+  "cooking_time": 200,
+  
+  "crafting_ingredients": [
+    {
+      "item": "concoction:puffball"
+    },
+    {
+      "item": "concoction:puffball"
+    }
+
+  ],
+  
+  "bowl_ingredient": {
+    "item": "minecraft:bowl"
+  },
+  
+  "result": {
+    "id": "concoction:puffball_soup",
+    "count": "1"
+  }
+}

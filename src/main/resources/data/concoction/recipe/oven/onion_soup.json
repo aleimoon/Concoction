@@ -1,0 +1,30 @@
+{
+  "type": "concoction:oven",
+  "group": "food",
+  "category": "misc",
+  "cooking_time": 200,
+  
+  "crafting_ingredients": [
+    {
+      "item": "concoction:onion"
+    },
+    {
+      "item": "concoction:onion"
+    },
+    {
+      "item": "concoction:green_onion"
+    }
+
+
+
+  ],
+  
+  "bowl_ingredient": {
+    "item": "minecraft:bowl"
+  },
+  
+  "result": {
+    "id": "concoction:onion_soup",
+    "count": "1"
+  }
+}

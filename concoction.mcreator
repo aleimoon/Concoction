@@ -7193,6 +7193,10 @@
     "ITEMS:minecraft:axes": [
       "~CUSTOM:OvergrownAxe"
     ],
+    "ITEMS:c:bowls": [
+      "CUSTOM:BoiledNoodles",
+      "CUSTOM:CookedRice"
+    ],
     "ENTITIES:c:farm_animals": [
       "EntityChicken",
       "EntityCod",

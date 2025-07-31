@@ -1,0 +1,33 @@
+{
+  "type": "concoction:oven",
+  "group": "food",
+  "category": "misc",
+  "cooking_time": 200,
+  
+  "crafting_ingredients": [
+    {
+      "item": "concoction:corn"
+    },
+    {
+      "item": "concoction:butter"
+    },
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "tag": "minecraft:egg"
+    }
+
+
+
+  ],
+  
+  "bowl_ingredient": {
+    "item": "minecraft:bowl"
+  },
+  
+  "result": {
+    "id": "concoction:corn_soup",
+    "count": "1"
+  }
+}

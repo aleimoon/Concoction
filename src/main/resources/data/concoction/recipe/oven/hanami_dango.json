@@ -1,0 +1,32 @@
+{
+  "type": "concoction:oven",
+  "group": "food",
+  "category": "misc",
+  "cooking_time": 200,
+  
+  "crafting_ingredients": [
+    {
+      "item": "concoction:rice"
+    },
+    {
+      "item": "concoction:rice"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:pink_petals"
+    }
+
+
+  ],
+  
+  "bowl_ingredient": {
+    "item": "minecraft:stick"
+  },
+  
+  "result": {
+    "id": "concoction:hanami_dango",
+    "count": "1"
+  }
+}
