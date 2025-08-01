@@ -12,7 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class OmuriceItem extends Item {
 	public OmuriceItem() {
-		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(6).saturationModifier(1.2f).build()));
+		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(6).saturationModifier(1.5f).build()));
 	}
 
 	@Override

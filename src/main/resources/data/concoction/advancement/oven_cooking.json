@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "id": "concoction:oven"
+    },
+    "title": {
+      "translate": "advancements.oven_cooking.title"
+    },
+    "description": {
+      "translate": "advancements.oven_cooking.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "oven_cooking_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "concoction:eat_dish"
+}

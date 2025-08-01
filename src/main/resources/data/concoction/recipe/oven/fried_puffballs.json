@@ -5,6 +5,9 @@
   "cooking_time": 200,
   
   "crafting_ingredients": [
+  {
+      "item": "concoction:flour"
+    },
     {
       "item": "concoction:puffball"
     },
@@ -19,6 +22,6 @@
   
   "result": {
     "id": "concoction:fried_puffballs",
-    "count": "1"
+    "count": "4"
   }
 }

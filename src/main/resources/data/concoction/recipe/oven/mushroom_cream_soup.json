@@ -6,10 +6,10 @@
   
   "crafting_ingredients": [
     {
-      "item": "minecraft:brown_mushroom"
+      "tag": "c:mushrooms"
     },
     {
-      "item": "minecraft:brown_mushroom"
+      "tag": "c:mushrooms"
     },
     {
       "item": "minecraft:potato"

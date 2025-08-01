@@ -15,6 +15,6 @@ import static net.mcreator.concoction.init.ConcoctionModDataComponents.*;
 public class FriedPuffballsItem extends Item {
 	public FriedPuffballsItem() {
 		super(new Item.Properties().stacksTo(64).
-				component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.SALTY, 1, 180, true)).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(6).saturationModifier(0.6f).build()));
+				component(FOOD_EFFECT.value(), new FoodEffectComponent(FoodEffectType.SALTY, 1, 180, true)).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(2).saturationModifier(0.6f).build()));
 	}
 }

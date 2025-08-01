@@ -41,7 +41,7 @@
     "projectileDisableAmmoCheck": false,
     "isFood": true,
     "nutritionalValue": 4,
-    "saturation": 1.2000000000000002,
+    "saturation": 1.5,
     "eatResultItem": {
       "value": "Items.BOWL"
     },
@@ -49,6 +49,10 @@
     "isAlwaysEdible": false,
     "animation": "eat",
     "isMusicDisc": false,
+    "musicDiscMusic": {
+      "value": ""
+    },
+    "musicDiscDescription": "",
     "musicDiscLengthInTicks": 0,
     "musicDiscAnalogOutput": 0
   }

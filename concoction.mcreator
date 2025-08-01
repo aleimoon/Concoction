@@ -7013,6 +7013,19 @@
         ]
       },
       "path": "~/oven"
+    },
+    {
+      "name": "OvenCooking",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "oven_cooking",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/concoction/advancement/oven_cooking.json"
+        ]
+      },
+      "path": "~/achivements"
     }
   ],
   "variable_elements": [],
@@ -7413,6 +7426,7 @@
   "tab_element_order": {},
   "language_map": {
     "ru_ru": {
+      "gui.oven.title": "Духовка",
       "gui.concoction.kitchen_cabinet": "Кухонный шкаф",
       "taste.concoction.glow": "• Сияющее",
       "block.concoction.lime_pillow_block": "Лаймовая подушка",
@@ -7427,19 +7441,19 @@
       "item.minecraft.tipped_arrow.effect.flame_extended": "Стрела жжения",
       "advancements.sunstruck_transformed.title": "Зомби против растений",
       "item.concoction.chocolate_cake_slice": "Кусочек шоколадного торта",
-      "advancements.spicy_on_fire.title": "Ты просто огонь!",
       "advancements.make_soul_soul.title": "Адские сверхурочные",
+      "advancements.spicy_on_fire.title": "Ты просто огонь!",
       "block.concoction.wild_potato": "Дикий картофель",
-      "item.concoction.cooked_corn": "Жареная кукуруза",
       "item.concoction.hashbrowns": "Хрустящие оладушки",
+      "item.concoction.cooked_corn": "Жареная кукуруза",
       "item.concoction.cream_bottle": "Бутылочка сливок",
       "item.concoction.cabbage_seeds": "Семена капусты",
       "item.concoction.tomato": "Томат",
       "advancements.new_crops.title": "Дикая находка",
       "item.minecraft.tipped_arrow.effect.snowflake_extended": "Стрела мороза",
       "block.concoction.crimson_kitchen_cabinet": "Багровый кухонный шкаф",
-      "item.concoction.mint_cookie": "Мятное печенье",
       "block.concoction.chorus_block": "Блок хоруса",
+      "item.concoction.mint_cookie": "Мятное печенье",
       "block.concoction.crop_onion": "Лук",
       "block.concoction.small_blue_pillow_block": "Маленькая синяя подушка",
       "effect.concoction.fiery_touch": "Испепеляющее касание",
@@ -7478,6 +7492,7 @@
       "effect.concoction.instability": "Нестабильность",
       "block.concoction.crop_cabbage": "Капуста",
       "effect.concoction.frost_touch": "Ледяное касание",
+      "advancements.oven_cooking.descr": "Приготовь что-нибудь в духовке",
       "item.concoction.sunflower_crown_helmet": "Подсолнечный венок",
       "item.concoction.reapper_seeds": "Семена призрачного жнерца",
       "item.concoction.roasted_sunflower_seeds": "Жареные семена подсолнуха",
@@ -7516,6 +7531,7 @@
       "advancements.fall_pillow.descr": "Упади на подушку с высоты более ста блоков",
       "death.attack.soul_damage": "%1$s слился с душами",
       "block.concoction.acacia_kitchen_cabinet": "Акациевый кухонный шкаф",
+      "advancements.oven_cooking.title": "Ключ к сердцу лежит...",
       "block.concoction.orange_woven_carpet": "Оранжевый тканый ковёр",
       "block.concoction.sweet_berries_block": "Блок брусники",
       "item.concoction.mint_chocolate_cake_slice": "Кусочек мятно-шоколадного торта",
@@ -7744,11 +7760,12 @@
       "item.concoction.cod_sushi": "Суши из трески"
     },
     "en_us": {
+      "gui.oven.title": "Oven",
       "gui.concoction.kitchen_cabinet": "Kitchen Cabinet",
       "taste.concoction.glow": "• Glimmering",
       "block.concoction.lime_pillow_block": "Lime Pillow",
-      "block.concoction.beetroot_block": "Beetroot Block",
       "block.concoction.light_gray_woven_carpet": "Light Gray Woven Carpet",
+      "block.concoction.beetroot_block": "Beetroot Block",
       "subtitles.butter_thickens": "Butter thickens",
       "death.attack.spicy_damage": "%1$s thought they could handle the spice",
       "block.concoction.mint": "Mint",
@@ -7809,6 +7826,7 @@
       "effect.concoction.instability": "Instability",
       "block.concoction.crop_cabbage": "Crop Cabbage",
       "effect.concoction.frost_touch": "Frost Touch",
+      "advancements.oven_cooking.descr": "Cook something in the oven",
       "item.concoction.sunflower_crown_helmet": "Sunflower Crown",
       "item.concoction.reapper_seeds": "Ghost Reapper Seeds",
       "item.concoction.roasted_sunflower_seeds": "Roasted Sunflower Seeds",
@@ -7847,6 +7865,7 @@
       "advancements.fall_pillow.descr": "Fall over a hundred blocks on pillow",
       "death.attack.soul_damage": "%1$s was consumed by souls",
       "block.concoction.acacia_kitchen_cabinet": "Acacia Kitchen Cabinet",
+      "advancements.oven_cooking.title": "Key to the Heart Lies...",
       "block.concoction.orange_woven_carpet": "Orange Woven Carpet",
       "block.concoction.sweet_berries_block": "Lingonberry Block",
       "item.concoction.mint_chocolate_cake_slice": "Mint Chocolate Cake Slice",
