@@ -394,6 +394,35 @@ public class CookingCauldronEntity extends RandomizableContainerBlockEntity {
         this.setChanged();
     }
 
+    private boolean isSameRecipe(RecipeHolder<CauldronBrewingRecipe> recipe1, RecipeHolder<CauldronBrewingRecipe> recipe2) {
+        if (recipe1 == null || recipe2 == null) return false;
+        
+        // Сравниваем по ID рецептов (основной способ)
+        if (recipe1.id().equals(recipe2.id())) return true;
+        
+        // Если ID разные, сравниваем по ингредиентам
+        List<Ingredient> ingredients1 = recipe1.value().getInputItems();
+        List<Ingredient> ingredients2 = recipe2.value().getInputItems();
+        
+        if (ingredients1.size() != ingredients2.size()) return false;
+        
+        // Создаем копии списков для сравнения
+        List<Ingredient> sorted1 = new ArrayList<>(ingredients1);
+        List<Ingredient> sorted2 = new ArrayList<>(ingredients2);
+        
+        // Сортируем по строковому представлению для сравнения
+        sorted1.sort((a, b) -> a.toString().compareTo(b.toString()));
+        sorted2.sort((a, b) -> a.toString().compareTo(b.toString()));
+        
+        for (int i = 0; i < sorted1.size(); i++) {
+            if (!sorted1.get(i).toString().equals(sorted2.get(i).toString())) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
     private boolean hasRecipe() {
         Optional<RecipeHolder<CauldronBrewingRecipe>> recipe = getCurrentRecipe();
         if(recipe.isEmpty()) {
@@ -402,7 +431,7 @@ public class CookingCauldronEntity extends RandomizableContainerBlockEntity {
 
         RecipeHolder<CauldronBrewingRecipe> newRecipe = recipe.get();
         // Если рецепт изменился, сбрасываем прогресс
-        if (this.recipe != null && !this.recipe.equals(newRecipe)) {
+        if (this.recipe != null && !isSameRecipe(this.recipe, newRecipe)) {
             this.resetProgress();
             return false;
         }
@@ -503,8 +532,32 @@ public class CookingCauldronEntity extends RandomizableContainerBlockEntity {
         // Если меняется содержимое слота ингредиентов или слота половника,
         // то это может повлиять на рецепт и процесс готовки
         if ((isIngredientSlot || isLadleSlot) && (isDifferentItem || isSlotEmpty != isStackEmpty)) {
-            // Сбрасываем прогресс готовки при изменении ингредиентов
-            if (this.isCooking) {
+            System.out.println("Cauldron: Item changed in slot " + slot + ", isCooking: " + this.isCooking);
+            
+            // Сначала устанавливаем новый предмет
+            ItemStack oldStack = this.items.get(slot);
+            this.items.set(slot, stack);
+            
+            // Теперь проверяем рецепт с новым предметом
+            Optional<RecipeHolder<CauldronBrewingRecipe>> newRecipe = getCurrentRecipe();
+            boolean sameRecipe = false;
+            boolean recipeValid = false;
+            
+            if (this.isCooking && this.recipe != null && newRecipe.isPresent()) {
+                sameRecipe = this.recipe.equals(newRecipe.get());
+                recipeValid = true;
+                System.out.println("Cauldron: Current recipe: " + this.recipe.id() + ", New recipe: " + newRecipe.get().id() + ", Same: " + sameRecipe);
+            } else if (this.isCooking && newRecipe.isPresent()) {
+                // Если раньше не было рецепта, но теперь есть - это новый рецепт
+                recipeValid = true;
+                System.out.println("Cauldron: New recipe found: " + newRecipe.get().id());
+            } else if (this.isCooking) {
+                System.out.println("Cauldron: No valid recipe found after change");
+            }
+            
+            // Сбрасываем прогресс только если рецепт изменился или стал некорректным
+            if (this.isCooking && (!sameRecipe || !recipeValid)) {
+                System.out.println("Cauldron: Resetting progress - sameRecipe: " + sameRecipe + ", recipeValid: " + recipeValid);
                 resetProgressOnly();
                 
                 // Устанавливаем состояние блока как не готовящий
@@ -516,10 +569,16 @@ public class CookingCauldronEntity extends RandomizableContainerBlockEntity {
                                           3);
                     }
                 }
+            } else if (this.isCooking) {
+                System.out.println("Cauldron: Keeping progress - sameRecipe: " + sameRecipe + ", recipeValid: " + recipeValid);
             }
+            
+            // НЕ возвращаем старый предмет - оставляем новый
+            // Стандартная обработка уже произойдет ниже
+            return; // Выходим, чтобы избежать двойной установки
         }
         
-        // Стандартная обработка
+        // Стандартная обработка (только если не обработали выше)
         stack.limitSize(this.getMaxStackSize(stack));
         this.items.set(slot, stack);
         this.setChanged();

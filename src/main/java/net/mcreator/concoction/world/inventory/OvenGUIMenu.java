@@ -199,9 +199,11 @@ public class OvenGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
 			
 			// Если shift-click по слоту блока (36-44)
 			if (index >= 36 && index <= 44) {
-				// Возвращаем в инвентарь игрока
-				if (!this.moveItemStackTo(itemstack1, 0, 36, true)) {
-					return ItemStack.EMPTY;
+				// Возвращаем в инвентарь игрока - сначала в основной инвентарь, потом в хотбар
+				if (!this.moveItemStackTo(itemstack1, 9, 36, false)) {
+					if (!this.moveItemStackTo(itemstack1, 0, 9, false)) {
+						return ItemStack.EMPTY;
+					}
 				}
 				slot.onQuickCraft(itemstack1, itemstack);
 			}
@@ -212,20 +214,18 @@ public class OvenGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
 				
 				// Проверяем тег c:tableware - идет в слот миски (43)
 				if (itemstack1.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "tableware")))) {
-					if (!this.moveItemStackTo(itemstack1, 43, 44, false)) {
-						moved = false;
-					} else {
+					if (this.moveItemStackTo(itemstack1, 43, 44, false)) {
 						moved = true;
 					}
 				}
 				
 				if (!moved) {
-					// Сначала пытаемся поместить в слот бутылочки (42)
-					if (this.moveItemStackTo(itemstack1, 42, 43, false)) {
+					// Сначала пытаемся поместить в слот бутылочки (36)
+					if (this.moveItemStackTo(itemstack1, 36, 37, false)) {
 						moved = true;
 					}
-					// Затем в слоты крафта (36-41)
-					else if (this.moveItemStackTo(itemstack1, 36, 42, false)) {
+					// Затем в слоты крафта (37-42)
+					else if (this.moveItemStackTo(itemstack1, 37, 43, false)) {
 						moved = true;
 					}
 				}

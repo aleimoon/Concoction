@@ -33,6 +33,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.Containers;
 import org.jetbrains.annotations.Nullable;
 
 public class OvenBlock extends Block implements EntityBlock {
@@ -120,5 +121,11 @@ public class OvenBlock extends Block implements EntityBlock {
 	@Override
 	public @Nullable <T extends BlockEntity> GameEventListener getListener(ServerLevel p_221121_, T p_221122_) {
 		return EntityBlock.super.getListener(p_221121_, p_221122_);
+	}
+
+	@Override
+	public void onRemove(BlockState oldState, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+		Containers.dropContentsOnDestroy(oldState, newState, level, pos);
+		super.onRemove(oldState, level, pos, newState, isMoving);
 	}
 }

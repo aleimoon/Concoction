@@ -15,11 +15,8 @@
       "item": "minecraft:chicken"
     },
     {
-      "tag": "minecraft:egg"
+      "item": "minecraft:egg"
     }
-
-
-
   ],
   
   "bowl_ingredient": {

@@ -17,6 +17,7 @@ import net.mcreator.concoction.init.ConcoctionModRecipes;
 import net.mcreator.concoction.recipe.brewing.SnowflakePotionCraftBrewingRecipe;
 import net.mcreator.concoction.recipe.butterChurn.ButterChurnRecipe;
 import net.mcreator.concoction.recipe.cauldron.CauldronBrewingRecipe;
+import net.mcreator.concoction.recipe.oven.OvenRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.network.chat.Component;
@@ -49,6 +50,10 @@ public class JEIPlugin implements IModPlugin {
 
         registration.addRecipeCategories(new ButterChurnRecipeCategory(
                 registration.getJeiHelpers().getGuiHelper()));
+
+        registration.addRecipeCategories(new OvenRecipeCategory(
+                registration.getJeiHelpers().getGuiHelper()
+        ));
     }
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
@@ -65,6 +70,11 @@ public class JEIPlugin implements IModPlugin {
                 .getAllRecipesFor(ConcoctionModRecipes.BUTTER_CHURN_RECIPE_TYPE.get())
                 .stream().map(RecipeHolder::value).toList();
         registration.addRecipes(ButterChurnRecipeCategory.BUTTER_CHURN_RECIPE_TYPE, butterChurnRecipes);
+
+        List<OvenRecipe> ovenRecipes = recipeManager
+                .getAllRecipesFor(ConcoctionModRecipes.OVEN_RECIPE_TYPE.get())
+                .stream().map(RecipeHolder::value).toList();
+        registration.addRecipes(OvenRecipeCategory.OVEN_RECIPE_TYPE, ovenRecipes);
 
 //        List<SnowflakePotionCraftBrewingRecipe> SnowflakePotionRecipe = recipeManager
 //                .getAllRecipesFor(ConcoctionModRecipes.CAULDRON_BREWING_RECIPE_TYPE.get())

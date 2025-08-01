@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "concoction:boiled_noodles",
-    "concoction:cooked_rice"
+    "minecraft:bowl"
   ]
 }

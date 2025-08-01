@@ -24,6 +24,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
+import java.util.List;
+import java.util.ArrayList;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CampfireBlock;
@@ -130,10 +132,15 @@ public class OvenBlockEntity extends RandomizableContainerBlockEntity {
                 this.maxProgress = recipe.value().getCookingTime();
                 System.out.println("Oven: Starting cooking with recipe: " + recipe.id() + ", cooking time: " + maxProgress);
                 setChanged();
-            } else if (!currentRecipe.get().equals(this.recipe)) {
+            } else if (!isSameRecipe(currentRecipe.get(), this.recipe)) {
                 // Рецепт изменился - сбрасываем прогресс
                 System.out.println("Oven: Recipe changed, resetting progress");
                 resetProgress();
+                // Начинаем новый рецепт
+                this.recipe = currentRecipe.get();
+                this.isCooking = true;
+                this.maxProgress = recipe.value().getCookingTime();
+                setChanged();
                 return;
             }
             
@@ -158,6 +165,35 @@ public class OvenBlockEntity extends RandomizableContainerBlockEntity {
             System.out.println("Oven: No matching recipe found, stopping cooking");
             resetProgress();
         }
+    }
+
+    private boolean isSameRecipe(RecipeHolder<OvenRecipe> recipe1, RecipeHolder<OvenRecipe> recipe2) {
+        if (recipe1 == null || recipe2 == null) return false;
+        
+        // Сравниваем по ID рецептов (основной способ)
+        if (recipe1.id().equals(recipe2.id())) return true;
+        
+        // Если ID разные, сравниваем по ингредиентам
+        List<Ingredient> ingredients1 = recipe1.value().getIngredients();
+        List<Ingredient> ingredients2 = recipe2.value().getIngredients();
+        
+        if (ingredients1.size() != ingredients2.size()) return false;
+        
+        // Создаем копии списков для сравнения
+        List<Ingredient> sorted1 = new ArrayList<>(ingredients1);
+        List<Ingredient> sorted2 = new ArrayList<>(ingredients2);
+        
+        // Сортируем по строковому представлению для сравнения
+        sorted1.sort((a, b) -> a.toString().compareTo(b.toString()));
+        sorted2.sort((a, b) -> a.toString().compareTo(b.toString()));
+        
+        for (int i = 0; i < sorted1.size(); i++) {
+            if (!sorted1.get(i).toString().equals(sorted2.get(i).toString())) {
+                return false;
+            }
+        }
+        
+        return true;
     }
 
     private boolean isHeated(Level level, BlockPos pos) {
@@ -243,32 +279,19 @@ public class OvenBlockEntity extends RandomizableContainerBlockEntity {
     private void consumeIngredients() {
         if (recipe == null || level == null) return;
         
-        List<ItemStack> bottlesAndBuckets = new ArrayList<>();
+        List<ItemStack> containers = new ArrayList<>();
         
-        // Тратим из слота бутылочки (0)
-        ItemStack bottleSlot = items.get(0);
-        if (!bottleSlot.isEmpty()) {
-            if (bottleSlot.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "bottles")))) {
-                bottlesAndBuckets.add(new ItemStack(Items.GLASS_BOTTLE));
-            } else if (bottleSlot.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "buckets")))) {
-                bottlesAndBuckets.add(new ItemStack(Items.BUCKET));
-            }
-            
-            bottleSlot.shrink(1);
-            if (bottleSlot.isEmpty()) {
-                items.set(0, ItemStack.EMPTY);
-            }
-        }
-        
-        // Тратим из слотов крафта (1-6)
-        for (int i = 1; i <= 6; i++) {
+        // Проверяем и тратим все слоты (0-7)
+        for (int i = 0; i <= 7; i++) {
             ItemStack stack = items.get(i);
             if (!stack.isEmpty()) {
                 // Проверяем теги для выброса пустых контейнеров
                 if (stack.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "bottles")))) {
-                    bottlesAndBuckets.add(new ItemStack(Items.GLASS_BOTTLE));
+                    containers.add(new ItemStack(Items.GLASS_BOTTLE));
                 } else if (stack.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "buckets")))) {
-                    bottlesAndBuckets.add(new ItemStack(Items.BUCKET));
+                    containers.add(new ItemStack(Items.BUCKET));
+                } else if (stack.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "bowls")))) {
+                    containers.add(new ItemStack(Items.BOWL));
                 }
                 
                 stack.shrink(1);
@@ -278,23 +301,8 @@ public class OvenBlockEntity extends RandomizableContainerBlockEntity {
             }
         }
         
-        // Тратим из слота миски (7)
-        ItemStack bowlSlot = items.get(7);
-        if (!bowlSlot.isEmpty()) {
-            if (bowlSlot.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "bottles")))) {
-                bottlesAndBuckets.add(new ItemStack(Items.GLASS_BOTTLE));
-            } else if (bowlSlot.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "buckets")))) {
-                bottlesAndBuckets.add(new ItemStack(Items.BUCKET));
-            }
-            
-            bowlSlot.shrink(1);
-            if (bowlSlot.isEmpty()) {
-                items.set(7, ItemStack.EMPTY);
-            }
-        }
-        
         // Выбрасываем пустые контейнеры в мир
-        for (ItemStack container : bottlesAndBuckets) {
+        for (ItemStack container : containers) {
             if (level != null && !level.isClientSide) {
                 ItemEntity itemEntity = new ItemEntity(level, worldPosition.getX() + 0.5,
                     worldPosition.getY() + 1.0, worldPosition.getZ() + 0.5, container);
@@ -313,22 +321,6 @@ public class OvenBlockEntity extends RandomizableContainerBlockEntity {
         setChanged();
     }
 
-    public boolean hasCraftedResult() {
-        return !this.craftResult.get("id").isEmpty();
-    }
-
-    public Map<String, String> getCraftResult() {
-        return this.craftResult;
-    }
-
-    public void setCraftResult(Map<String, String> result) {
-        this.craftResult = result;
-        this.setChanged();
-    }
-
-    private boolean hasRecipe() {
-        return getCurrentRecipe().isPresent();
-    }
 
     private Optional<RecipeHolder<OvenRecipe>> getCurrentRecipe() {
         if (level == null) return Optional.empty();
@@ -370,13 +362,43 @@ public class OvenBlockEntity extends RandomizableContainerBlockEntity {
 
         // Если меняется содержимое слота ингредиентов, это может повлиять на рецепт
         if (isIngredientSlot && (isDifferentItem || isSlotEmpty != isStackEmpty)) {
-            // Сбрасываем прогресс готовки при изменении ингредиентов
-            if (this.isCooking) {
-                resetProgressOnly();
+            System.out.println("Oven: Item changed in slot " + slot + ", isCooking: " + this.isCooking);
+            
+            // Сначала устанавливаем новый предмет
+            ItemStack oldStack = this.items.get(slot);
+            this.items.set(slot, stack);
+            
+            // Теперь проверяем рецепт с новым предметом
+            Optional<RecipeHolder<OvenRecipe>> newRecipe = getCurrentRecipe();
+            boolean sameRecipe = false;
+            boolean recipeValid = false;
+            
+            if (this.isCooking && this.recipe != null && newRecipe.isPresent()) {
+                sameRecipe = isSameRecipe(newRecipe.get(), this.recipe);
+                recipeValid = true;
+                System.out.println("Oven: Current recipe: " + this.recipe.id() + ", New recipe: " + newRecipe.get().id() + ", Same: " + sameRecipe);
+            } else if (this.isCooking && newRecipe.isPresent()) {
+                // Если раньше не было рецепта, но теперь есть - это новый рецепт
+                recipeValid = true;
+                System.out.println("Oven: New recipe found: " + newRecipe.get().id());
+            } else if (this.isCooking) {
+                System.out.println("Oven: No valid recipe found after change");
             }
+            
+            // Сбрасываем прогресс только если рецепт изменился или стал некорректным
+            if (this.isCooking && (!sameRecipe || !recipeValid)) {
+                System.out.println("Oven: Resetting progress - sameRecipe: " + sameRecipe + ", recipeValid: " + recipeValid);
+                resetProgressOnly();
+            } else if (this.isCooking) {
+                System.out.println("Oven: Keeping progress - sameRecipe: " + sameRecipe + ", recipeValid: " + recipeValid);
+            }
+            
+            // НЕ возвращаем старый предмет - оставляем новый
+            // Стандартная обработка уже произойдет ниже
+            return; // Выходим, чтобы избежать двойной установки
         }
 
-        // Стандартная обработка
+        // Стандартная обработка (только если не обработали выше)
         stack.limitSize(this.getMaxStackSize(stack));
         this.items.set(slot, stack);
         this.setChanged();
@@ -453,7 +475,7 @@ public class OvenBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     @Override
-    protected Component getDefaultName() {
+    protected Component getDefaultName()  {
         return Component.translatable("container.oven");
     }
 
