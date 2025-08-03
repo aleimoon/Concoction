@@ -104,6 +104,7 @@ public class JEIPlugin implements IModPlugin {
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(ConcoctionModItems.BUTTER_CHURN.get()), ButterChurnRecipeCategory.BUTTER_CHURN_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(Items.CAULDRON), CauldronRecipeCategory.CAULDRON_RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ConcoctionModItems.OVEN.get()), OvenRecipeCategory.OVEN_RECIPE_TYPE);
     }
 //    @Override
 //    public void registerGuiHandlers(IGuiHandlerRegistration registration) {

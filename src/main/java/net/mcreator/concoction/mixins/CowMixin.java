@@ -58,6 +58,7 @@ public class CowMixin implements ICowMilkLevel {
                 return;
             }
 
+            // Обновляем уровень молока на основе времени
             if (concoction$milkLevel < 3) {
                 long intervalsPassed = (now - concoction$lastMilkedTime) / milkingInterval;
                 if (intervalsPassed > 0) {
@@ -67,8 +68,7 @@ public class CowMixin implements ICowMilkLevel {
             }
 
             ItemStack stack = player.getItemInHand(hand);
-            String itemType = stack.getItem() == Items.BUCKET ? "BUCKET" : (stack.getItem() == Items.GLASS_BOTTLE ? "BOTTLE" : stack.getItem().toString());
-            long intervalsPassed = (now - concoction$lastMilkedTime) / milkingInterval;
+
             if (stack.getItem() == Items.BUCKET) {
                 if (concoction$milkLevel == 3) {
                     concoction$setMilkLevel(0);
@@ -102,6 +102,8 @@ public class CowMixin implements ICowMilkLevel {
                     return;
                 }
             }
+        } else {
+            cir.setReturnValue(InteractionResult.SUCCESS);
         }
     }
 }

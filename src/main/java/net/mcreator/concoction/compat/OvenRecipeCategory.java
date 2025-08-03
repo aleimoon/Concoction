@@ -7,6 +7,7 @@ import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.ingredients.IIngredientType;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
@@ -23,6 +24,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.neoforged.neoforge.common.crafting.IngredientType;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
@@ -37,17 +39,24 @@ public class OvenRecipeCategory implements IRecipeCategory<OvenRecipe> {
     public static final RecipeType<OvenRecipe> OVEN_RECIPE_TYPE = RecipeType.create(ConcoctionMod.MODID, "oven",
             OvenRecipe.class);
 
+
+
     @Nonnull
     private final IDrawable background;
     private final IDrawable icon;
+    private final IDrawable slot;
     protected final IDrawableAnimated arrow;
+
+
 
 
     public OvenRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 170, 76);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ConcoctionModBlocks.OVEN));
-        this.arrow = helper.drawableBuilder(TEXTURE, 171, 15, 24, 15)
+        this.arrow = helper.drawableBuilder(TEXTURE, 171, 14, 23, 16)
                 .buildAnimated(200, IDrawableAnimated.StartDirection.LEFT, false);
+        this.slot = helper.drawableBuilder(TEXTURE, 171, 31, 18, 18)
+                .build();
     }
 
     @Override
@@ -74,7 +83,7 @@ public class OvenRecipeCategory implements IRecipeCategory<OvenRecipe> {
 
     @Override
     public void draw(OvenRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        arrow.draw(guiGraphics, 100, 31);
+        arrow.draw(guiGraphics, 100, 30);
     }
 
     public static boolean isCursorInsideBounds(int iconX, int iconY, int iconWidth, int iconHeight, double cursorX, double cursorY) {
@@ -90,9 +99,10 @@ public class OvenRecipeCategory implements IRecipeCategory<OvenRecipe> {
         }
     }
 
+
+
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, OvenRecipe recipe, IFocusGroup focuses) {
-
         List<Ingredient> list = recipe.getCraftingIngredients();
 
         int i = 0;
@@ -116,16 +126,14 @@ public class OvenRecipeCategory implements IRecipeCategory<OvenRecipe> {
         );
 
         if (!recipe.getBowlIngredient().hasNoItems()) {
-            ItemStack bowlItem = recipe.getBowlIngredient().getItems()[0];
-            builder.addSlot(RecipeIngredientRole.CATALYST, 101, 9).addItemStack(bowlItem);
+            builder.addSlot(RecipeIngredientRole.CATALYST, 101, 9)
+                    .addIngredients(recipe.getBowlIngredient());
         }
 
         if (!recipe.getBottleIngredient().hasNoItems()){
-            ItemStack bottleItem = recipe.getBottleIngredient().getItems()[0];
-            builder.addSlot(RecipeIngredientRole.CATALYST, 15, 28).addItemStack(bottleItem);
-
-
+            builder.addSlot(RecipeIngredientRole.CATALYST, 16, 29)
+                    .setBackground(slot, 0,0)
+                    .addIngredients(recipe.getBottleIngredient());
         }
-
     }
 }

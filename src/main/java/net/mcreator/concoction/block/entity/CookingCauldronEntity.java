@@ -532,32 +532,47 @@ public class CookingCauldronEntity extends RandomizableContainerBlockEntity {
         // Если меняется содержимое слота ингредиентов или слота половника,
         // то это может повлиять на рецепт и процесс готовки
         if ((isIngredientSlot || isLadleSlot) && (isDifferentItem || isSlotEmpty != isStackEmpty)) {
-            System.out.println("Cauldron: Item changed in slot " + slot + ", isCooking: " + this.isCooking);
             
-            // Сначала устанавливаем новый предмет
+            // Проверяем, какой рецепт будет готовиться после изменения
             ItemStack oldStack = this.items.get(slot);
+            
+            // Проверяем рецепт с оригинальным количеством (1 предмет)
+            ItemStack testStack = oldStack.copy();
+            if (!testStack.isEmpty()) {
+                testStack.setCount(1); // Проверяем с 1 предметом
+            }
+            this.items.set(slot, testStack);
+            
+            Optional<RecipeHolder<CauldronBrewingRecipe>> originalRecipe = getCurrentRecipe();
+            
+            // Теперь проверяем с новым количеством
             this.items.set(slot, stack);
-            
-            // Теперь проверяем рецепт с новым предметом
             Optional<RecipeHolder<CauldronBrewingRecipe>> newRecipe = getCurrentRecipe();
-            boolean sameRecipe = false;
-            boolean recipeValid = false;
             
-            if (this.isCooking && this.recipe != null && newRecipe.isPresent()) {
-                sameRecipe = this.recipe.equals(newRecipe.get());
-                recipeValid = true;
-                System.out.println("Cauldron: Current recipe: " + this.recipe.id() + ", New recipe: " + newRecipe.get().id() + ", Same: " + sameRecipe);
-            } else if (this.isCooking && newRecipe.isPresent()) {
-                // Если раньше не было рецепта, но теперь есть - это новый рецепт
-                recipeValid = true;
-                System.out.println("Cauldron: New recipe found: " + newRecipe.get().id());
-            } else if (this.isCooking) {
-                System.out.println("Cauldron: No valid recipe found after change");
+            boolean shouldReset = false;
+            
+            if (this.isCooking && this.recipe != null) {
+                
+                // Если с оригинальным количеством рецепт тот же, то с новым количеством он тоже должен быть тот же
+                if (originalRecipe.isPresent() && isSameRecipe(originalRecipe.get(), this.recipe)) {
+                    shouldReset = false;
+                } else if (newRecipe.isPresent()) {
+                    // Если рецепт изменился - сбрасываем прогресс
+                    if (!isSameRecipe(newRecipe.get(), this.recipe)) {
+                        shouldReset = true;
+                    } else {
+                    }
+                } else {
+                    // Если рецепт стал некорректным - сбрасываем прогресс
+                    shouldReset = true;
+                }
             }
             
-            // Сбрасываем прогресс только если рецепт изменился или стал некорректным
-            if (this.isCooking && (!sameRecipe || !recipeValid)) {
-                System.out.println("Cauldron: Resetting progress - sameRecipe: " + sameRecipe + ", recipeValid: " + recipeValid);
+            // Возвращаем старый предмет для корректной обработки
+            this.items.set(slot, oldStack);
+            
+            // Сбрасываем прогресс только если нужно
+            if (shouldReset) {
                 resetProgressOnly();
                 
                 // Устанавливаем состояние блока как не готовящий
@@ -569,13 +584,8 @@ public class CookingCauldronEntity extends RandomizableContainerBlockEntity {
                                           3);
                     }
                 }
-            } else if (this.isCooking) {
-                System.out.println("Cauldron: Keeping progress - sameRecipe: " + sameRecipe + ", recipeValid: " + recipeValid);
+            } else {
             }
-            
-            // НЕ возвращаем старый предмет - оставляем новый
-            // Стандартная обработка уже произойдет ниже
-            return; // Выходим, чтобы избежать двойной установки
         }
         
         // Стандартная обработка (только если не обработали выше)

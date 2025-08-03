@@ -1,7 +1,10 @@
 
 package net.mcreator.concoction.world.inventory;
 
+import net.mcreator.concoction.block.entity.CookingCauldronEntity;
 import net.mcreator.concoction.block.entity.OvenBlockEntity;
+import net.mcreator.concoction.utils.Utils;
+import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.IItemHandler;
 
@@ -124,6 +127,13 @@ public class OvenGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				return false; // Нельзя класть предметы в слот результата
+			}
+			@Override
+			public void onTake(Player player, ItemStack stack) {
+				super.onTake(player, stack);
+
+				if (!player.level().isClientSide() && player instanceof ServerPlayer serverPlayer)
+					Utils.addAchievement(serverPlayer, "concoction:oven_cooking");
 			}
 		}));
 	}
