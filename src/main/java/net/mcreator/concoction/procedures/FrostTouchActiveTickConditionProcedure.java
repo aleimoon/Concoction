@@ -28,7 +28,7 @@ public class FrostTouchActiveTickConditionProcedure {
 									world.setBlock(BlockPos.containing(x + sx, y + sy, z + sz), Blocks.FROSTED_ICE.defaultBlockState(), 3);
 								} else if (world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz)).isFaceSturdy(world, BlockPos.containing(x + sx, y + sy, z + sz), Direction.UP)
 										&& (world.isEmptyBlock(BlockPos.containing(x + sx, y + sy + 1, z + sz)) || (world.getBlockState(BlockPos.containing(x + sx, y + sy + 1, z + sz))).getBlock() == Blocks.FIRE)
-										&& !((world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz))).getBlock() == Blocks.FROSTED_ICE)) {
+										&& !((world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz))).getBlock() == Blocks.FROSTED_ICE) && Blocks.SNOW.defaultBlockState().canSurvive(world, BlockPos.containing(x + sx, y + sy + 1, z + sz))) {
 									world.setBlock(BlockPos.containing(x + sx, y + sy + 1, z + sz), Blocks.SNOW.defaultBlockState(), 3);
 								}
 								sz = sz + 1;
