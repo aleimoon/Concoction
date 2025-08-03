@@ -6196,7 +6196,7 @@
     {
       "name": "Oven",
       "type": "block",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "oven",
       "metadata": {

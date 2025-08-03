@@ -12,7 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class MashedPotatoesItem extends Item {
 	public MashedPotatoesItem() {
-		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(4).saturationModifier(1.5f).build()));
+		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(4).saturationModifier(2f).build()));
 	}
 
 	@Override
