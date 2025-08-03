@@ -105,5 +105,31 @@
         "stream": false
       }
     ]
+  },
+  "oven_open": {
+    "subtitle": "subtitles.oven_open",
+    "sounds": [
+      {
+        "name": "concoction:oven_open01",
+        "stream": false
+      },
+      {
+        "name": "concoction:oven_open02",
+        "stream": false
+      }
+    ]
+  },
+  "oven_close": {
+    "subtitle": "subtitles.oven_close",
+    "sounds": [
+      {
+        "name": "concoction:oven_close01",
+        "stream": false
+      },
+      {
+        "name": "concoction:oven_close02",
+        "stream": false
+      }
+    ]
   }
 }

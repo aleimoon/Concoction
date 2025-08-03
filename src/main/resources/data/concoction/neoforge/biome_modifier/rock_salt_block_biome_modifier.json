@@ -1,17 +1,7 @@
 {
   "type": "neoforge:add_features",
   "biomes": [
-    "desert",
-    "badlands",
-    "eroded_badlands",
-    "wooded_badlands",
-    "savanna",
-    "savanna_plateau",
-    "windswept_savanna",
-    "stony_peaks",
-    "bamboo_jungle",
-    "jungle",
-    "sparse_jungle"
+    "dripstone_caves"
   ],
   "features": "concoction:rock_salt_block",
   "step": "underground_ores"

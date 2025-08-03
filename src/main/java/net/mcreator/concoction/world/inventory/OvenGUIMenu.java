@@ -1,4 +1,3 @@
-
 package net.mcreator.concoction.world.inventory;
 
 import net.mcreator.concoction.block.entity.CookingCauldronEntity;
@@ -21,8 +20,10 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
 
 import net.mcreator.concoction.init.ConcoctionModMenus;
+import net.mcreator.concoction.init.ConcoctionModSounds;
 import net.neoforged.neoforge.items.SlotItemHandler;
 
 import java.util.function.Supplier;
@@ -34,6 +35,7 @@ public class OvenGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
 	public final Level world;
 	public final Player entity;
 	public int x, y, z;
+	private BlockPos pos;
 	private ContainerLevelAccess access = ContainerLevelAccess.NULL;
 	private IItemHandler internal;
 	private final Map<Integer, Slot> customSlots = new HashMap<>();
@@ -48,22 +50,34 @@ public class OvenGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
 	private boolean isLit = false;
 
 	public OvenGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(ConcoctionModMenus.OVEN_GUI.get(), id);
+		super(ConcoctionModMenus.OVEN_GUI.get(), id); // must be first line
+
 		this.entity = inv.player;
 		this.world = inv.player.level();
-		BlockPos pos = null;
+		this.pos = null;
+
 		if (extraData != null) {
-			pos = extraData.readBlockPos();
+			this.pos = extraData.readBlockPos();
 			this.x = pos.getX();
 			this.y = pos.getY();
 			this.z = pos.getZ();
 			access = ContainerLevelAccess.create(world, pos);
+
+			world.playLocalSound(
+				pos.getX() + 0.5,
+				pos.getY() + 0.5,
+				pos.getZ() + 0.5,
+				ConcoctionModSounds.OVEN_OPEN.get(),
+				SoundSource.BLOCKS,
+				1.0f,
+				1.0F,
+				false
+			);
 		}
 
 		if (world.getBlockEntity(pos) instanceof OvenBlockEntity blockEntity) {
 			this.boundBlockEntity = blockEntity;
 			this.bound = true;
-			// Используем инвентарь блока напрямую
 			this.internal = new ItemStackHandler(9) {
 				@Override
 				public ItemStack getStackInSlot(int slot) {
@@ -108,62 +122,54 @@ public class OvenGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
 		addPlayerHotbar(inv);
 		addPlayerInventory(inv);
 
-		// Слот бутылочки (0)
 		this.customSlots.put(36, this.addSlot(new OvenBottleSlot(internal, 0, 19, 33)));
-		
-		// Слоты крафта (1-6)
+
 		this.customSlots.put(37, this.addSlot(new SlotItemHandler(internal, 1, 41, 24)));
 		this.customSlots.put(38, this.addSlot(new SlotItemHandler(internal, 2, 59, 24)));
 		this.customSlots.put(39, this.addSlot(new SlotItemHandler(internal, 3, 77, 24)));
 		this.customSlots.put(40, this.addSlot(new SlotItemHandler(internal, 4, 41, 42)));
 		this.customSlots.put(41, this.addSlot(new SlotItemHandler(internal, 5, 59, 42)));
 		this.customSlots.put(42, this.addSlot(new SlotItemHandler(internal, 6, 77, 42)));
-		
-		// Слот миски (7)
+
 		this.customSlots.put(43, this.addSlot(new OvenBowlSlot(internal, 7, 104, 13)));
-		
-		// Слот результата (8)
+
 		this.customSlots.put(44, this.addSlot(new SlotItemHandler(internal, 8, 139, 34) {
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return false; // Нельзя класть предметы в слот результата
+				return false;
 			}
 			@Override
 			public void onTake(Player player, ItemStack stack) {
 				super.onTake(player, stack);
-
 				if (!player.level().isClientSide() && player instanceof ServerPlayer serverPlayer)
 					Utils.addAchievement(serverPlayer, "concoction:oven_cooking");
 			}
 		}));
 	}
 
-
-	// Метод для получения текущего прогресса готовки
 	public int getProgress() {
-		if(boundBlockEntity instanceof OvenBlockEntity entity) {
+		if (boundBlockEntity instanceof OvenBlockEntity entity) {
 			return entity.getProgress();
 		}
 		return progress;
 	}
 
-	// Метод для получения максимального прогресса готовки
 	public int getMaxProgress() {
-		if(boundBlockEntity instanceof OvenBlockEntity entity) {
+		if (boundBlockEntity instanceof OvenBlockEntity entity) {
 			return entity.getMaxProgress();
 		}
 		return maxProgress;
 	}
 
 	public boolean isCooking() {
-		if(boundBlockEntity instanceof OvenBlockEntity entity) {
+		if (boundBlockEntity instanceof OvenBlockEntity entity) {
 			return entity.isCooking();
 		}
 		return isCooking;
 	}
 
 	public boolean isLit() {
-		if(boundBlockEntity instanceof OvenBlockEntity entity) {
+		if (boundBlockEntity instanceof OvenBlockEntity entity) {
 			return entity.isLit();
 		}
 		return isLit;
@@ -182,7 +188,6 @@ public class OvenGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
 		return true;
 	}
 
-	// Добавляем слоты инвентаря игрока
 	private void addPlayerInventory(Inventory playerInventory) {
 		for (int i = 0; i < 3; ++i) {
 			for (int l = 0; l < 9; ++l) {
@@ -191,7 +196,6 @@ public class OvenGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
 		}
 	}
 
-	// Добавляем хотбар игрока
 	private void addPlayerHotbar(Inventory playerInventory) {
 		for (int i = 0; i < 9; ++i) {
 			this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
@@ -207,39 +211,27 @@ public class OvenGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
 			ItemStack itemstack1 = slot.getItem();
 			itemstack = itemstack1.copy();
 			
-			// Если shift-click по слоту блока (36-44)
 			if (index >= 36 && index <= 44) {
-				// Возвращаем в инвентарь игрока - сначала в основной инвентарь, потом в хотбар
 				if (!this.moveItemStackTo(itemstack1, 9, 36, false)) {
 					if (!this.moveItemStackTo(itemstack1, 0, 9, false)) {
 						return ItemStack.EMPTY;
 					}
 				}
 				slot.onQuickCraft(itemstack1, itemstack);
-			}
-			// Если shift-click по инвентарю игрока (0-35)
-			else if (index >= 0 && index < 36) {
-				// Определяем, куда поместить предмет
+			} else if (index >= 0 && index < 36) {
 				boolean moved = false;
-				
-				// Проверяем тег c:tableware - идет в слот миски (43)
 				if (itemstack1.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "tableware")))) {
 					if (this.moveItemStackTo(itemstack1, 43, 44, false)) {
 						moved = true;
 					}
 				}
-				
 				if (!moved) {
-					// Сначала пытаемся поместить в слот бутылочки (36)
 					if (this.moveItemStackTo(itemstack1, 36, 37, false)) {
 						moved = true;
-					}
-					// Затем в слоты крафта (37-42)
-					else if (this.moveItemStackTo(itemstack1, 37, 43, false)) {
+					} else if (this.moveItemStackTo(itemstack1, 37, 43, false)) {
 						moved = true;
 					}
 				}
-				
 				if (!moved) {
 					return ItemStack.EMPTY;
 				}
@@ -263,5 +255,22 @@ public class OvenGUIMenu extends AbstractContainerMenu implements Supplier<Map<I
 
 	public Map<Integer, Slot> get() {
 		return customSlots;
+	}
+
+	@Override
+	public void removed(Player player) {
+		super.removed(player);
+		if (pos != null) {
+			world.playLocalSound(
+				pos.getX() + 0.5,
+				pos.getY() + 0.5,
+				pos.getZ() + 0.5,
+				ConcoctionModSounds.OVEN_CLOSE.get(),
+				SoundSource.BLOCKS,
+				1.0f,
+				1.0F,
+				false
+			);
+		}
 	}
 }

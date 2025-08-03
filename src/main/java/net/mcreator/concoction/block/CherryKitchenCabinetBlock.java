@@ -45,7 +45,7 @@ public class CherryKitchenCabinetBlock extends Block implements EntityBlock {
 	public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
 
 	public CherryKitchenCabinetBlock() {
-		super(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).sound(SoundType.WOOD).strength(2.5f).pushReaction(PushReaction.BLOCK));
+		super(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).sound(SoundType.CHERRY_WOOD).strength(2.5f).pushReaction(PushReaction.BLOCK));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, false));
 	}
 

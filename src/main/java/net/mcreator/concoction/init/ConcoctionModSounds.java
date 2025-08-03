@@ -24,4 +24,6 @@ public class ConcoctionModSounds {
 	public static final DeferredHolder<SoundEvent, SoundEvent> SOUL_BUCKET_EMPTY = REGISTRY.register("soul_bucket_empty", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("concoction", "soul_bucket_empty")));
 	public static final DeferredHolder<SoundEvent, SoundEvent> SOUL_BUCKET_FILLED = REGISTRY.register("soul_bucket_filled", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("concoction", "soul_bucket_filled")));
 	public static final DeferredHolder<SoundEvent, SoundEvent> CAULDRON_BOILING = REGISTRY.register("cauldron_boiling", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("concoction", "cauldron_boiling")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> OVEN_OPEN = REGISTRY.register("oven_open", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("concoction", "oven_open")));
+	public static final DeferredHolder<SoundEvent, SoundEvent> OVEN_CLOSE = REGISTRY.register("oven_close", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("concoction", "oven_close")));
 }

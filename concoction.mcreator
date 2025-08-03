@@ -6196,7 +6196,7 @@
     {
       "name": "Oven",
       "type": "block",
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "oven",
       "metadata": {
@@ -7108,6 +7108,24 @@
       ],
       "category": "block",
       "subtitle": "Cauldron is boiling"
+    },
+    {
+      "name": "oven_open",
+      "files": [
+        "oven_open01",
+        "oven_open02"
+      ],
+      "category": "player",
+      "subtitle": "Oven opens"
+    },
+    {
+      "name": "oven_close",
+      "files": [
+        "oven_close01",
+        "oven_close02"
+      ],
+      "category": "player",
+      "subtitle": "Oven closes"
     }
   ],
   "tag_elements": {
@@ -7430,8 +7448,8 @@
       "gui.concoction.kitchen_cabinet": "Кухонный шкаф",
       "taste.concoction.glow": "• Сияющее",
       "block.concoction.lime_pillow_block": "Лаймовая подушка",
-      "block.concoction.beetroot_block": "Блок свеклы",
       "block.concoction.light_gray_woven_carpet": "Светло-серый тканый ковёр",
+      "block.concoction.beetroot_block": "Блок свеклы",
       "subtitles.butter_thickens": "Масло загустело",
       "death.attack.spicy_damage": "%1$s больсе не смозет выговаливать букву \"Р\"",
       "block.concoction.mint": "Мята",
@@ -7441,19 +7459,19 @@
       "item.minecraft.tipped_arrow.effect.flame_extended": "Стрела жжения",
       "advancements.sunstruck_transformed.title": "Зомби против растений",
       "item.concoction.chocolate_cake_slice": "Кусочек шоколадного торта",
-      "advancements.make_soul_soul.title": "Адские сверхурочные",
       "advancements.spicy_on_fire.title": "Ты просто огонь!",
+      "advancements.make_soul_soul.title": "Адские сверхурочные",
       "block.concoction.wild_potato": "Дикий картофель",
-      "item.concoction.hashbrowns": "Хрустящие оладушки",
       "item.concoction.cooked_corn": "Жареная кукуруза",
+      "item.concoction.hashbrowns": "Хрустящие оладушки",
       "item.concoction.cream_bottle": "Бутылочка сливок",
       "item.concoction.cabbage_seeds": "Семена капусты",
       "item.concoction.tomato": "Томат",
       "advancements.new_crops.title": "Дикая находка",
       "item.minecraft.tipped_arrow.effect.snowflake_extended": "Стрела мороза",
       "block.concoction.crimson_kitchen_cabinet": "Багровый кухонный шкаф",
-      "block.concoction.chorus_block": "Блок хоруса",
       "item.concoction.mint_cookie": "Мятное печенье",
+      "block.concoction.chorus_block": "Блок хоруса",
       "block.concoction.crop_onion": "Лук",
       "block.concoction.small_blue_pillow_block": "Маленькая синяя подушка",
       "effect.concoction.fiery_touch": "Испепеляющее касание",
@@ -7510,6 +7528,7 @@
       "advancements.nether_mutation.descr": "Получи растение, которое сможет вырасти в незере",
       "item.concoction.cherry_cake_slice": "Кусочек вишнёвого пирога «Наслаждение»",
       "block.concoction.small_green_pillow_block": "Маленькая зелёная подушка",
+      "subtitles.oven_close": "Духовка закрылась",
       "advancements.puffball_accident.descr": "Выпусти споры гриба дождевика, наступив на него",
       "block.concoction.small_gray_pillow_block": "Маленькая серая подушка",
       "item.concoction.roasted_pinecone": "Жареная шишка",
@@ -7593,6 +7612,7 @@
       "advancements.spicy_remove_many_debuffs.descr": "Сними пять негативных эффектов с помощью острой еды одновременно",
       "item.concoction.cotton_oil": "Хлопковое масло",
       "subtitles.cauldron_cooking": "Котёл мощно кипит",
+      "subtitles.oven_open": "Духовка открылась",
       "item.concoction.puffball_soup": "Суп из гриба дождевика",
       "block.concoction.lime_woven_carpet": "Лаймовый тканый ковёр",
       "block.concoction.wild_cabbage": "Дикая капуста",
@@ -7844,6 +7864,7 @@
       "advancements.nether_mutation.descr": "Obtain nether-related or nether-mutated crop",
       "item.concoction.cherry_cake_slice": "Cherry Delight Cake Slice",
       "block.concoction.small_green_pillow_block": "Small Green Pillow",
+      "subtitles.oven_close": "Oven closes",
       "advancements.puffball_accident.descr": "Release spores of puffballs by stepping on them",
       "block.concoction.small_gray_pillow_block": "Small Gray Pillow",
       "item.concoction.roasted_pinecone": "Roasted Pinecone",
@@ -7927,6 +7948,7 @@
       "advancements.spicy_remove_many_debuffs.descr": "Cleanse five negative statuses at once with spicy food",
       "item.concoction.cotton_oil": "Cotton Oil",
       "subtitles.cauldron_cooking": "Cauldron is bubbling",
+      "subtitles.oven_open": "Oven opens",
       "item.concoction.puffball_soup": "Puffball Soup",
       "block.concoction.lime_woven_carpet": "Lime Woven Carpet",
       "block.concoction.wild_cabbage": "Wild Cabbage",
