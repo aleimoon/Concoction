@@ -7026,6 +7026,37 @@
         ]
       },
       "path": "~/achivements"
+    },
+    {
+      "name": "CordycepsSpider",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cordyceps_spider",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/concoction/neoforge/biome_modifier/cordyceps_spider_biome_modifier.json",
+          "src/main/java/net/mcreator/concoction/client/renderer/CordycepsSpiderRenderer.java",
+          "src/main/resources/assets/concoction/models/item/cordyceps_spider_spawn_egg.json",
+          "src/main/java/net/mcreator/concoction/entity/CordycepsSpiderEntity.java"
+        ]
+      },
+      "path": "~/puffball"
+    },
+    {
+      "name": "CordycepsCaveSpider",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cordyceps_cave_spider",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/concoction/models/item/cordyceps_cave_spider_spawn_egg.json",
+          "src/main/java/net/mcreator/concoction/entity/CordycepsCaveSpiderEntity.java",
+          "src/main/java/net/mcreator/concoction/client/renderer/CordycepsCaveSpiderRenderer.java"
+        ]
+      },
+      "path": "~/puffball"
     }
   ],
   "variable_elements": [],
@@ -7316,6 +7347,10 @@
     "ITEMS:minecraft:pickaxes": [
       "~CUSTOM:OvergrownPickaxe"
     ],
+    "ENTITIES:minecraft:arthropod": [
+      "~CUSTOM:CordycepsCaveSpider",
+      "~CUSTOM:CordycepsSpider"
+    ],
     "ITEMS:mod:frying_oil": [
       "CUSTOM:SunflowerOil",
       "CUSTOM:Butter",
@@ -7486,6 +7521,7 @@
       "block.concoction.cyan_pillow_block": "Бирюзовая подушка",
       "block.concoction.magenta_pillow_block": "Пурпурная подушка",
       "death.attack.rift.item": "%1$s был нарезан на межпространственные кусочки %2$s с помощью %3$s",
+      "item.concoction.cordyceps_cave_spider_spawn_egg": "Яйцо призыва пещерного кордицепс-паука",
       "item.concoction.dough": "Тесто",
       "fluid.concoction.weighted_souls": "Призрачная жижа",
       "item.concoction.sea_salt": "Морская соль",
@@ -7512,6 +7548,7 @@
       "effect.concoction.frost_touch": "Ледяное касание",
       "advancements.oven_cooking.descr": "Приготовь что-нибудь в духовке",
       "item.concoction.sunflower_crown_helmet": "Подсолнечный венок",
+      "entity.concoction.cordyceps_spider": "Кордицепс-паук",
       "item.concoction.reapper_seeds": "Семена призрачного жнерца",
       "item.concoction.roasted_sunflower_seeds": "Жареные семена подсолнуха",
       "item.concoction.fried_egg": "Яичница",
@@ -7624,6 +7661,7 @@
       "item.concoction.minty_slime_jelly": "Мятное слизневое желе",
       "block.concoction.crop_rice": "Рис",
       "advancements.brain_freeze_obtain_achievement.title": "Замораживающее дыхание",
+      "entity.concoction.cordyceps_cave_spider": "Пещерный кордицепс-паук",
       "block.concoction.yellow_woven_carpet": "Жёлтый тканый ковёр",
       "item.concoction.cooked_puffball": "Жареный гриб дождевик",
       "item.concoction.hot_sauce_bottle": "Бутылочка острого соуса",
@@ -7707,6 +7745,7 @@
       "item.concoction.butter": "Сливочное масло",
       "item.concoction.cabbage_leaf": "Капустный лист",
       "block.concoction.crop_mint": "Мята",
+      "item.concoction.cordyceps_spider_spawn_egg": "Яйцо призыва кордицепс-паука",
       "death.attack.soul_damage.player": "%1$s продал свою душу чтоб больше не видеть %2$s",
       "advancements.eat_dish.title": "Разжевать мысль",
       "block.concoction.white_woven_carpet": "Белый тканый ковёр",
@@ -7784,8 +7823,8 @@
       "gui.concoction.kitchen_cabinet": "Kitchen Cabinet",
       "taste.concoction.glow": "• Glimmering",
       "block.concoction.lime_pillow_block": "Lime Pillow",
-      "block.concoction.beetroot_block": "Beetroot Block",
       "block.concoction.light_gray_woven_carpet": "Light Gray Woven Carpet",
+      "block.concoction.beetroot_block": "Beetroot Block",
       "subtitles.butter_thickens": "Butter thickens",
       "death.attack.spicy_damage": "%1$s thought they could handle the spice",
       "block.concoction.mint": "Mint",
@@ -7795,19 +7834,19 @@
       "item.minecraft.tipped_arrow.effect.flame_extended": "Arrow of Flame",
       "advancements.sunstruck_transformed.title": "Zombies vs. Plants",
       "item.concoction.chocolate_cake_slice": "Chocolate Cake Slice",
-      "advancements.make_soul_soul.title": "Crop \u0027Til You Drop",
       "advancements.spicy_on_fire.title": "It Burns, Burns, Burns",
+      "advancements.make_soul_soul.title": "Crop \u0027Til You Drop",
       "block.concoction.wild_potato": "Wild Potato",
-      "item.concoction.cooked_corn": "Cooked Corn",
       "item.concoction.hashbrowns": "Hashbrowns",
+      "item.concoction.cooked_corn": "Cooked Corn",
       "item.concoction.cream_bottle": "Cream Bottle",
       "item.concoction.cabbage_seeds": "Cabbage Seeds",
       "item.concoction.tomato": "Tomato",
       "advancements.new_crops.title": "That\u0027s Wild",
       "item.minecraft.tipped_arrow.effect.snowflake_extended": "Arrow of Snowflake",
       "block.concoction.crimson_kitchen_cabinet": "Crimson Kitchen Cabinet",
-      "block.concoction.chorus_block": "Chorus Block",
       "item.concoction.mint_cookie": "Mint Cookie",
+      "block.concoction.chorus_block": "Chorus Block",
       "block.concoction.crop_onion": "Crop Onion",
       "block.concoction.small_blue_pillow_block": "Small Blue Pillow",
       "effect.concoction.fiery_touch": "Fiery Touch",
@@ -7822,6 +7861,7 @@
       "item.minecraft.tipped_arrow.effect.flame": "Arrow of Flame",
       "block.concoction.magenta_pillow_block": "Magenta Pillow",
       "death.attack.rift.item": "%1$s was interdimensionally sliced by %2$s using %3$s",
+      "item.concoction.cordyceps_cave_spider_spawn_egg": "Cordyceps Spider Spawn Egg",
       "item.concoction.dough": "Dough",
       "fluid.concoction.weighted_souls": "Weighted Souls",
       "item.concoction.sea_salt": "Sea Salt",
@@ -7848,6 +7888,7 @@
       "effect.concoction.frost_touch": "Frost Touch",
       "advancements.oven_cooking.descr": "Cook something in the oven",
       "item.concoction.sunflower_crown_helmet": "Sunflower Crown",
+      "entity.concoction.cordyceps_spider": "Cordyceps Spider",
       "item.concoction.reapper_seeds": "Ghost Reapper Seeds",
       "item.concoction.roasted_sunflower_seeds": "Roasted Sunflower Seeds",
       "item.concoction.fried_egg": "Fried Egg",
@@ -7960,6 +8001,7 @@
       "item.concoction.minty_slime_jelly": "Minty Slime Jelly",
       "block.concoction.crop_rice": "Crop Rice",
       "advancements.brain_freeze_obtain_achievement.title": "Chill Out",
+      "entity.concoction.cordyceps_cave_spider": "Cordyceps Spider",
       "block.concoction.yellow_woven_carpet": "Yellow Woven Carpet",
       "item.concoction.cooked_puffball": "Cooked Puffball",
       "item.concoction.hot_sauce_bottle": "Hot Sauce Bottle",
@@ -8043,6 +8085,7 @@
       "item.concoction.butter": "Dairy Butter",
       "item.concoction.cabbage_leaf": "Cabbage Leaf",
       "block.concoction.crop_mint": "Crop Mint",
+      "item.concoction.cordyceps_spider_spawn_egg": "Cordyceps Spider Spawn Egg",
       "death.attack.soul_damage.player": "%1$s sold their soul to never again see %2$s",
       "advancements.eat_dish.title": "Chew It Over",
       "block.concoction.white_woven_carpet": "White Woven Carpet",

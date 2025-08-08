@@ -257,6 +257,9 @@ public class ConcoctionModItems {
 	public static final DeferredItem<Item> BAMBOO_KITCHEN_CABINET = block(ConcoctionModBlocks.BAMBOO_KITCHEN_CABINET);
 	public static final DeferredItem<Item> CRIMSON_KITCHEN_CABINET = block(ConcoctionModBlocks.CRIMSON_KITCHEN_CABINET);
 	public static final DeferredItem<Item> WARPED_KITCHEN_CABINET = block(ConcoctionModBlocks.WARPED_KITCHEN_CABINET);
+	public static final DeferredItem<Item> CORDYCEPS_SPIDER_SPAWN_EGG = REGISTRY.register("cordyceps_spider_spawn_egg", () -> new DeferredSpawnEggItem(ConcoctionModEntities.CORDYCEPS_SPIDER, -14280166, -7322299, new Item.Properties()));
+	public static final DeferredItem<Item> CORDYCEPS_CAVE_SPIDER_SPAWN_EGG = REGISTRY.register("cordyceps_cave_spider_spawn_egg",
+			() -> new DeferredSpawnEggItem(ConcoctionModEntities.CORDYCEPS_CAVE_SPIDER, -15063520, -12548519, new Item.Properties()));
 	// Start of user code block custom items
 	public static final DeferredItem<Item> CHERRY_CAKE = block(ConcoctionModBlocks.CHERRY_CAKE, 1);
 	public static final DeferredItem<Item> GLOWBERRY_CAKE = block(ConcoctionModBlocks.GLOWBERRY_CAKE, 1);

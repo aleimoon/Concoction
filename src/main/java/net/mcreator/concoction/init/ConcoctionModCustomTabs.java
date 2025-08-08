@@ -250,6 +250,10 @@ if (butcheringEntry != null && butcheringEntry.isPresent()) {
 
 				tabData.accept(ConcoctionModItems.SUNFLOWER_CROWN_HELMET.get());
 				tabData.accept(ConcoctionModItems.SUNSTRUCK_SPAWN_EGG.get());
+				tabData.accept(ConcoctionModItems.CORDYCEPS_SPIDER_SPAWN_EGG.get());
+				tabData.accept(ConcoctionModItems.CORDYCEPS_CAVE_SPIDER_SPAWN_EGG.get());
+
+
 
 
 //Особое
