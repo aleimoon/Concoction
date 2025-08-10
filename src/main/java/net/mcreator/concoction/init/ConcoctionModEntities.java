@@ -35,7 +35,7 @@ public class ConcoctionModEntities {
 	public static final DeferredHolder<EntityType<?>, EntityType<CordycepsCaveSpiderEntity>> CORDYCEPS_CAVE_SPIDER = register("cordyceps_cave_spider",
 			EntityType.Builder.<CordycepsCaveSpiderEntity>of(CordycepsCaveSpiderEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
 
-					.sized(1.4f, 0.9f));
+					.sized(0.7f, 0.5f));
 
 	// Start of user code block custom entities
 	// End of user code block custom entities

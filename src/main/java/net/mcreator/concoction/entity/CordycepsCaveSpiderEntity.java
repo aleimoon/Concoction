@@ -7,7 +7,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.monster.Spider;
+import net.minecraft.world.entity.monster.CaveSpider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.Mob;
@@ -23,18 +23,18 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.core.BlockPos.MutableBlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
 
 import java.util.List;
 import java.util.EnumSet;
 
-// Your mod's particle type registry
 import net.mcreator.concoction.init.ConcoctionModParticleTypes;
 import net.mcreator.concoction.init.ConcoctionModBlocks;
 import net.mcreator.concoction.init.ConcoctionModEntities;
 
-public class CordycepsCaveSpiderEntity extends Spider {
+public class CordycepsCaveSpiderEntity extends CaveSpider {
 
-    public CordycepsCaveSpiderEntity(EntityType<? extends Spider> type, Level world) {
+    public CordycepsCaveSpiderEntity(EntityType<? extends CaveSpider> type, Level world) {
         super(type, world);
     }
 
@@ -65,6 +65,19 @@ public class CordycepsCaveSpiderEntity extends Spider {
         );
     }
 
+    private void applyPoisonBasedOnDifficulty(LivingEntity target) {
+        Difficulty diff = this.level().getDifficulty();
+        int durationTicks = 0;
+        if (diff == Difficulty.NORMAL) {
+            durationTicks = 140; // 7 seconds
+        } else if (diff == Difficulty.HARD) {
+            durationTicks = 300; // 15 seconds
+        }
+        if (durationTicks > 0) {
+            target.addEffect(new MobEffectInstance(MobEffects.POISON, durationTicks, 0));
+        }
+    }
+
     @Override
     public boolean hurt(DamageSource source, float amount) {
         boolean result = super.hurt(source, amount);
@@ -86,19 +99,30 @@ public class CordycepsCaveSpiderEntity extends Spider {
             if (this.level() instanceof ServerLevel serverWorld) {
                 triggerSpores(serverWorld, this.blockPosition(), 6, 80); // radius, duration
                 spreadSporesBlocks(serverWorld, this.blockPosition(), 6, 25); // radius, attempts
+                // Poison nearby entities on death (same rule as attack)
+                poisonNearbyOnDeath(serverWorld, this.blockPosition(), 6);
             }
         }
     }
 
+    private void poisonNearbyOnDeath(ServerLevel serverWorld, BlockPos center, double radius) {
+        List<LivingEntity> nearby = serverWorld.getEntitiesOfClass(
+            LivingEntity.class,
+            new net.minecraft.world.phys.AABB(center).inflate(radius),
+            e -> e != this
+        );
+        for (LivingEntity target : nearby) {
+            applyPoisonBasedOnDifficulty(target);
+        }
+    }
+
     private void triggerSpores(ServerLevel serverWorld, BlockPos center, double radius, int duration) {
-        // Spawn particles at spider position
         serverWorld.sendParticles(
                 ConcoctionModParticleTypes.SPORE_CLOUD.get(),
                 center.getX() + 0.5, center.getY() + 0.5, center.getZ() + 0.5,
                 20, 0.5, 0.5, 0.5, 0.01
         );
 
-        // Affect nearby living entities (except itself)
         List<LivingEntity> nearby = serverWorld.getEntitiesOfClass(
                 LivingEntity.class,
                 new net.minecraft.world.phys.AABB(center).inflate(radius),
@@ -140,13 +164,12 @@ public class CordycepsCaveSpiderEntity extends Spider {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        AttributeSupplier.Builder builder = Spider.createAttributes();
-        builder = builder.add(Attributes.MAX_HEALTH, 20.0); // 20 HP
+        AttributeSupplier.Builder builder = CaveSpider.createAttributes();
+        builder = builder.add(Attributes.MAX_HEALTH, 16.0); // 20 HP
         builder = builder.add(Attributes.ATTACK_DAMAGE, 1.0); // 1 damage
         return builder;
     }
 
-    // Custom AI goal to seek sky-exposed blocks
     static class MoveToSkyGoal extends net.minecraft.world.entity.ai.goal.Goal {
         private final CordycepsCaveSpiderEntity spider;
         private BlockPos targetPos;
@@ -184,5 +207,6 @@ public class CordycepsCaveSpiderEntity extends Spider {
                 );
             }
         }
+        
     }
 }

@@ -11,7 +11,7 @@ import net.mcreator.concoction.entity.CordycepsSpiderEntity;
 
 public class CordycepsSpiderRenderer extends MobRenderer<CordycepsSpiderEntity, SpiderModel<CordycepsSpiderEntity>> {
 	public CordycepsSpiderRenderer(EntityRendererProvider.Context context) {
-		super(context, new SpiderModel<CordycepsSpiderEntity>(context.bakeLayer(ModelLayers.SPIDER)), 0.5f);
+		super(context, new SpiderModel<CordycepsSpiderEntity>(context.bakeLayer(ModelLayers.SPIDER)), 0.8f);
 	}
 
 	@Override

@@ -2,7 +2,7 @@
   "_fv": 73,
   "_type": "livingentity",
   "definition": {
-    "mobName": "Cordyceps Spider",
+    "mobName": "Cordyceps Cave Spider",
     "mobLabel": "",
     "mobModelName": "Spider",
     "mobModelTexture": "cordyceps_cave_spider.png",
@@ -16,16 +16,16 @@
       "fixedValue": false
     },
     "visualScale": {
-      "fixedValue": 1.0
+      "fixedValue": 0.75
     },
     "boundingBoxScale": {
       "fixedValue": 1.0
     },
     "modelLayers": [],
     "animations": [],
-    "modelWidth": 1.4,
-    "modelHeight": 0.9,
-    "modelShadowSize": 0.5,
+    "modelWidth": 0.7,
+    "modelHeight": 0.5,
+    "modelShadowSize": 0.55,
     "mountedYOffset": 0.0,
     "hasSpawnEgg": true,
     "spawnEggBaseColor": {
@@ -33,7 +33,7 @@
       "falpha": 0.0
     },
     "spawnEggDotColor": {
-      "value": -12548519,
+      "value": -7978944,
       "falpha": 0.0
     },
     "creativeTabs": [],
