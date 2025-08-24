@@ -7057,6 +7057,20 @@
         ]
       },
       "path": "~/puffball"
+    },
+    {
+      "name": "NoodlesWithCreamSauce",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "noodles_with_cream_sauce",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/concoction/models/item/noodles_with_cream_sauce.json",
+          "src/main/java/net/mcreator/concoction/item/NoodlesWithCreamSauceItem.java"
+        ]
+      },
+      "path": "~/general"
     }
   ],
   "variable_elements": [],
@@ -7483,8 +7497,8 @@
       "gui.concoction.kitchen_cabinet": "Кухонный шкаф",
       "taste.concoction.glow": "• Сияющее",
       "block.concoction.lime_pillow_block": "Лаймовая подушка",
-      "block.concoction.beetroot_block": "Блок свеклы",
       "block.concoction.light_gray_woven_carpet": "Светло-серый тканый ковёр",
+      "block.concoction.beetroot_block": "Блок свеклы",
       "subtitles.butter_thickens": "Масло загустело",
       "death.attack.spicy_damage": "%1$s больсе не смозет выговаливать букву \"Р\"",
       "block.concoction.mint": "Мята",
@@ -7494,19 +7508,19 @@
       "item.minecraft.tipped_arrow.effect.flame_extended": "Стрела жжения",
       "advancements.sunstruck_transformed.title": "Зомби против растений",
       "item.concoction.chocolate_cake_slice": "Кусочек шоколадного торта",
-      "advancements.make_soul_soul.title": "Адские сверхурочные",
       "advancements.spicy_on_fire.title": "Ты просто огонь!",
+      "advancements.make_soul_soul.title": "Адские сверхурочные",
       "block.concoction.wild_potato": "Дикий картофель",
-      "item.concoction.hashbrowns": "Хрустящие оладушки",
       "item.concoction.cooked_corn": "Жареная кукуруза",
+      "item.concoction.hashbrowns": "Хрустящие оладушки",
       "item.concoction.cream_bottle": "Бутылочка сливок",
       "item.concoction.cabbage_seeds": "Семена капусты",
       "item.concoction.tomato": "Томат",
       "advancements.new_crops.title": "Дикая находка",
       "item.minecraft.tipped_arrow.effect.snowflake_extended": "Стрела мороза",
       "block.concoction.crimson_kitchen_cabinet": "Багровый кухонный шкаф",
-      "block.concoction.chorus_block": "Блок хоруса",
       "item.concoction.mint_cookie": "Мятное печенье",
+      "block.concoction.chorus_block": "Блок хоруса",
       "block.concoction.crop_onion": "Лук",
       "block.concoction.small_blue_pillow_block": "Маленькая синяя подушка",
       "effect.concoction.fiery_touch": "Испепеляющее касание",
@@ -7710,6 +7724,7 @@
       "block.concoction.cotton_block": "Блок хлопчатника",
       "item.minecraft.lingering_potion.effect.blooming": "Оседающее зелье цветения",
       "block.concoction.cherry_block": "Блок вишни",
+      "item.concoction.noodles_with_cream_sauce": "Лапша с сливочным соусом",
       "item.concoction.butter_sandwich": "Бутерброд с маслом",
       "item.minecraft.potion.effect.blooming_buffed": "Зелье цветения",
       "item.concoction.vegetable_soup": "Овощной суп",
@@ -8050,6 +8065,7 @@
       "block.concoction.cotton_block": "Cotton Bolls Block",
       "item.minecraft.lingering_potion.effect.blooming": "Lingering Potion of Blooming",
       "block.concoction.cherry_block": "Cherry Block",
+      "item.concoction.noodles_with_cream_sauce": "Noodles with Cream Sauce",
       "item.concoction.butter_sandwich": "Butter Sandwich",
       "item.minecraft.potion.effect.blooming_buffed": "Potion of Blooming",
       "item.concoction.vegetable_soup": "Vegetable Soup",
@@ -8262,7 +8278,7 @@
   "workspaceSettings": {
     "modid": "concoction",
     "modName": "Concoction",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "author": "Sebsish, woofyboo",
     "websiteURL": "https://www.youtube.com/watch?v\u003ddQw4w9WgXcQ",
     "license": "GNU General Public License version 3 (GPLv3)",

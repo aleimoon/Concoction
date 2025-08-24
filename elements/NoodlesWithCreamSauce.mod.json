@@ -3,11 +3,11 @@
   "_type": "item",
   "definition": {
     "renderType": 0,
-    "texture": "braised_meat",
+    "texture": "cream_noodles",
     "customModelName": "Normal",
     "customProperties": {},
     "states": [],
-    "name": "Braised Meat",
+    "name": "Noodles with Cream Sauce",
     "rarity": "COMMON",
     "creativeTabs": [],
     "stackSize": 16,
@@ -40,7 +40,7 @@
     },
     "projectileDisableAmmoCheck": false,
     "isFood": true,
-    "nutritionalValue": 16,
+    "nutritionalValue": 9,
     "saturation": 0.6,
     "eatResultItem": {
       "value": "Items.BOWL"
@@ -53,7 +53,7 @@
       "value": ""
     },
     "musicDiscDescription": "",
-    "musicDiscLengthInTicks": 0,
+    "musicDiscLengthInTicks": 100,
     "musicDiscAnalogOutput": 0
   }
 }

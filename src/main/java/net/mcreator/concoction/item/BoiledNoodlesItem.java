@@ -12,7 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class BoiledNoodlesItem extends Item {
 	public BoiledNoodlesItem() {
-		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(6).saturationModifier(0.3f).build()));
+		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(6).saturationModifier(0.6f).build()));
 	}
 
 	@Override

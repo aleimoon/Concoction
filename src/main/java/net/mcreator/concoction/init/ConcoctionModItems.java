@@ -47,6 +47,7 @@ import net.mcreator.concoction.item.OnionSoupItem;
 import net.mcreator.concoction.item.OmuriceItem;
 import net.mcreator.concoction.item.ObsidianTearsBottleItem;
 import net.mcreator.concoction.item.NoodlesWithMeatballsItem;
+import net.mcreator.concoction.item.NoodlesWithCreamSauceItem;
 import net.mcreator.concoction.item.MusicDiscHotIceItem;
 import net.mcreator.concoction.item.MushroomSkewerItem;
 import net.mcreator.concoction.item.MushroomCreamSoupItem;
@@ -260,6 +261,7 @@ public class ConcoctionModItems {
 	public static final DeferredItem<Item> CORDYCEPS_SPIDER_SPAWN_EGG = REGISTRY.register("cordyceps_spider_spawn_egg", () -> new DeferredSpawnEggItem(ConcoctionModEntities.CORDYCEPS_SPIDER, -14280166, -7322299, new Item.Properties()));
 	public static final DeferredItem<Item> CORDYCEPS_CAVE_SPIDER_SPAWN_EGG = REGISTRY.register("cordyceps_cave_spider_spawn_egg",
 			() -> new DeferredSpawnEggItem(ConcoctionModEntities.CORDYCEPS_CAVE_SPIDER, -15063520, -7978944, new Item.Properties()));
+	public static final DeferredItem<Item> NOODLES_WITH_CREAM_SAUCE = REGISTRY.register("noodles_with_cream_sauce", NoodlesWithCreamSauceItem::new);
 	// Start of user code block custom items
 	public static final DeferredItem<Item> CHERRY_CAKE = block(ConcoctionModBlocks.CHERRY_CAKE, 1);
 	public static final DeferredItem<Item> GLOWBERRY_CAKE = block(ConcoctionModBlocks.GLOWBERRY_CAKE, 1);

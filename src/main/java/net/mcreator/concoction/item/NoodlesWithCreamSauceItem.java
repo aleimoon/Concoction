@@ -10,9 +10,9 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
 
-public class MeatGoulashItem extends Item {
-	public MeatGoulashItem() {
-		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(16).saturationModifier(0.6f).build()));
+public class NoodlesWithCreamSauceItem extends Item {
+	public NoodlesWithCreamSauceItem() {
+		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(9).saturationModifier(0.6f).build()));
 	}
 
 	@Override

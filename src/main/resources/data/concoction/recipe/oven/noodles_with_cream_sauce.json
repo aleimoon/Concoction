@@ -1,0 +1,35 @@
+{
+  "type": "concoction:oven",
+  "group": "food",
+  "category": "misc",
+  "cooking_time": 200,
+  
+  "crafting_ingredients": [
+{
+      "item": "concoction:raw_noodles"
+    },
+{
+      "item": "concoction:raw_noodles"
+    },
+    {
+      "tag": "c:mushrooms"
+    },
+    {
+      "item": "concoction:onion"
+    }
+  ],
+
+ "bottle_ingredient": {
+    "item": "concoction:cream_bottle"
+  },
+
+
+  "bowl_ingredient": {
+    "item": "minecraft:bowl"
+  },
+  
+  "result": {
+    "id": "concoction:noodles_with_cream_sauce",
+    "count": "1"
+  }
+}
